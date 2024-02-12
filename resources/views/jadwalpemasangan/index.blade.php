@@ -8,11 +8,11 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <a href="{{route('jadwalpemasangan.create')}}" class="">
-                <i class="" aria-hidden="true"></i></a>
-                               <table class="table table-hover table-bordered table-stripped table-responsive table-rounded" id="example2">
+                <a href="{{route('jadwalpemasangan.create')}}" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Tambah Jadwal Pemasangan</a>
+                <table class="table table-hover table-bordered table-stripped table-responsive table-rounded" id="example2">
                     <thead>
-                    <tr class="table-info ">
+                        <tr class="table-info">
                             <th>No.</th>
                             <th>Nama</th>
                             <th>Nomor Handphone</th>
@@ -25,7 +25,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach ($jadwalpemasangan as $sk => $item)
+                        @foreach ($jadwalpemasangan as $sk => $item)
                         <tr>
                             <td>{{$loop->iteration}}</td>
                             <td>{{$item->nama}}</td>
@@ -36,14 +36,12 @@
                             <td>{{$item->waktu}}</td>
                             <td>{{$item->titik_kordinat}}</td>
                             <td>
-                            <button class="btn btn-danger mb-2" aria-hidden="true" data-bs-toggle="modal"
+                                <button class="btn btn-danger mb-2" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop2{{$item->id}}" data-id="{{$item->id}}">
                                     <i class="fa fa-pen"></i> Edit
                                 </button>
-                                <a href="{{route('jadwalpemasangan.destroy', $item)}}"
-                                    onclick="notificationBeforeDelete(event, this)"
+                                <a href="{{route('jadwalpemasangan.destroy', $item)}}" onclick="notificationBeforeDelete(event, this)"
                                     class="btn btn-warning btn-xs"> <i class="fa fa-trash"> Delete </i></a>
-                                    
                             </td>
                         </tr>
                         @endforeach
@@ -53,53 +51,55 @@
         </div>
     </div>
 </div>
+
 @foreach($jadwalsurvey as $key => $item)
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false"
-                tabindex="-1" aria-labelledby="staticBackdrop1" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-scrollable p-5">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdrop1">Pencarian data jadwalsurvey</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <table class="table table-hover table-bordered table-stripped" id="example1">
-                                <thead>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>nama</th>
-                                        <th>nomor_handphone</th>
-                                        <th>Opsi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($jadwalsurvey as $key => $item)
-                                    <tr>
-                                        <td>{{ $key + 1 }}</td>
-                                        <td id={{$key+1}}>{{$item->nama}}</td>
-                                        <td id={{$key+1}}>{{$item->nomor_handphone}}</td>
-                                        <td>
-                                            <button type="button" class="btn btn-danger btn-xs"
-                                                onclick="pilih1('{{ $item->id }}','{{ $item->nama }}','{{ $item->nomor_handphone }}')"
-                                                data-bs-dismiss="modal">Pilih</button>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false"
+    tabindex="-1" aria-labelledby="staticBackdrop1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable p-5">
+        <div class="modal-content">
+            <div class="modal-header bg-primary"> <!-- Perbaiki tanda kutip di sini -->
+                <h1 class="modal-title fs-5" id="staticBackdrop1">Pencarian data jadwalsurvey</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <!-- End Modal -->
+            <div class="modal-body">
+                <table class="table table-hover table-bordered table-stripped" id="example1">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>nama</th>
+                            <th>nomor_handphone</th>
+                            <th>Opsi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($jadwalsurvey as $key => $item)
+                        <tr>
+                            <td>{{ $key + 1 }}</td>
+                            <td id={{$key+1}}>{{$item->nama}}</td>
+                            <td id={{$key+1}}>{{$item->nomor_handphone}}</td>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-xs"
+                                    onclick="pilih1('{{ $item->id }}','{{ $item->nama }}','{{ $item->nomor_handphone }}')"
+                                    data-bs-dismiss="modal">Pilih</button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
 @endforeach
+
 @foreach($jadwalpemasangan as $key => $item)
 <div class="modal fade" id="staticBackdrop2{{$item->id}}" data-bs-backdrop="static" data-bs-keyboard="false"
     tabindex="-1" aria-labelledby="modalTitle{{$item->id}}" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable p-5">
         <div class="modal-content">
-            <div class="modal-header bg-primary>
+            <div class="modal-header bg-primary">
                 <h1 class="modal-title fs-5" id="modalTitle{{$item->id}}">Edit</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -119,41 +119,51 @@
                         </div>
 
                         <div class="form-group">
-                    <label for="nomor_handphone">Nomor_Handphone</label>
-                        <div class="input-group">
-                            <input type="hidden" name="id_jadwalsurvey" id="id_jadwalsurvey"
-                                value="{{ old('id_jadwalsurvey') }}">
-                            <input type="text" class="form-control @error('nomor_handphone') is-invalid @enderror"
-                                placeholder="nomor-handphone" id="nomor_handphone" name="nomor_handphone"
-                                value="{{ old('nomor_handphone') }}" aria-label="nomor_handphone" aria-describedby="cari" readonly>
-                            <button class="btn btn-warning" type="button" data-bs-toggle="modal" id="cari"
-                                data-bs-target="#staticBackdrop1"><i class="fa fa-search"> Cari Nomor Handphone</i></i></button>
+                            <label for="nomor_handphone">Nomor_Handphone</label>
+                            <div class="input-group">
+                                <input type="hidden" name="id_jadwalsurvey" id="id_jadwalsurvey"
+                                    value="{{ old('id_jadwalsurvey') }}">
+                                <input type="text"
+                                    class="form-control @error('nomor_handphone') is-invalid @enderror"
+                                    placeholder="nomor-handphone" id="nomor_handphone" name="nomor_handphone"
+                                    value="{{ old('nomor_handphone') }}" aria-label="nomor_handphone"
+                                    aria-describedby="cari" readonly>
+                                <button class="btn btn-warning" type="button" data-bs-toggle="modal" id="cari"
+                                    data-bs-target="#staticBackdrop1"><i class="fa fa-search"> Cari Nomor
+                                        Handphone</i></button>
+                            </div>
                         </div>
 
                         <div class="form-group">
-                        <label for="Nama_Paket">Nama_Paket</label>
-                        <select class="form-control @error('Nama_Paket') is-invalid @enderror" id="Nama_Paket"
-                            name="nama_paket">
-                            <option value="ALPHA" @if(old('Nama_Paket')=='ALPHA' )selected @endif>ALPHA</option>
-                            <option value="BETA" @if(old('Nama_Paket')=='BETA' )selected @endif>BETA</option>
-                            <option value="GAMMA" @if(old('Nama_Paket')=='GAMMA' )selected @endif>GAMMA</option>
-                            <option value="KENDA" @if(old('Nama_Paket')=='KENDA' )selected @endif>KENDA</option>
-                            <option value="SELESA" @if(old('Nama_Paket')=='SELESA' )selected @endif>SELESA</option>
-                        </select>
-                    </div>
+                            <label for="Nama_Paket">Nama_Paket</label>
+                            <select class="form-control @error('Nama_Paket') is-invalid @enderror" id="Nama_Paket"
+                                name="nama_paket">
+                                <option value="ALPHA" @if(old('Nama_Paket')=='ALPHA' )selected @endif>ALPHA</option>
+                                <option value="BETA" @if(old('Nama_Paket')=='BETA' )selected @endif>BETA</option>
+                                <option value="GAMMA" @if(old('Nama_Paket')=='GAMMA' )selected @endif>GAMMA</option>
+                                <option value="KENDA" @if(old('Nama_Paket')=='KENDA' )selected @endif>KENDA</option>
+                                <option value="SELESA" @if(old('Nama_Paket')=='SELESA' )selected @endif>SELESA</option>
+                            </select>
+                        </div>
 
-                       
+
                         <div class="form-group">
                             <label for="Alamat_Pemasangan">Alamat_Pemasangan</label>
-                            <input type="text" class="form-control @error('Alamat_Pemasangan') is-invalid @enderror" name="alamat_pemasangan"
-                                value="{{ $item->alamat_pemasangan ?? old('alamat_pemasangan') }}" id="Alamat_Pemasangan">
+                            <input type="text"
+                                class="form-control @error('Alamat_Pemasangan') is-invalid @enderror"
+                                name="alamat_pemasangan"
+                                value="{{ $item->alamat_pemasangan ?? old('alamat_pemasangan') }}"
+                                id="Alamat_Pemasangan">
                             @error('Alamat_Pemasangan') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
 
                         <div class="form-group">
                             <label for="Tanggal_Pemasangan">Tanggal_Pemasangan</label>
-                            <input type="date" class="form-control @error('Tanggal_Pemasangan') is-invalid @enderror" name="tanggal_pemasangan"
-                                value="{{ $item->tanggal_pemasangan?? old('tanggal_pemasangan') }}" id="Tanggal_Pemasangan">
+                            <input type="date"
+                                class="form-control @error('Tanggal_Pemasangan') is-invalid @enderror"
+                                name="tanggal_pemasangan"
+                                value="{{ $item->tanggal_pemasangan?? old('tanggal_pemasangan') }}"
+                                id="Tanggal_Pemasangan">
                             @error('Tanggal_Pemasangan') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
 
@@ -167,14 +177,17 @@
 
                         <div class="form-group">
                             <label for="Titik_Kordinat">Titik_Kordinat</label>
-                            <input type="text" class="form-control @error('Titik_Kordinat') is-invalid @enderror" name="titik_kordinat"
+                            <input type="text"
+                                class="form-control @error('Titik_Kordinat') is-invalid @enderror"
+                                name="titik_kordinat"
                                 value="{{ $item->titik_kordinat ?? old('titik_kordinat') }}" id="Titik_Kordinat">
                             @error('Titik_Kordinat') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
                         <!-- ... (lanjutkan dengan field lainnya) -->
 
-                        <button type="submit" class="btn btn-danger"><i class="fas fa-save"> Simpan </i></button> 
-                                <a href="{{ route('jadwalpemasangan.index') }}"  class="btn btn-warning"><i class="fa fa-times-circle"> Batal </i></button></a>
+                        <button type="submit" class="btn btn-danger"><i class="fas fa-save"> Simpan </i></button>
+                        <a href="{{ route('jadwalpemasangan.index') }}" class="btn btn-warning"><i
+                                class="fa fa-times-circle"> Batal </i></button></a>
                     </form>
                 </table>
             </div>
@@ -190,16 +203,16 @@
 </form>
 
 <script>
-                $('#example1').DataTable({
-                    "responsive": true,
-                });
+    $('#example1').DataTable({
+        "responsive": true,
+    });
 
-                function pilih1(id, nama) {
-                    document.getElementById('id_jadwalsurvey').value = id
-                    document.getElementById('nomor_handphone').value = nomor_handphone
-                }
-            
- </script>
+    function pilih1(id, nama, nomor_handphone) {
+        document.getElementById('id_jadwalsurvey').value = id
+        document.getElementById('nomor_handphone').value = nomor_handphone
+    }
+
+</script>
 <script>
     $('#example2').DataTable({
         "responsive": true,
@@ -215,4 +228,3 @@
 
 </script>
 @endpush
-

@@ -13,7 +13,7 @@
         <div class="card card-primary">
             <div class="card-body">
                 <!-- <a href="{{route('datacalonpelanggan.create')}}" class="btn btn-danger mb-2"> -->
-                <button class="btn btn btn-info mb-2 " aria-hidden="true" data-toggle="modal" data-target="#staticBackdrop2" class="btn btn-danger mb-2"> create new data </button>
+                <button class="btn btn btn-info mb-2 " aria-hidden="true" data-toggle="modal" data-target="#staticBackdrop2"> create new data </button>
                 <table class="table table-hover table-bordered table-stripped table-responsive table-rounded" id="example2">
                     <thead>
                     <tr class="table-info">
@@ -86,19 +86,6 @@
                             name="Foto">
                         @error('Foto') <span class="text-danger">{{$message}}</span> @enderror
                     </div>
-
-                    <!-- <div class="form-group">
-                    <label for="Foto">Foto KTP</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="Foto">
-                        <label class="custom-file-label" for="Foto">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                      </div>
-                    </div>
-                  </div> -->
 
                     <div class="form-group">
                         <label for="Nomor_Handphone">Nomor_Handphone</label>
@@ -177,5 +164,17 @@
         }
     }
 
+    function readURL(input){
+        if(input.files && input.files[0]){
+            var reader = new FileReader();
+            reader.onload = function(e){
+                $('#tampil').attr('src', e.target.result);
+            } 
+            reader.readAsDataURL(input.files[0]);
+        } 
+    } 
+    $("#Foto").change(function(){
+        readURL(this);
+    });
 </script>
 @endpush

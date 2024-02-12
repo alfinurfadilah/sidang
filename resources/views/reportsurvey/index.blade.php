@@ -8,23 +8,24 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <a href="{{route('reportsurvey.create')}}" class="">
-                <i class="" aria-hidden="true">  </i></a>
-                <table class="table-responsive table-hover table-bordered table-stripped" id="example2">
+                <a href="{{route('reportsurvey.create')}}" >
+                <i aria-hidden="true">  </i></a>
+                <table class="table table-hover table-bordered table-stripped table-responsive table-rounded" id="example2">
                     <thead>
                     <tr class="table-info">
                             <th>No.</th>
                             <th>Nama</th>
                             <th>Site</th>
                             <th>Tanggal Survey</th>
-                            <th>Nama Teknisi</th>
                             <th>Waktu</th>
-                            <th>FDT</th>
+                            <th>Nama Teknisi</th>
+                            <th>Hard Survey</th>
+                            <!-- <th>FDT</th>
                             <th>ODP</th>
                             <th>Kabel</th>
                             <th>Clamp</th>
                             <th>Kabel Tis</th>
-                            <th>Fascon</th>
+                            <th>Fascon</th> -->
                             <th>Status</th>
                             <th>Opsi</th>
                         </tr>
@@ -36,14 +37,15 @@
                             <td>{{$item->nama}}</td>
                             <td>{{$item->site}}</td>
                             <td>{{$item->tanggal_survey}}</td>
-                            <td>{{$item->nama_teknisi}}</td>
                             <td>{{$item->waktu}}</td>
-                            <td>{{$item->FDT}}</td>
+                            <td>{{$item->nama_teknisi}}</td>
+                            <td>{{$item->hard_survey}}</td>
+                            <!-- <td>{{$item->FDT}}</td>
                             <td>{{$item->ODP}}</td>
                             <td>{{$item->kabel}}</td>
                             <td>{{$item->clamp}}</td>
                             <td>{{$item->kabel_tis}}</td>
-                            <td>{{$item->fascon}}</td>
+                            <td>{{$item->fascon}}</td> -->
                             <td>{{$item->status}}</td>
                             <td>
                             <button class="btn btn-danger btn-sm mb-1" aria-hidden="true" data-bs-toggle="modal"
@@ -119,62 +121,17 @@
                                 value="{{ $item->nama_teknisi ?? old('nama_teknisi') }}">
                             @error('Nama_Teknisi') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
+
+                        <div class="form-group">
+                            <label for="hard_survey">Hard Survey</label>
+                            <input type="text" class="form-control @error('hard_survey') is-invalid @enderror"
+                                id="hard_survey" placeholder="Masukkan hard_survey" name="hard_survey"
+                                value="{{ $item->hard_survey ?? old('hard_survey') }}">
+                            @error('hard_survey') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
                         
 
                         <!-- ... (lanjutkan dengan field lainnya) -->
-
-                        <div class="form-group">
-                            <label for="FDT">FDT</label>
-                            <input type="text" class="form-control @error('FDT') is-invalid @enderror"
-                                id="FDT" placeholder="Masukkan Kode FDT" name="FDT"
-                                value="{{ $item->FDT ?? old('FDT') }}">
-                            @error('FDT') <span class="text-danger">{{ $message }}</span> @enderror
-                        </div>
-
-                        <!-- ... (lanjutkan dengan field lainnya) -->
-
-                        <div class="form-group">
-                            <label for="ODP">ODP</label>
-                            <input type="text" class="form-control @error('ODP') is-invalid @enderror"
-                                id="ODP" placeholder="Masukkan Kode ODP" name="ODP"
-                                value="{{ $item->ODP ?? old('ODP') }}">
-                            @error('ODP') <span class="text-danger">{{ $message }}</span> @enderror
-                        </div>
-
-                        <!-- ... (lanjutkan dengan field lainnya) -->
-                       
-                        <div class="form-group">
-                            <label for="Kabel">Kabel</label>
-                            <input type="text" class="form-control @error('Kabel') is-invalid @enderror" name="kabel"
-                                value="{{ $item->kabel ?? old('kabel') }}" id="Kabel">
-                            @error('Kabel') <span class="text-danger">{{ $message }}</span> @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="Clamp">Clamp</label>
-                            <input type="number" class="form-control @error('Clamp') is-invalid @enderror" name="clamp"
-                                value="{{ $item->clamp ?? old('clamp') }}" id="Clamp">
-                            @error('Clamp') <span class="text-danger">{{ $message }}</span> @enderror
-                        </div>
-
-
-                        <!-- ... (lanjutkan dengan field lainnya) -->
-
-                        <div class="form-group">
-                            <label for="Kabel_Tis">Kabel_Tis</label>
-                            <input type="number" class="form-control @error('Kabel_Tis') is-invalid @enderror"
-                                id="Kabel_Tis" placeholder="Masukkan Jumlah Kabel Tis" name="kabel_tis"
-                                value="{{ $item->kabel_tis ?? old('kabel_tis') }}">
-                            @error('Kabel_Ties') <span class="text-danger">{{ $message }}</span> @enderror
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="Fascon">Fascon</label>
-                            <input type="number" class="form-control @error('Fascon') is-invalid @enderror" name="fascon"
-                                value="{{ $item->fascon?? old('fascon') }}" id="Fascon">
-                            @error('Fascon') <span class="text-danger">{{ $message }}</span> @enderror
-                        </div>
 
                         <div class="form-group">
                         <label for="status">Status</label>
