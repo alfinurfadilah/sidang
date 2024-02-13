@@ -61,7 +61,7 @@
                 tabindex="-1" aria-labelledby="staticBackdrop2" aria-hidden="true">
                 <div class="modal-dialog modal-lg modal-dialog-scrollable p-5">
                     <div class="modal-content">
-                        <div class="modal-header">
+                    <div class="modal-header bg-info">
                             <h1 class="modal-title fs-5" id="staticBackdrop2">Tambah Data Calon Pelanggan</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
