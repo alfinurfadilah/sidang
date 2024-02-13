@@ -6,14 +6,12 @@
 @section('content')
 
 
-
-
 <div class="row">
     <div class="col-12">
         <div class="card card-primary">
             <div class="card-body">
                 <!-- <a href="{{route('datacalonpelanggan.create')}}" class="btn btn-danger mb-2"> -->
-                <button class="btn btn btn-info mb-2 " aria-hidden="true" data-toggle="modal" data-target="#staticBackdrop2"> create new data </button>
+                <button class="btn btn btn-info mb-2 " aria-hidden="true" data-toggle="modal" data-target="#staticBackdrop2"> Create New Data </button>
                 <table class="table table-hover table-bordered table-stripped table-responsive table-rounded" id="example2">
                     <thead>
                     <tr class="table-info">
@@ -58,13 +56,13 @@
 
 <!-- MODAL -->
 <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false"
-                tabindex="-1" aria-labelledby="staticBackdrop2" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-scrollable p-5">
-                    <div class="modal-content">
-                    <div class="modal-header bg-info">
-                            <h1 class="modal-title fs-5" id="staticBackdrop2">Tambah Data Calon Pelanggan</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
+    tabindex="-1" aria-labelledby="staticBackdrop2" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable p-5">
+        <div class="modal-content">
+            <div class="modal-header bg-info"> <!-- Perbaiki tanda kutip di sini -->
+                <h1 class="modal-title fs-5" id="staticBackdrop2">Pencarian data jadwalsurvey</h1>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
                         <div class="modal-body">
                             <table class="table table-hover table-bordered table-stripped" id="example2">
                     
