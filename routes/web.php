@@ -37,7 +37,10 @@ Route::resource('jadwalsurvey', \App\Http\Controllers\jadwalsurveyController::cl
 Route::resource('jadwalsurveyteknisi', \App\Http\Controllers\jadwalsurveyteknisiController::class)->middleware('auth');
 
 Route::resource('reportsurvey', \App\Http\Controllers\reportsurveyController::class)->middleware('auth');
+
 Route::resource('jadwalpemasangan', \App\Http\Controllers\jadwalpemasanganController::class)->middleware('auth');
+Route::resource('jadwalpemasanganteknisi', \App\Http\Controllers\jadwalpemasanganteknisiController::class)->middleware('auth');
+
 
 Route::resource('users', \App\Http\Controllers\UserController::class)->middleware('auth');
 
