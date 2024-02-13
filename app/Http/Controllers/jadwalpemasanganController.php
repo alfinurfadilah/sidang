@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\reportpemasangan;
 use App\Models\reportsurvey;
 use App\Models\jadwalsurvey;
 use App\Models\jadwalpemasangan;
@@ -89,6 +90,10 @@ class jadwalpemasanganController extends Controller
             //     'tanggal_survey'=> $request->tanggal_survey,
             //     'id_jadwalsurvey' => $jadwalsurvey->id,
             // ]);
+            $result = reportpemasangan::create([
+                'nama' => $request->nama,
+                'id_jadwalpemasangan' => $jadwalpemasangan->id,
+            ]);
             return redirect()->route('jadwalpemasangan.index')
             ->with('success_message', 'Berhasil mengubah jadwalpemasangan');
     }

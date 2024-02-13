@@ -487,7 +487,7 @@ return [
         [
             'text'       => 'Report Pemasangan',
             'icon_color' => 'cyan',
-            'url'        => '#',
+            'url'        => '/reportpemasangan',
             'can' => 'Teknisi-only',
         ],
 

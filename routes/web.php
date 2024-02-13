@@ -40,7 +40,7 @@ Route::resource('reportsurvey', \App\Http\Controllers\reportsurveyController::cl
 
 Route::resource('jadwalpemasangan', \App\Http\Controllers\jadwalpemasanganController::class)->middleware('auth');
 Route::resource('jadwalpemasanganteknisi', \App\Http\Controllers\jadwalpemasanganteknisiController::class)->middleware('auth');
-
+Route::resource('reportpemasangan', \App\Http\Controllers\reportpemasanganController::class)->middleware('auth');
 
 Route::resource('users', \App\Http\Controllers\UserController::class)->middleware('auth');
 
