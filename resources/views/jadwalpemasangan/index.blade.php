@@ -8,10 +8,8 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-
-                <a href="{{route('jadwalpemasangan.create')}}" class="">
-                <i class=""></i></a>
-
+                <!-- <a href="{{route('jadwalpemasangan.create')}}" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Tambah Jadwal Pemasangan</a> -->
                 <table class="table table-hover table-bordered table-stripped table-responsive table-rounded" id="example2">
                     <thead>
                         <tr class="table-info">
@@ -60,7 +58,7 @@
     tabindex="-1" aria-labelledby="staticBackdrop1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable p-5">
         <div class="modal-content">
-            <div class="modal-header bg-primary"> <!-- Perbaiki tanda kutip di sini -->
+            <div class="modal-header bg-info"> <!-- Perbaiki tanda kutip di sini -->
                 <h1 class="modal-title fs-5" id="staticBackdrop1">Pencarian data jadwalsurvey</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>

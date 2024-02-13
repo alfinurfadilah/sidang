@@ -467,7 +467,12 @@ return [
             'url'        => '/jadwalsurveyteknisi',
             'can' => 'Teknisi-only',
         ],
-
+        [
+            'text'       => 'Jadwal pemasangan teknisi',
+            'icon_color' => 'cyan',
+            'url'        => '/jadwalpemasanganteknisi',
+            'can' => 'Teknisi-only',
+        ],
         [
             'text'       => 'Report Survey',
             'icon_color' => 'cyan',
