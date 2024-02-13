@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('titik_kordinat')->nullable();
             $table->unsignedBigInteger('id_jadwalsurvey')->nullable();
             $table->unsignedBigInteger('id_reportsurvey')->nullable();
+            $table->unsignedBigInteger('id_reportpemasangan')->nullable();
             $table->foreign('id_jadwalsurvey')->references('id')->on('jadwalsurvey')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_reportsurvey')->references('id')->on('reportsurvey')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

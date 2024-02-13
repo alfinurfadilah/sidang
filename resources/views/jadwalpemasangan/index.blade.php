@@ -99,7 +99,7 @@
     tabindex="-1" aria-labelledby="modalTitle{{$item->id}}" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable p-5">
         <div class="modal-content">
-            <div class="modal-header bg-info">
+        <div class="modal-header bg-info">
                 <h1 class="modal-title fs-5" id="modalTitle{{$item->id}}">Edit</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -127,7 +127,7 @@
                                     class="form-control @error('nomor_handphone') is-invalid @enderror"
                                     placeholder="nomor-handphone" id="nomor_handphone" name="nomor_handphone"
                                     value="{{ old('nomor_handphone') }}" aria-label="nomor_handphone"
-                                    aria-describedby="cari" readonly>
+                                    aria-describedby="cari">
                                 <button class="btn btn-warning" type="button" data-bs-toggle="modal" id="cari"
                                     data-bs-target="#staticBackdrop1"><i class="fa fa-search"> Cari Nomor
                                         Handphone</i></button>
@@ -136,7 +136,7 @@
 
                         <div class="form-group">
                             <label for="Nama_Paket">Nama_Paket</label>
-                            <select class="form-control @error('Nama_Paket') is-invalid @enderror" id="Nama_Paket"
+                            <select class="form-control @error('Nama_Paket') is-invalid @enderror" id="Nama_Paket"readonly
                                 name="nama_paket">
                                 <option value="ALPHA" @if(old('Nama_Paket')=='ALPHA' )selected @endif>ALPHA</option>
                                 <option value="BETA" @if(old('Nama_Paket')=='BETA' )selected @endif>BETA</option>
