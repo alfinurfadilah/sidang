@@ -57,8 +57,8 @@
 					<div class="row justify-content-between">
 						<div class="col-lg-5">
 							<div class="intro-excerpt">
-								<h1>Internet Service Provider<span clsas="d-block">(Mini ISP)</span></h1>
-								<p class="mb-4">Mini Perusahaan yang telah tumbuh dan berkembang sebagai penyedia layanan Internet Service Provider (ISP), Yang mampu memberikan pengalaman terbaik kepada pelanggan.</p>
+								<h1>Mini ISP<span clsas="d-block">(Internet Service Provider)</span></h1>
+								<p class="mb-4">Kami merupakan organisasi yang bergerak di bidang Internet Service Provider fokus kami adalah menyediakan layanan FTTH (Fiber to The Home)</p>
 								<p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#" class="btn btn-white-outline">Explore</a></p>
 							</div>
 						</div>
