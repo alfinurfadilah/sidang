@@ -405,7 +405,7 @@ return [
         ],
 
         [
-            'header' => 'ADMIN',
+            'header' => 'ADMIN MANAGEMENT',
             'can' => 'Admin-only',
         ],
 
