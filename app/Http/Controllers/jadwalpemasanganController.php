@@ -65,6 +65,7 @@ class jadwalpemasanganController extends Controller
 
     public function update(Request $request, $id)
     {
+        // dd($request);
         $request->validate([
             'nama' => 'required',
             'nomor_handphone' => 'required',
@@ -73,9 +74,12 @@ class jadwalpemasanganController extends Controller
             'tanggal_pemasangan' =>'nullable',
             'waktu' =>'nullable',
             'titik_kordinat' => 'required',
+            'id_jadwalsurvey' => 'required',
+            
             
 
             ]);
+            
             $jadwalpemasangan = jadwalpemasangan::find($id);
             $jadwalpemasangan->nama = $request->nama;
             $jadwalpemasangan->nomor_handphone = $request->nomor_handphone;
@@ -84,6 +88,7 @@ class jadwalpemasanganController extends Controller
             $jadwalpemasangan->tanggal_pemasangan= $request->tanggal_pemasangan;
             $jadwalpemasangan->waktu = $request->waktu;
             $jadwalpemasangan->titik_kordinat= $request->titik_kordinat;
+            $jadwalpemasangan->id_jadwalsurvey= $request->id_jadwalsurvey;
             $jadwalpemasangan->save();
             // $result = reportsurvey::create([
             //     'nama' => $request->nama,

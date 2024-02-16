@@ -36,7 +36,7 @@
                             <td>{{$item->waktu}}</td>
                             <td>{{$item->titik_kordinat}}</td>
                             <td>
-                                <button class="btn btn-danger mb-2" data-bs-toggle="modal"
+                                <button class="btn btn-danger btn-sm mb-2" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop2{{$item->id}}" data-id="{{$item->id}}">
                                     <i class="fa fa-pen"></i> Edit
                                 </button>
