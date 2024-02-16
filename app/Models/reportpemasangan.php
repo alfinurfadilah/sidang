@@ -19,7 +19,8 @@ class reportpemasangan extends Model
         'nama_teknisi',
         'hasil_redaman',
         'status_pemasangan',
-        'kebutuhan_MODEM',
+        'kebutuhan_Access_Point',
+        'SN_Access_Point',
         'kebutuhan_HTB',
         'id_jadwalpemasangan'
         

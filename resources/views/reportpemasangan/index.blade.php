@@ -13,54 +13,41 @@
                 <table class="table table-hover table-bordered table-stripped table-responsive table-rounded" id="example2">
                     <thead>
                     <tr class="table-info">
-                            <th>No.</th>
-                            <th>Nama</th>
-                            <th>Site</th>
-                            <th>Tanggal Pemasangan</th>
-                            <th>Waktu</th>
-                            <th>Nama Teknisi</th>
-                            <th>Hasil Redaman</th>
-                            <th>Status Pemasangan</th>
-                            <th>Kebutuhan MODEM</th>
-                            <th>Kebutuhan HTB</th>
-                            <!-- <th>FDT</th>
-                            <th>ODP</th>
-                            <th>Kabel</th>
-                            <th>Clamp</th>
-                            <th>Kabel Tis</th>
-                            <th>Fascon</th> -->
-        
-                            <th>Opsi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    @foreach ($reportpemasangan as $sk => $item)
-                        <tr>
-                            <td>{{$loop->iteration}}</td>
-                            <td>{{$item->nama}}</td>
-                            <td>{{$item->site}}</td>
-                            <td>{{$item->tanggal_pemasangan}}</td>
-                            <td>{{$item->waktu}}</td>
-                            <td>{{$item->nama_teknisi}}</td>
-                            <td>{{$item->hasil_redaman}}</td>
-                            <td>{{$item->status_pemasangan}}</td>
-                            <td>{{$item->kebutuhan_MODEM}}</td>
-                            <td>{{$item->kebutuhan_HTB}}</td>
-                            <!-- <td>{{$item->FDT}}</td>
-                            <td>{{$item->ODP}}</td>
-                            <td>{{$item->kabel}}</td>
-                            <td>{{$item->clamp}}</td>
-                            <td>{{$item->kabel_tis}}</td>
-                            <td>{{$item->fascon}}</td> -->
-                            <!-- <td>{{$item->status}}</td> -->
-                            <td>
-                            <button class="btn btn-danger btn-sm mb-1" aria-hidden="true" data-bs-toggle="modal"
+                    <th>No.</th>
+                    <th>Nama</th>
+                    <th>Site</th>
+                    <th>Tanggal Pemasangan</th>
+                    <th>Waktu</th>
+                    <th>Nama Teknisi</th>
+                    <th>Hasil Redaman</th>
+                    <th>Status Pemasangan</th>
+                    <th>Kebutuhan Access Point </th>
+                    <!-- <th>SN Access Point</th> -->
+                    <th>Kebutuhan HTB</th>
+                    <th>Opsi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($reportpemasangan as $sk => $item)
+                <tr>
+                    <td>{{$loop->iteration}}</td>
+                    <td>{{$item->nama}}</td>
+                    <td>{{$item->site}}</td>
+                    <td>{{$item->tanggal_pemasangan}}</td>
+                    <td>{{$item->waktu}}</td>
+                    <td>{{$item->nama_teknisi}}</td>
+                    <td>{{$item->hasil_redaman}}</td>
+                    <td>{{$item->status_pemasangan}}</td>
+                    <td>{{$item->kebutuhan_Access_Point}} {{$item->SN_Access_Point}}</td>
+                    <!-- <td>{{$item->SN_Access_Point}}</td> -->
+                    <td>{{$item->kebutuhan_HTB}}</td>
+                    <td>
+                            <button class="btn btn-info btn-xs  mb-2" aria-hidden="true" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop2{{$item->id}}" data-id="{{$item->id}}">
-                                    <i class="fa fa-pen"></i> Edit
-                                </button>
+                                    <i class="fa fa-pen" arial-label="Edit"></i></button>
                                 <a href="{{route('reportpemasangan.destroy', $item)}}"
                                     onclick="notificationBeforeDelete(event, this)"
-                                    class="btn btn-warning btn-xs"> <i class="fa fa-trash"> Delete </i></a>
+                                    class="btn btn-danger btn-xs mb-2"> <i class="fa fa-trash" arial-label="Delete"></i></a>
                                     
                             </td>
                         </tr>
@@ -136,21 +123,29 @@
                             @error('hasil_redaman') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
 
-                        <div class="form-group">
-                            <label for="status_pemasangan">Status Pemasangan</label>
-                            <input type="text" class="form-control @error('status_pemasangan') is-invalid @enderror"
-                                id="status_pemasangan" placeholder="Masukkan status pemasangan" name="status_pemasangan"
-                                value="{{ $item->status_pemasangan ?? old('status_pemasangan') }}">
-                            @error('status_pemasangan') <span class="text-danger">{{ $message }}</span> @enderror
+
+                            <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label for="kebutuhan_Access_Point">Kebutuhan Access Point</label>
+                                    <input type="number" class="form-control @error('kebutuhan_Access_Point') is-invalid @enderror"
+                                        id="kebutuhan_Access_Point" placeholder="Masukkan jumlah AP yang digunakan" name="kebutuhan_Access_Point"
+                                        value="{{ $item->kebutuhan_Access_Point ?? old('kebutuhan_Access_Point') }}">
+                                    @error('kebutuhan_Access_Point') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label for="SN_Access_Point">SN Access Point</label>
+                                    <input type="text" class="form-control @error('SN_Access_Point') is-invalid @enderror"
+                                        id="SN_Access_Point" placeholder="Masukkan Serial Number AP" name="SN_Access_Point"
+                                        value="{{ $item->SN_Access_Point ?? old('SN_Access_Point') }}">
+                                    @error('SN_Access_Point') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="kebutuhan_MODEM">Kebutuhan MODEM</label>
-                            <input type="number" class="form-control @error('kebutuhan_MODEM') is-invalid @enderror"
-                                id="kebutuhan_MODEM" placeholder="Masukkan jumlah modem yang digunakan" name="kebutuhan_MODEM"
-                                value="{{ $item->kebutuhan_MODEM ?? old('kebutuhan_MODEM') }}">
-                            @error('Kebutuhan MODEM') <span class="text-danger">{{ $message }}</span> @enderror
-                        </div>
 
                         <div class="form-group">
                             <label for="kebutuhan_HTB">Kebutuhan HTB</label>
@@ -160,13 +155,31 @@
                             @error('Kebutuhan HTB') <span class="text-danger">{{ $message }}</span> @enderror
 </div>
 
+                        <div class="form-group">
+                        <label for="status_pemasangan">Status Pemasangan</label>
+                        <select class="form-control @error('status') isinvalid @enderror" id="status_pemasangan"
+                            name="status_pemasangan" >
+                            <option value="--pilih--" @if(old('status')=='--pilih--' )selected @endif>--pilih--</option>
+                            <option value="Bisa Dipasang" @if(old('status')=='BisaDipasang' )selected @endif>Bisa Dipasang</option>
+                            <option value="Tidak Bisa Dipasang" @if(old('status')=='TidakBisaDipasang' )selected @endif>Tidak Bisa Dipasang</option>
+                           
+                        </select>
+                        @error('divisi') <span class="textdanger">{{$message}}</span> @enderror
+                    </div>
+
 
                         <!-- ... (lanjutkan dengan field lainnya) -->
 
                         
 
-                        <button type="submit" class="btn btn-danger"><i class="fas fa-save"> Simpan </i></button> 
-                                <a href="{{ route('reportpemasangan.index') }}"  class="btn btn-warning"><i class="fa fa-times-circle"> Batal </i></button></a>
+                        <button type="submit" class="btn btn-danger">
+        <i class="fas fa-save"></i> Simpan
+    </button>
+</form>
+
+<a href="{{ route('reportpemasangan.index') }}" class="btn btn-warning">
+    <i class="fa fa-times-circle"></i> Batal
+</a>
                     </form>
                 </table>
             </div>

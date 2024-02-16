@@ -50,7 +50,8 @@ class reportpemasanganController extends Controller
     'nama_teknisi' => 'nullable',
     'hasil_radaman' => 'nullable',
     'status_pemasangan' => 'nullable',
-    'kebutuhan_MODEM' => 'nullable',
+    'kebutuhan_Access_Point' => 'nullable',
+    'SN_Access_Point' => 'nullable',
     'kebutuhan_HTB' => 'nullable',
     // 'hard_survey' => 'required',
     // 'FDT' => 'required',
@@ -73,7 +74,8 @@ $array = $request->only([
     'nama_teknisi',
     'hasil_redaman',
     'status_pemasangan',
-    'kebutuhan_MODEM',
+    'kebutuhan_Access_Point',
+    'SN_Access_Point',
     'kebutuhan_HTB',
     // 'FDT',
     // 'ODP',
@@ -140,7 +142,8 @@ $array = $request->only([
             'nama_teknisi' => 'nullable',
             'hasil_redaman' => 'nullable',
             'status_pemasangan' => 'nullable',
-            'kebutuhan_MODEM' => 'nullable',
+            'kebutuhan_Access_Point' => 'nullable',
+            'SN_Access_Point' => 'nullable',
             'kebutuhan_HTB' => 'nullable',
             // 'FDT' => 'nullable',
             // 'ODP' => 'nullable',
@@ -159,7 +162,8 @@ $array = $request->only([
             $reportpemasangan->nama_teknisi = $request->nama_teknisi;
             $reportpemasangan->hasil_redaman = $request->hasil_redaman;
             $reportpemasangan->status_pemasangan = $request->status_pemasangan;
-            $reportpemasangan->kebutuhan_MODEM = $request->kebutuhan_MODEM;
+            $reportpemasangan->kebutuhan_Access_Point = $request->kebutuhan_Access_Point;
+            $reportpemasangan->SN_Access_Point = $request->SN_Access_Point;
             $reportpemasangan->kebutuhan_HTB = $request->kebutuhan_HTB;
             // $reportsurvey->FDT = $request->FDT;
             // $reportsurvey->ODP = $request->ODP;
