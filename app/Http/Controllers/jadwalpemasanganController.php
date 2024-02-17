@@ -14,6 +14,7 @@ class jadwalpemasanganController extends Controller
     {
         //
         $jadwalpemasangan= jadwalpemasangan::all();
+        // dd($nomorhandphone);
         return view('jadwalpemasangan.index', [
             'jadwalpemasangan' => $jadwalpemasangan,
             'jadwalsurvey' => jadwalsurvey::all()
@@ -35,7 +36,7 @@ class jadwalpemasanganController extends Controller
 
     public function store(Request $request)
     {
-        //   dd($request->all());
+        // dd($request->all());
         $request->validate([
         'nama' => 'required',
         'nomor_handphone' => 'required',
@@ -65,7 +66,7 @@ class jadwalpemasanganController extends Controller
 
     public function update(Request $request, $id)
     {
-        // dd($request);
+        // dd($request->all());
         $request->validate([
             'nama' => 'required',
             'nomor_handphone' => 'required',
@@ -74,7 +75,7 @@ class jadwalpemasanganController extends Controller
             'tanggal_pemasangan' =>'nullable',
             'waktu' =>'nullable',
             'titik_kordinat' => 'required',
-            'id_jadwalsurvey' => 'required',
+            // 'id_jadwalsurvey' => 'required',
             
             
 
@@ -88,7 +89,7 @@ class jadwalpemasanganController extends Controller
             $jadwalpemasangan->tanggal_pemasangan= $request->tanggal_pemasangan;
             $jadwalpemasangan->waktu = $request->waktu;
             $jadwalpemasangan->titik_kordinat= $request->titik_kordinat;
-            $jadwalpemasangan->id_jadwalsurvey= $request->id_jadwalsurvey;
+            // $jadwalpemasangan->id_jadwalsurvey= $request->id_jadwalsurvey;
             $jadwalpemasangan->save();
             // $result = reportsurvey::create([
             //     'nama' => $request->nama,

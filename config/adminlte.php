@@ -428,12 +428,12 @@ return [
             'url'        => '/jadwalpemasangan',
             'can' => 'Admin-only',
         ],
-        [
-            'text'       => 'Calendar',
-            'icon_color' => 'cyan',
-            'url'        => '/calendar',
-            'can' => 'Admin-only',
-        ],
+        // [
+        //     'text'       => 'Calendar',
+        //     'icon_color' => 'cyan',
+        //     'url'        => '/calendar',
+        //     'can' => 'Admin-only',
+        // ],
 
         [
             'header' => 'NOC',
