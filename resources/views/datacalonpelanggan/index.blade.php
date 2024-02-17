@@ -9,8 +9,10 @@
         <div class="card card-primary">
             <div class="card-body">
                 <!-- <a href="{{route('datacalonpelanggan.create')}}" class="btn btn-danger mb-2"> -->
-                <button class="btn btn btn-info mb-2 " aria-hidden="true" data-toggle="modal"
-                    data-target="#staticBackdrop2"> Create New Data </button>
+               <button class="btn btn- mb-2 btn-create-new-data" aria-hidden="true" data-toggle="modal" data-target="#staticBackdrop2">
+    Create New Data
+</button>
+
                 <table class="table table-hover table-bordered table-stripped table-responsive table-rounded"
                     id="example2">
                     <thead>
@@ -40,14 +42,11 @@
                             <td>{{$cp->Alamat_Pemasangan}}</td>
                             <td>{{$cp->Titik_Kordinat}}</td>
                             <td>
-                                <button class="btn btn-danger btn-sm mb-2" aria-hidden="true" data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop3{{$cp->id}}" data-id="{{$cp->id}}">
-                                    <i class="fa fa-pen"></i> Edit
-                                </button>
-                                <a href="{{route('datacalonpelanggan.destroy', $cp)}}"
-                                    onclick="notificationBeforeDelete(event, this)" class="btn btn-secondary btn-xs"> <i
-                                        class="fa fa-trash"> Delete </i>
-                                </a>
+                            <button class="btn btn-xs mb-2 custom-btn-edit" data-bs-toggle="modal" data-bs-target="#staticBackdrop3{{$cp->id}}" data-id="{{$cp->id}}">
+                                <i class="fa fa-pen" aria-label="Edit"></i></button>
+                                
+                                <a href="{{route('datacalonpelanggan.destroy', $cp)}}" onclick="notificationBeforeDelete(event, this)" class="btn btn-xs mb-2 custom-btn-delete">
+                                <i class="fa fa-trash" aria-label="Delete"></i></a>
 
                             </td>
                         </tr>
@@ -65,7 +64,7 @@
         <div class="modal-content">
             <div class="modal-header bg-info">
                 <!-- Perbaiki tanda kutip di sini -->
-                <h1 class="modal-title fs-5" id="staticBackdrop2">Pencarian data jadwalsurvey</h1>
+                <h1 class="modal-title fs-5" id="staticBackdrop2">Input Data Calon pelanggan</h1>
                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -136,10 +135,10 @@
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-danger"><i class="fas fa-save"> Simpan
-                                    </i></button>
-                                <a href="{{ route('datacalonpelanggan.index') }}" class="btn btn-secondary"><i
-                                        class="fa fa-times-circle"> Batal </i></button></a>
+    <button type="submit" class="btn btn-danger btn-save"><i class="fas fa-save"> Simpan </i></button>
+    <a href="{{ route('datacalonpelanggan.index') }}" class="btn btn-secondary btn-cancel"><i class="fa fa-times-circle"> Batal </i></a>
+</div>
+
                             </div>
                         </div>
                     </form>
@@ -214,8 +213,9 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-danger"><i class="fas fa-save"> Simpan </i></button>
-                        <a href="{{ route('datacalonpelanggan.index') }}" class="btn btn-warning"><i class="fa fa-times-circle"> Batal </i></button><a>
+    <button type="submit" class="btn btn- btn-save"><i class="fas fa-save"> Simpan </i></button>
+    <a href="{{ route('datacalonpelanggan.index') }}" class="btn btn-secondary btn-cancel"><i class="fa fa-times-circle"> Batal </i></a>
+</div>
                         
                         </a>
                     </div>
@@ -236,7 +236,95 @@
     align-items: center;
     height: 100%;
 }
+.btn-purple {
+        background-color: #ffcccb; /* Purple color */
+        color: #fff; /* White text */
+        /* Add any other styles as needed */
+    }
+    .custom-btn-edit {
+        background-color: #a0a8c6; /* Warna biru */
+        border-color: #a0a8c6;
+        color: #fff; /* Warna teks putih */
+    }
+
+    .custom-btn-delete {
+        background-color: #c99da4; /* Warna merah tua */
+        border-color: #c3a3b6;
+        color: #fff; /* Warna teks putih */
+    }
+    mark {
+        background-color: #f3dddf; /* Warna latar belakang */
+        color: #000000; /* Warna teks */
+        padding: 0.2em; /* Ruang di sekitar teks */
+        margin: 0; /* Margin nol untuk memastikan tidak ada ruang tambahan */
+        border-radius: 3px; /* Sudut border */
+    }
+    /* Gaya untuk Tombol "Create New Data" */
+    .btn-create-new-data {
+        background-color:  	#957DAD; /* Warna latar belakang tombol (hijau) */
+        color: #fff; /* Warna teks tombol (putih) */
+        border: none; /* Tidak ada border */
+        padding: 10px 20px; /* Padding tombol */
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        border-radius: 5px; /* Border radius untuk sudut tombol */
+    }
+
+    /* Hover Effect */
+    .btn-create-new-data:hover {
+        background-color: #E0BBE4; /* Warna latar belakang tombol saat dihover (hijau lebih gelap) */
+        color: white; /* Warna teks tombol saat dihover (putih) */
+    }
+    /* Gaya untuk Tombol "Simpan" */
+    .btn-save {
+        background-color: #F08080; /* Warna latar belakang tombol (merah) */
+        color: #fff; /* Warna teks tombol (putih) */
+        border: none; /* Tidak ada border */
+        padding: 10px 20px; /* Padding tombol */
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-right: 10px; /* Jarak kanan dari tombol "Batal" */
+        transition-duration: 0.4s;
+        cursor: pointer;
+        border-radius: 5px; /* Border radius untuk sudut tombol */
+    }
+
+    /* Hover Effect untuk Tombol "Simpan" */
+    .btn-save:hover {
+        background-color: #FFB6C1; /* Warna latar belakang tombol saat dihover (merah lebih gelap) */
+        color: dark; /* Warna teks tombol saat dihover (putih) */
+    }
+
+    /* Gaya untuk Tombol "Batal" */
+    .btn-cancel {
+        background-color: #ADD8E6; /* Warna latar belakang tombol (biru) */
+        color: #fff; /* Warna teks tombol (putih) */
+        border: none; /* Tidak ada border */
+        padding: 10px 20px; /* Padding tombol */
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        border-radius: 5px; /* Border radius untuk sudut tombol */
+    }
+
+    /* Hover Effect untuk Tombol "Batal" */
+    .btn-cancel:hover {
+        background-color: #7FFFD4; /* Warna latar belakang tombol saat dihover (biru lebih gelap) */
+        color: white; /* Warna teks tombol saat dihover (putih) */
+    }
+    
 </style>
+
 <form action="" id="delete-form" method="post">
     @method('delete')
     @csrf
