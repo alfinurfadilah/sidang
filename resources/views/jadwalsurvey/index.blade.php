@@ -38,13 +38,11 @@
                             <td>{{$item->tanggal_survey}}</td>
                             <td>{{$item->waktu}}</td>
                             <td>
-                            <button class="btn btn-danger btn-sm mb-2" aria-hidden="true" data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop2{{$item->id}}" data-id="{{$item->id}}">
-                                    <i class="fa fa-pen"></i> Edit
-                                </button>
-                                <a href="{{route('jadwalsurvey.destroy', $item)}}"
-                                    onclick="notificationBeforeDelete(event, this)"
-                                    class="btn btn-warning btn-xs"> <i class="fa fa-trash"> Delete </i></a>
+                            <button class="btn btn-xs mb-2 custom-btn-edit" data-bs-toggle="modal" data-bs-target="#staticBackdrop2{{$item->id}}" data-id="{{$item->id}}">
+                                <i class="fa fa-pen" aria-label="Edit"></i></button>
+                                
+                                <a href="{{route('jadwalsurvey.destroy', $item)}}" onclick="notificationBeforeDelete(event, this)" class="btn btn-xs mb-2 custom-btn-delete">
+                                <i class="fa fa-trash" aria-label="Delete"></i></a>
                                     
                             </td>
                         </tr>
@@ -155,6 +153,19 @@
     @method('delete')
     @csrf
 </form>
+<style>
+    .custom-btn-edit {
+        background-color: #a0a8c6; /* Warna biru */
+        border-color: #a0a8c6;
+        color: #fff; /* Warna teks putih */
+    }
+
+    .custom-btn-delete {
+        background-color: #c99da4; /* Warna merah tua */
+        border-color: #c3a3b6;
+        color: #fff; /* Warna teks putih */
+    }
+</style>
 <script>
     $('#example2').DataTable({
         "responsive": true,

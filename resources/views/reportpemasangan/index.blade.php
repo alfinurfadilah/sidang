@@ -42,12 +42,11 @@
                     <!-- <td>{{$item->SN_Access_Point}}</td> -->
                     <td>{{$item->kebutuhan_HTB}}</td>
                     <td>
-                            <button class="btn btn-info btn-xs  mb-2" aria-hidden="true" data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop2{{$item->id}}" data-id="{{$item->id}}">
-                                    <i class="fa fa-pen" arial-label="Edit"></i></button>
-                                <a href="{{route('reportpemasangan.destroy', $item)}}"
-                                    onclick="notificationBeforeDelete(event, this)"
-                                    class="btn btn-danger btn-xs mb-2"> <i class="fa fa-trash" arial-label="Delete"></i></a>
+                    <button class="btn btn-xs mb-2 custom-btn-edit" data-bs-toggle="modal" data-bs-target="#staticBackdrop2{{$item->id}}" data-id="{{$item->id}}">
+                                <i class="fa fa-pen" aria-label="Edit"></i></button>
+                                
+                                <a href="{{route('reportpemasangan.destroy', $item)}}" onclick="notificationBeforeDelete(event, this)" class="btn btn-xs mb-2 custom-btn-delete">
+                                <i class="fa fa-trash" aria-label="Delete"></i></a>
                                     
                             </td>
                         </tr>
@@ -193,6 +192,26 @@
     @method('delete')
     @csrf
 </form>
+<style>
+    .custom-btn-edit {
+        background-color: #a0a8c6; /* Warna biru */
+        border-color: #a0a8c6;
+        color: #fff; /* Warna teks putih */
+    }
+
+    .custom-btn-delete {
+        background-color: #c99da4; /* Warna merah tua */
+        border-color: #c3a3b6;
+        color: #fff; /* Warna teks putih */
+    }
+    mark {
+        background-color: #cba69b; /* Warna latar belakang */
+        color: #000000; /* Warna teks */
+        padding: 0.2em; /* Ruang di sekitar teks */
+        margin: 0; /* Margin nol untuk memastikan tidak ada ruang tambahan */
+        border-radius: 3px; /* Sudut border */
+    }
+    </style>
 <script>
     $('#example2').DataTable({
         "responsive": true,
