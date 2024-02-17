@@ -20,7 +20,7 @@
                             <th>Alamat Pemasangan</th>
                             <th>Titik Kordinat</th>
                             <th>Hasil Soft Survey</th>
-                            <th>Status</th>
+                            <!-- <th>Status</th> -->
                             <th>Opsi</th>
                         </tr>
                     </thead>
@@ -35,22 +35,11 @@
                             <td>{{$item->titik_kordinat}}</td>
                             <td>{{$item->hasil_soft_survey}}</td>
                             <td>
-                                <a href="{{route('jadwalsurvey.index', $item->id)}}" class="btn btn-danger btn-sm mb-2"><i>
-                                        Cover </i></a>
-                                        
-                                <a href="{{route('datacekcoverage.destroy', $item->id)}}"
-                                    onclick="notificationBeforeDelete(event, this)" class="btn btn-warning btn-sm mb-2"> <i>
-                                        Tidak Cover </i></a>
-
-                            </td>
-                            <td>
-                                <button class="btn btn-danger btn-sm mb-2" aria-hidden="true" data-bs-toggle="modal"data-bs-target="#staticBackdrop2{{$item->id}}" data-id="{{$item->id}}">
-                                    <i class="fa fa-pen"></i> Edit</button>
-
-                                <a href="{{route('datacekcoverage.destroy', $item)}}"
-                                    onclick="notificationBeforeDelete(event, this)" class="btn btn-warning btn-xs"> <i
-                                        class="fa fa-trash"> Delete </i></a>
-
+                                <button class="btn btn-xs mb-2 custom-btn-edit" data-bs-toggle="modal" data-bs-target="#staticBackdrop2{{$item->id}}" data-id="{{$item->id}}">
+                                <i class="fa fa-pen" aria-label="Edit"></i></button>
+                                
+                                <a href="{{route('reportpemasangan.destroy', $item)}}" onclick="notificationBeforeDelete(event, this)" class="btn btn-xs mb-2 custom-btn-delete">
+                                <i class="fa fa-trash" aria-label="Delete"></i></a>
                             </td>
                         </tr>
                         @endforeach
@@ -60,6 +49,7 @@
         </div>
     </div>
 </div>
+<!-- MODAL Edit -->
 @foreach($datacekcoverage as $key => $item)
 <div class="modal fade" id="staticBackdrop2{{$item->id}}" data-bs-backdrop="static" data-bs-keyboard="false"
     tabindex="-1" aria-labelledby="modalTitle{{$item->id}}" aria-hidden="true">
@@ -71,7 +61,6 @@
             </div>
             <div class="modal-body">
                 <table class="table table-hover table-bordered table-stripped" id="example2">
-
                     <form action="{{ route('datacekcoverage.update', $item->id) }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
@@ -100,7 +89,7 @@
 
                        
                         <div class="form-group">
-                            <label for="NAlamat_Pemasangan">Alamat_Pemasangan</label>
+                            <label for="Alamat_Pemasangan">Alamat_Pemasangan</label>
                             <input type="text" class="form-control @error('Alamat_Pemasangan') is-invalid @enderror" name="Alamat_Pemasangan"
                                 value="{{ $item->alamat_pemasangan ?? old('alamat_pemasangan') }}" id="Alamat_Pemasangan"readonly>
                             @error('Alamat_Pemasangan') <span class="text-danger">{{ $message }}</span> @enderror
@@ -113,9 +102,6 @@
                             @error('Titik_Kordinat') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
 
-
-                        <!-- ... (lanjutkan dengan field lainnya) -->
-
                         <div class="form-group">
                             <label for="Hasil_Soft_Survey">Hasil_Soft_Survey</label>
                             <input type="text" class="form-control @error('Hasil_Soft_Survey') is-invalid @enderror"
@@ -123,8 +109,6 @@
                                 value="{{ $item->hasil_soft_survey ?? old('hasil_soft_survey') }}">
                             @error('Hasil_Soft_Survey') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
-
-                        <!-- ... (lanjutkan dengan field lainnya) -->
 
                         <button type="submit" class="btn btn-info">Simpan perubahan</button>
                     </form>
@@ -140,6 +124,31 @@
     @method('delete')
     @csrf
 </form>
+<style>
+    .btn-purple {
+        background-color: #ffcccb; /* Purple color */
+        color: #fff; /* White text */
+        /* Add any other styles as needed */
+    }
+    .custom-btn-edit {
+        background-color: #a0a8c6; /* Warna biru */
+        border-color: #a0a8c6;
+        color: #fff; /* Warna teks putih */
+    }
+
+    .custom-btn-delete {
+        background-color: #c99da4; /* Warna merah tua */
+        border-color: #c3a3b6;
+        color: #fff; /* Warna teks putih */
+    }
+    mark {
+        background-color: #cba69b; /* Warna latar belakang */
+        color: #000000; /* Warna teks */
+        padding: 0.2em; /* Ruang di sekitar teks */
+        margin: 0; /* Margin nol untuk memastikan tidak ada ruang tambahan */
+        border-radius: 3px; /* Sudut border */
+    }
+</style>
 <script>
     $('#example2').DataTable({
         "responsive": true,
