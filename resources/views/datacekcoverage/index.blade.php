@@ -142,7 +142,7 @@
         color: #fff; /* Warna teks putih */
     }
     mark {
-        background-color: #cba69b; /* Warna latar belakang */
+        background-color: #f3dddf; /* Warna latar belakang */
         color: #000000; /* Warna teks */
         padding: 0.2em; /* Ruang di sekitar teks */
         margin: 0; /* Margin nol untuk memastikan tidak ada ruang tambahan */
