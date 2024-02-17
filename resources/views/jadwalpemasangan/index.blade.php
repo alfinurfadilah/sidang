@@ -157,6 +157,15 @@
     @method('delete')
     @csrf
 </form>
+<style>
+    mark {
+        background-color: #f3dddf; /* Warna latar belakang */
+        color: #000000; /* Warna teks */
+        padding: 0.2em; /* Ruang di sekitar teks */
+        margin: 0; /* Margin nol untuk memastikan tidak ada ruang tambahan */
+        border-radius: 3px; /* Sudut border */
+    }
+    </style>
 
 <script>
     $(document).ready(function() {
@@ -177,6 +186,7 @@
             console.error("Elemen tidak ditemukan.");
         }
     }
+    
 </script>
 <script>
 $('#example2').DataTable({
@@ -189,7 +199,9 @@ function notificationBeforeDelete(event, el) {
         $("#delete-form").attr('action', $(el).attr('href'));
         $("#delete-form").submit();
     }
+    
 }
+
 </script>
 
 <script>

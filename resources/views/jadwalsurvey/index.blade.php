@@ -165,6 +165,14 @@
         border-color: #c3a3b6;
         color: #fff; /* Warna teks putih */
     }
+    mark {
+        background-color: #f3dddf; /* Warna latar belakang */
+        color: #000000; /* Warna teks */
+        padding: 0.2em; /* Ruang di sekitar teks */
+        margin: 0; /* Margin nol untuk memastikan tidak ada ruang tambahan */
+        border-radius: 3px; /* Sudut border */
+    }
+    
 </style>
 <script>
     $('#example2').DataTable({

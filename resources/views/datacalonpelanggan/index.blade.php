@@ -64,7 +64,7 @@
         <div class="modal-content">
             <div class="modal-header bg-info">
                 <!-- Perbaiki tanda kutip di sini -->
-                <h1 class="modal-title fs-5" id="staticBackdrop2">Pencarian data jadwalsurvey</h1>
+                <h1 class="modal-title fs-5" id="staticBackdrop2">Input Data Calon pelanggan</h1>
                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -213,7 +213,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-    <button type="submit" class="btn btn-danger btn-save"><i class="fas fa-save"> Simpan </i></button>
+    <button type="submit" class="btn btn- btn-save"><i class="fas fa-save"> Simpan </i></button>
     <a href="{{ route('datacalonpelanggan.index') }}" class="btn btn-secondary btn-cancel"><i class="fa fa-times-circle"> Batal </i></a>
 </div>
                         
