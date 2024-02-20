@@ -26,10 +26,6 @@ class datacalonpelanggan extends Model
         return $this->hasOne(datacekcoverage::class, 'id_calon_pelanggan');
     }
     
-    public function paket()
-    {
-        return $this->belongsTo(paket::class, 'id_paket');
-    } 
 
     public function fpaket(){
     return  $this->belongsTo(paket::class,  'id_paket',  'id');

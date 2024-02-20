@@ -38,7 +38,7 @@
                                     alt="{{$cp->Foto}} tidak tampil" class="img-thumbnail" width="50%">
                             </td>
                             <td>{{$cp->Nomor_Handphone}}</td>
-                            <td>{{$cp->Nama_Paket}}</td>
+                            <td>{{$cp->fpaket->Nama_Paket}}</td>
                             <td>{{$cp->Alamat_Pemasangan}}</td>
                             <td>{{$cp->Titik_Kordinat}}</td>
                             <td>
@@ -101,12 +101,12 @@
                             </div>
 
                             <div class="form-group">
-                            <label for="Nama_Paket">Nama_Paket</label>
-                            <select id="Nama_Paket"
+                            <label for="id_paket">Nama_Paket</label>
+                            <select id="id_paket"
                                 class="form-select @error('Nama_Paket') is-invalid @enderror"
-                                name="Nama_Paket" onchange="pilihPaket()">
+                                name="id_paket" onchange="pilihPaket()">
                                 @foreach($paket as $cp)
-                                <option value="{{ $cp->Nama_Paket }}">{{ $cp->Nama_Paket }} - {{ $cp->Harga_Paket }}
+                                <option value="{{ $cp->id }}">{{ $cp->Nama_Paket }} - {{ $cp->Harga_Paket }}
                                 </option>
                                 @endforeach
                             </select>
