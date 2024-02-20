@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\paket;
 use App\Models\datacekcoverage;
 use App\Models\datacalonpelanggan;
 use Illuminate\Http\Request;
@@ -14,7 +15,8 @@ class datacalonpelangganController extends Controller
         //menampilkan distributor
         $datacalonpelanggan = datacalonpelanggan::all();
         return view('datacalonpelanggan.index', [
-        'datacalonpelanggan' => $datacalonpelanggan
+            'datacalonpelanggan' => $datacalonpelanggan,
+            'paket' => paket::all()
         ]);
     }
 
@@ -23,12 +25,13 @@ class datacalonpelangganController extends Controller
         //menampilkan form tambah user
         return view('datacalonpelanggan.create', [
             'datacalonpelanggan' => datacalonpelanggan::all(),
+            'paket' => paket::all()
         ]);
     }
 
     public function store(Request $request)
     {
-        //Menyimpan Data distributor baru
+    // dd($request->all());   //Menyimpan Data distributor baru
     $request->validate([  
 
     'Nama' => 'required',
@@ -37,11 +40,10 @@ class datacalonpelangganController extends Controller
     'Nama_Paket' => 'required',
     'Alamat_Pemasangan' => 'required',
     'Titik_Kordinat' => 'required',
-    // 'Hasil_Soft_Survey' => 'nullable'
+    'id_paket' => 'required',
+    
 
     ]);
-    // $request->file('Foto')->store('images');
-    // dd('test');
 
     $array = $request->only([
         
@@ -51,31 +53,29 @@ class datacalonpelangganController extends Controller
      'Nama_Paket',
      'Alamat_Pemasangan',
      'Titik_Kordinat',
-    //  'Hasil_Soft_Survey',
+     'id_paket'
+     
 
     ]);
     
     $array['Foto'] = $request->file('Foto')->store('Foto');
-    // $tambah = datacalonpelanggan::create($array);
-    // if($tambah) $request->file('Foto')->store('Foto');
-
+    
 
     $datacalonpelanggan = datacalonpelanggan::create($array);
-    // dd($request->all());
+    dd($request->all());
     datacekcoverage::create([
     'Nama' => $request->Nama,
     'Nomor_Handphone' => $request->Nomor_Handphone,
     'Nama_Paket' => $request->Nama_Paket,
     'Alamat_Pemasangan' => $request->Alamat_Pemasangan,
     'Titik_Kordinat' => $request->Titik_Kordinat,
-    // 'Hasil_Soft_Survey' => $request->Hasil_Soft_Survey,
     'id_calon_pelanggan' => $datacalonpelanggan->id,
     ]);
-        // $tambah=datacalonpelanggan::create($array);
+        
 
             return redirect()->route('datacalonpelanggan.index') 
             ->with('success_message', 'Berhasil menambah datacalonpelanggan baru');
-        }
+    }
 
 public function edit($id)
     {
@@ -99,7 +99,7 @@ public function edit($id)
             'Nama_Paket' => 'required',
             'Alamat_Pemasangan' => 'required',
             'Titik_Kordinat' => 'required',
-            // 'Hasil_Soft_Survey' =>'nullable'
+            
 
             ]);
             $datacalonpelanggan = datacalonpelanggan::find($id);
@@ -112,7 +112,7 @@ public function edit($id)
             $datacalonpelanggan->Nama_Paket = $request->Nama_Paket;
             $datacalonpelanggan->Alamat_Pemasangan = $request->Alamat_Pemasangan;
             $datacalonpelanggan->Titik_Kordinat = $request->Titik_Kordinat;
-            // $datacalonpelanggan->Hasil_Soft_Survey = $request->Hasil_Soft_Survey;
+            
         
             $datacalonpelanggan->save();
             return redirect()->route('datacalonpelanggan.index')
@@ -123,9 +123,6 @@ public function edit($id)
     {
         //Menghapus distributor
         $datacalonpelanggan = datacalonpelanggan::find($id);
-
-        // if ($id == $request->user()->id) return redirect()->route('users.index')->with('error_message', 'Anda tidak dapat menghapus diri
-        // sendiri.');
         if ($datacalonpelanggan) $datacalonpelanggan->delete();
         return redirect()->route('datacalonpelanggan.index')->with('success_message', 'Berhasil menghapus datacalonpelanggan');
     }
