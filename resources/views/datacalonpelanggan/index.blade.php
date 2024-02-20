@@ -13,7 +13,7 @@
     Create New Data
 </button>
 
-                <table class="table table-hover table-bordered table-stripped table-responsive table-rounded"
+                <table class="table table-hover table-bordered table-stripped table-rounded"
                     id="example2">
                     <thead>
                         <tr class="table-info">
@@ -101,16 +101,15 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="Nama_Paket">Nama_Paket</label>
-                                <select class="form-control @error('Nama_Paket') is-invalid @enderror" id="Nama_Paket"
-                                    name="Nama_Paket">
-                                    <option value="ALPHA" @if(old('Nama_Paket')=='ALPHA' )selected @endif>ALPHA</option>
-                                    <option value="BETA" @if(old('Nama_Paket')=='BETA' )selected @endif>BETA</option>
-                                    <option value="GAMMA" @if(old('Nama_Paket')=='GAMMA' )selected @endif>GAMMA</option>
-                                    <option value="KENDA" @if(old('Nama_Paket')=='KENDA' )selected @endif>KENDA</option>
-                                    <option value="SELESA" @if(old('Nama_Paket')=='SELESA' )selected @endif>SELESA
-                                    </option>
-                                </select>
+                            <label for="Nama_Paket">Nama_Paket</label>
+                            <select id="Nama_Paket"
+                                class="form-select @error('Nama_Paket') is-invalid @enderror"
+                                name="Nama_Paket" onchange="pilihPaket()">
+                                @foreach($paket as $cp)
+                                <option value="{{ $cp->Nama_Paket }}">{{ $cp->Nama_Paket }} - {{ $cp->Harga_Paket }}
+                                </option>
+                                @endforeach
+                            </select>
                             </div>
 
                             <div class="form-group">
@@ -329,6 +328,27 @@
     @method('delete')
     @csrf
 </form>
+<script>
+    $(document).ready(function() {
+        $('#example1').DataTable({
+            "responsive": true
+        });
+    });
+
+    function pilihPaket(id, Nama_Paket, Harga_Paket) {
+        var idPaketElement = document.getElementById('id_paket');
+        var nomorHandphoneElement = document.getElementById('Nama_Paket');
+
+        // Periksa apakah elemen ditemukan sebelum mengubah nilainya
+        if (idPaketElement && namaPaketElement) {
+            idPaketElement.value = id;
+            namaPaketElement.value = Nama_Paket;
+        } else {
+            console.error("Elemen tidak ditemukan.");
+        }
+    }
+    
+</script>
 <script>
 $('#example2').DataTable({
     "responsive": true,

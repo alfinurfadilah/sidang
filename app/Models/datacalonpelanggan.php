@@ -17,13 +17,22 @@ class datacalonpelanggan extends Model
         'Nama_Paket',
         'Alamat_Pemasangan',
         'Titik_Kordinat',
-        // 'Hasil_Soft_Survey',
+        'id_paket'
         
     ];
 
     public function datacekcoverage()
     {
         return $this->hasOne(datacekcoverage::class, 'id_calon_pelanggan');
+    }
+    
+    public function paket()
+    {
+        return $this->belongsTo(paket::class, 'id_paket');
+    } 
+
+    public function fpaket(){
+    return  $this->belongsTo(paket::class,  'id_paket',  'id');
     }
 
 }

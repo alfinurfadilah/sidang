@@ -406,6 +406,12 @@ return [
         ],
 
         [
+            'text' => 'paket',
+            'url'  => '/paket',
+            'icon' => 'fa fa-user-circle',
+        ],
+
+        [
             'header' => 'ADMIN MANAGEMENT',
             'can' => 'Admin-only',
         ],
