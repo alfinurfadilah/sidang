@@ -54,7 +54,7 @@ class paketController extends Controller
         
             ]);
 
-        $paket = paket::create($array);
+        // $paket = paket::create($array);
         // dd($request->all());
         paket::create([
         'Nama_Paket' => $request->Nama_Paket,

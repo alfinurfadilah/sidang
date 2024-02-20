@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('Nama');
             $table->string('Foto', 255);
             $table->string('Nomor_Handphone');
-            $table->string('Nama_Paket');
+            // $table->string('Nama_Paket');
             $table->string('Alamat_Pemasangan');
             $table->char('Titik_Kordinat');
             $table->timestamps();

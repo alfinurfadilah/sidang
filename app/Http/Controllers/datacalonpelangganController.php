@@ -37,7 +37,7 @@ class datacalonpelangganController extends Controller
     'Nama' => 'required',
     'Foto' => 'required|image|max:2048',
     'Nomor_Handphone' => 'required',
-    'Nama_Paket' => 'required',
+    // 'Nama_Paket' => 'required',
     'Alamat_Pemasangan' => 'required',
     'Titik_Kordinat' => 'required',
     'id_paket' => 'required',
@@ -50,7 +50,7 @@ class datacalonpelangganController extends Controller
      'Nama',
      'Foto',
      'Nomor_Handphone', 
-     'Nama_Paket',
+    //  'Nama_Paket',
      'Alamat_Pemasangan',
      'Titik_Kordinat',
      'id_paket'
@@ -62,11 +62,12 @@ class datacalonpelangganController extends Controller
     
 
     $datacalonpelanggan = datacalonpelanggan::create($array);
-    dd($request->all());
+    // dd($request->all());
+    $datacapel = paket::find($request->id_paket);
     datacekcoverage::create([
     'Nama' => $request->Nama,
     'Nomor_Handphone' => $request->Nomor_Handphone,
-    'Nama_Paket' => $request->Nama_Paket,
+    'Nama_Paket' => $datacapel->Nama_Paket,
     'Alamat_Pemasangan' => $request->Alamat_Pemasangan,
     'Titik_Kordinat' => $request->Titik_Kordinat,
     'id_calon_pelanggan' => $datacalonpelanggan->id,
