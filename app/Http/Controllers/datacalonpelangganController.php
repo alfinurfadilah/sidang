@@ -78,47 +78,56 @@ class datacalonpelangganController extends Controller
             ->with('success_message', 'Berhasil menambah datacalonpelanggan baru');
     }
 
-public function edit($id)
+    public function edit($id)
     {
-        //Menampilkan Form Edit
+        // Menampilkan Form Edit
         $datacalonpelanggan = datacalonpelanggan::find($id);
-        if (!$datacalonpelanggan) return redirect()->route('datacalonpelanggan.index')
-        ->with('error_message', 'datacalonpelanggan dengan id'.$id.' tidak
-        ditemukan');
+        if (!$datacalonpelanggan) {
+            return redirect()->route('datacalonpelanggan.index')
+                ->with('error_message', 'Data Calon Pelanggan dengan ID ' . $id . ' tidak ditemukan');
+        }
         return view('datacalonpelanggan.edit', [
-        'datacalonpelanggan' => $datacalonpelanggan
+            'datacalonpelanggan' => $datacalonpelanggan,
+            'paket' => paket::all(),
         ]);
     }
-
+    
     public function update(Request $request, $id)
     {
-        //Mengedit Data Distributor
+        // dd($request->all());
         $request->validate([
             'Nama' => 'required',
-            'Foto' => $request->file('Foto') != null ? 'image|file|max:2048' : '',
+            'Foto' => 'image|file|max:2048',
             'Nomor_Handphone' => 'required',
             'Nama_Paket' => 'required',
             'Alamat_Pemasangan' => 'required',
             'Titik_Kordinat' => 'required',
-            
-
-            ]);
-            $datacalonpelanggan = datacalonpelanggan::find($id);
-            $datacalonpelanggan->Nama = $request->Nama;
-            if($request->file('Foto') != null){
-                unlink("storage/" . $datacalonpelanggan->Foto);
-                $datacalonpelanggan->Foto = $request->file('Foto')->store('Foto');
-                }
-            $datacalonpelanggan->Nomor_Handphone = $request->Nomor_Handphone;
-            $datacalonpelanggan->Nama_Paket = $request->Nama_Paket;
-            $datacalonpelanggan->Alamat_Pemasangan = $request->Alamat_Pemasangan;
-            $datacalonpelanggan->Titik_Kordinat = $request->Titik_Kordinat;
-            
-        
-            $datacalonpelanggan->save();
+        ]);
+    
+        $datacalonpelanggan = datacalonpelanggan::find($id);
+        $datacapel = paket::find($request->id_paket);
+        if (!$datacalonpelanggan) {
             return redirect()->route('datacalonpelanggan.index')
-            ->with('success_message', 'Berhasil mengubah datacalonpelanggan');
+                ->with('error_message', 'Data Calon Pelanggan dengan ID ' . $id . ' tidak ditemukan');
+        }
+    
+        $datacalonpelanggan->Nama = $request->Nama;
+        if ($request->hasFile('Foto')) {
+            // Hapus foto lama jika ada dan simpan foto baru
+            unlink("storage/" . $guru->foto);
+            $guru->foto = $request->file('Foto')->store('Foto');
+        }
+        $datacalonpelanggan->Nomor_Handphone = $request->Nomor_Handphone;
+        $datacalonpelanggan->Nama_Paket = $datacapel->Nama_Paket;
+        $datacalonpelanggan->Alamat_Pemasangan = $request->Alamat_Pemasangan;
+        $datacalonpelanggan->Titik_Kordinat = $request->Titik_Kordinat;
+    
+        $datacalonpelanggan->save();
+        
+        return redirect()->route('datacalonpelanggan.index')
+            ->with('success_message', 'Berhasil mengubah data Calon Pelanggan');
     }
+    
 
     public function destroy($id)
     {
