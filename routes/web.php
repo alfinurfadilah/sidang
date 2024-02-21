@@ -31,6 +31,7 @@ Route::get('/home', function() {
 
 Route::resource('datacalonpelanggan', \App\Http\Controllers\datacalonpelangganController::class)->middleware('auth');
 Route::resource('paket', \App\Http\Controllers\paketController::class)->middleware('auth');
+Route::resource('site', \App\Http\Controllers\siteController::class)->middleware('auth');
 
 Route::resource('datacekcoverage', \App\Http\Controllers\datacekcoverageController::class)->middleware('auth');
 

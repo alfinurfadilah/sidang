@@ -412,6 +412,13 @@ return [
         ],
 
         [
+            'text' => 'site',
+            'url'  => '/site',
+            'icon' => 'fa fa-user-circle',
+        ],
+
+
+        [
             'header' => 'ADMIN MANAGEMENT',
             'can' => 'Admin-only',
         ],
