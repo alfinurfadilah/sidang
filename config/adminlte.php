@@ -444,24 +444,24 @@ return [
 
         [
             'header' => 'NOC',
-            'can' => 'NOC-only',
+            // 'can' => 'NOC-only',
         ],
         [
             'text'       => 'Cek Coverage',
             'icon_color' => 'red',
             'url'        => '/datacekcoverage',
-            'can' => 'NOC-only',
+            // 'can' => 'NOC-only',
         ],
         [
             'text'       => 'Data Aktivasi',
             'icon_color' => 'yellow',
             'url'        => '#',
-            'can' => 'NOC-only',
+            // 'can' => 'NOC-only',
         ],
 
         [
             'header' => 'TEKNISI',
-            'can' => 'Teknisi-only',
+            // 'can' => 'Teknisi-only',
         ],
         // [
         //     'text'       => 'Jadwal Survey Teknisi',
@@ -472,19 +472,19 @@ return [
             'text'       => 'Jadwal survey teknisi',
             'icon_color' => 'cyan',
             'url'        => '/jadwalsurveyteknisi',
-            'can' => 'Teknisi-only',
+            // 'can' => 'Teknisi-only',
         ],
         [
             'text'       => 'Jadwal pemasangan teknisi',
             'icon_color' => 'cyan',
             'url'        => '/jadwalpemasanganteknisi',
-            'can' => 'Teknisi-only',
+            // 'can' => 'Teknisi-only',
         ],
         [
             'text'       => 'Report Survey',
             'icon_color' => 'cyan',
             'url'        => '/reportsurvey',
-            'can' => 'Teknisi-only',
+            // 'can' => 'Teknisi-only',
         ],
         
         // [
@@ -496,7 +496,7 @@ return [
             'text'       => 'Report Pemasangan',
             'icon_color' => 'cyan',
             'url'        => '/reportpemasangan',
-            'can' => 'Teknisi-only',
+            // 'can' => 'Teknisi-only',
         ],
 
        

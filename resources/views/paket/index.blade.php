@@ -6,6 +6,12 @@
 </div>
 @stop
 @section('content')
+<style>
+   
+    .center-heading {
+        text-align: center;
+    }
+</style>
 <div class="row justify-content-center">
     <div class="col-md-10">
         <div class="card card-primary">
@@ -14,8 +20,8 @@
                     Create New Data
                 </button>
                 <div class="table-responsive">
-                    <table class="table table-hover table-striped">
-                        <thead>
+                    <table class="table table-hover table-striped" id="example2">
+                        <thead class="center-heading">
                             <tr class="bg-primary text-white">
                                 <th>No.</th>
                                 <th>Nama Paket</th>
@@ -26,12 +32,12 @@
                         <tbody>
                             @foreach($paket as $key => $pk)
                             <tr>
-                                <td>{{$key+1}}</td>
+                                <td class="center-heading">{{$key+1}}</td>
                                 <td>{{$pk->Nama_Paket}}</td>
                                 <td>Rp {{number_format($pk->Harga_Paket, 0, ',', '.')}}</td>
                                 <td>
                                     <button class="btn btn-info btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#staticBackdrop{{$pk->id}}" data-id="{{$pk->id}}">
+                                        data-bs-target="#staticBackdrop3{{$pk->id}}" data-id="{{$pk->id}}">
                                         <i class="fa fa-pen"></i> Edit
                                     </button>
                                     <a href="{{route('paket.destroy', $pk)}}" onclick="notificationBeforeDelete(event, this)"
@@ -49,7 +55,7 @@
     </div>
 </div>
 
-<!-- MODAL -->
+<!-- MODAL CREATE -->
 <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdrop2" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable p-5">
@@ -102,6 +108,54 @@
     </div>
 </div>
 </div>
+<!-- MODAL EDIT -->
+<!-- MODAL EDIT -->
+@foreach($paket as $key => $pk)
+    <div class="modal fade" id="staticBackdrop3{{$pk->id}}" data-bs-backdrop="static" data-bs-keyboard="false"
+        tabindex="-1" aria-labelledby="modalTitle{{$pk->id}}" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable p-5">
+            <div class="modal-content">
+                <div class="modal-header bg-info">
+                    <h1 class="modal-title fs-5" id="modalTitle{{$pk->id}}">Edit</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-hover table-bordered table-stripped" id="example2">
+
+                        <form action="{{ route('paket.update', $pk->id) }}" method="post"
+                            enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT') <!-- Tambahkan method PUT untuk update -->
+
+                            <div class="form-group">
+                            <label for="Nama_Paket">Nama Paket</label>
+                            <input type="text" class="form-control
+        @error('Nama_Paket') is-invalid @enderror" id="Nama_Paket" placeholder="Nama_Paket" name="Nama_Paket" value="{{$pk->Nama_Paket ??
+        old('Nama_Paket')}}">
+                            @error('Nama_Paket') <span class="textdanger">{{$message}}</span> @enderror
+                        </div>
+                        
+                        
+                        <div class="form-group">
+                            <label for="Harga_Paket">Harga_Paket</label>
+                            <input type="Titik_Kordinat" class="form-control
+        @error('Harga_Paket') is-invalid @enderror" id="Harga_Paket" placeholder="Harga_Paket" name="Harga_Paket" value="{{$pk->Harga_Paket ??
+        old('Titik_Kordinat')}}">
+                            @error('Harga_Paket') <span class="textdanger">{{$message}}</span> @enderror
+                        </div>
+                    
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn- btn-save"><i class="fas fa-save"> Simpan </i></button>
+                        <a href="{{ route('paket.index') }}" class="btn btn-secondary btn-cancel"><i class="fa fa-times-circle"> Batal </i></a>
+                    </div>
+                    </form>
+               </table>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
 @stop
 @push('js')
 

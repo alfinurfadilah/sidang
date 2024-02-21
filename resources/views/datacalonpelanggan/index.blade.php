@@ -1,22 +1,31 @@
 @extends('adminlte::page')
 @section('title', 'Data Calon Pelanggan')
 @section('content_header')
-<h1 class="m-0 text-dark"><mark>Data Calon Pelanggan</mark></h1>
+<h1 class="m-0 text-dark">Data Calon Pelanggan</h1>
 @stop
 @section('content')
-<div class="row">
-    <div class="col-12">
+<style>
+    /* CSS untuk membuat pinggiran tabel lebih bulat */
+    /* .table {
+        border-radius: 25px; 
+        overflow: hidden; 
+    } */
+
+    .center-heading {
+        text-align: center;
+    }
+</style>
+<div class="row justify-content-center">
+    <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-body">
-                <!-- <a href="{{route('datacalonpelanggan.create')}}" class="btn btn-danger mb-2"> -->
-               <button class="btn btn- mb-2 btn-create-new-data" aria-hidden="true" data-toggle="modal" data-target="#staticBackdrop2">
-    Create New Data
-</button>
-
-                <table class="table table-hover table-bordered table-stripped table-rounded"
-                    id="example2">
-                    <thead>
-                        <tr class="table-info">
+                <button class="btn btn-primary mb-2" data-toggle="modal" data-target="#staticBackdrop2">
+                    Create New Data
+                </button>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped" id="example2">
+                        <thead class="center-heading">
+                            <tr class="bg-primary text-white">
                             <th>No.</th>
                             <th>Nama</th>
                             <th>Foto KTP</th>
@@ -25,13 +34,12 @@
                             <th>Alamat Pemasangan</th>
                             <th>Titik Kordinat</th>
                             <th>Opsi</th>
-                        </tr>
-                    </thead>
+                        </thead>
                     <tbody>
 
                         @foreach($datacalonpelanggan as $key => $cp)
                         <tr>
-                            <td>{{$key+1}}</td>
+                            <td class="center-heading">{{$key+1}}</td>
                             <td>{{$cp->Nama}}</td>
                             <td class="center-image">
                                 <img src="storage/{{$cp->Foto}}"
@@ -42,12 +50,17 @@
                             <td>{{$cp->Alamat_Pemasangan}}</td>
                             <td>{{$cp->Titik_Kordinat}}</td>
                             <td>
-                            <button class="btn btn-xs mb-2 custom-btn-edit" data-bs-toggle="modal" data-bs-target="#staticBackdrop3{{$cp->id}}" data-id="{{$cp->id}}">
-                                <i class="fa fa-pen" aria-label="Edit"></i></button>
-                                
-                                <a href="{{route('datacalonpelanggan.destroy', $cp)}}" onclick="notificationBeforeDelete(event, this)" class="btn btn-xs mb-2 custom-btn-delete">
-                                <i class="fa fa-trash" aria-label="Delete"></i></a>
-
+                                <div class="button-container">
+                                    <button class="btn btn-info btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop3{{$cp->id}}" data-id="{{$cp->id}}">
+                                        <i class="fa fa-pen"></i> Edit
+                                    </button>
+                                    <div class="button-space"></div> <!-- Spacer between buttons -->
+                                    <a href="{{route('paket.destroy', $cp)}}" onclick="notificationBeforeDelete(event, this)"
+                                        class="btn btn-danger btn-sm">
+                                        <i class="fa fa-trash"></i> Delete
+                                    </a>
+                                </div>
                             </td>
                         </tr>
                         @endforeach
@@ -171,52 +184,50 @@
         old('Nama')}}">
                             @error('Nama') <span class="textdanger">{{$message}}</span> @enderror
                         </div>
-                        
                         <div class="form-group">
-                                <label for="Foto" class="form-label">Foto</label>
-                                @if($cp->Foto)
-                                <img src="/img/no-image.png"  class="img-preview img-fluid mb-3 col-sm-5 d-block" style="width: 100px;">
-                                @else
-                                <img class="img-preview img-fluid mb-3 col-sm-5 d-block">
-                                @endif
-                                <input class="form-control @error('Foto') is-invalid @enderror" type="file"  id="Foto" name="Foto" value="{{$cp->Foto ?? old('Foto')}}" onchange="previewImage()">
-                                @error('Foto') <span class="textdanger">{{$message}}</span> @enderror
-                      </div>
+                            <label for="Foto" class="form-label">Foto</label>
+                            @if($cp->Foto)
+                            <!-- Jika ada foto sebelumnya -->
+                            <img src="storage/{{$cp->Foto}}" class="img-preview img-fluid mb-3 col-sm-5 d-block" style="width: 100px;">
+                            @else
+                            <!-- Jika tidak ada foto sebelumnya -->
+                            <img src="/img/no-image.png" class="img-preview img-fluid mb-3 col-sm-5 d-block" style="width: 100px;">
+                            @endif
+                            <input class="form-control @error('Foto') is-invalid @enderror" type="file" id="Foto" name="Foto" value="{{$cp->Foto ?? old('Foto')}}" onchange="previewImage()">
+                            @error('Foto') <span class="text-danger">{{$message}}</span> @enderror
+                        </div>
                         <div class="form-group">
                             <label for="Nomor_Handphone">Nomor_Handphone</label>
                             <input type="alamat" class="form-control
-        @error('Nomor_Handphone') is-invalid @enderror" id="Nomor_Handphone" placeholder="Masukkan nomor handphone" name="Nomor_Handphone" value="{{$cp->Nomor_Handphone ??
-        old('Nomor_Handphone')}}">
+                            @error('Nomor_Handphone') is-invalid @enderror" id="Nomor_Handphone" placeholder="Masukkan nomor handphone" name="Nomor_Handphone" value="{{$cp->Nomor_Handphone ??
+                            old('Nomor_Handphone')}}">
                             @error('Nomor_Handphone') <span class="textdanger">{{$message}}</span> @enderror
                         </div>
                         <div class="form-group">
                             <label for="Nama_Paket">Nama_Paket</label>
-                            <input type="Nama_Paket" class="form-control
-        @error('Nama_Paket') is-invalid @enderror" id="Nama_Paket" placeholder="Masukkan nama paket" name="Nama_Paket" value="{{$cp->Nama_Paket ??
-        old('Nama_Paket')}}">
-                            @error('Nama_Paket') <span class="textdanger">{{$message}}</span> @enderror
+                            <select id="id_paket" class="form-select @error('Nama_Paket') is-invalid @enderror" name="id_paket" onchange="pilihPaket()">
+                                @foreach($paket as $p)
+                                    <option value="{{ $p->id }}" {{ ($cp->id_paket ?? old('id_paket')) == $p->id ? 'selected' : '' }}>
+                                        {{ $p->Nama_Paket }} - {{ $p->Harga_Paket }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('Nama_Paket') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
                         <div class="form-group">
                             <label for="Alamat_Pemasangan">Alamat_Pemasangan</label>
-                            <input type="Alamat_Pemasangan" class="form-control
-        @error('Alamat_Pemasangan') is-invalid @enderror" id="Alamat_Pemasangan" placeholder="Masukkan nama alamat pemasangan" name="Alamat_Pemasangan" value="{{$cp->Alamat_Pemasangan ??
-        old('Alamat_Pemasangan')}}">
-                            @error('Alamat_Pemasangan') <span class="textdanger">{{$message}}</span> @enderror
+                            <input type="text" class="form-control @error('Alamat_Pemasangan') is-invalid @enderror" id="Alamat_Pemasangan" placeholder="Masukkan nama alamat pemasangan" name="Alamat_Pemasangan" value="{{ $cp->Alamat_Pemasangan ?? old('Alamat_Pemasangan') }}">
+                            @error('Alamat_Pemasangan') <span class="textdanger">{{ $message }}</span> @enderror
                         </div>
                         <div class="form-group">
                             <label for="Titik_Kordinat">Titik_Kordinat</label>
-                            <input type="Titik_Kordinat" class="form-control
-        @error('Titik_Kordinat') is-invalid @enderror" id="Titik_Kordinat" placeholder="Masukkan titik kordinat" name="Titik_Kordinat" value="{{$cp->Titik_Kordinat ??
-        old('Titik_Kordinat')}}">
-                            @error('Titik_Kordinat') <span class="textdanger">{{$message}}</span> @enderror
+                            <input type="text" class="form-control @error('Titik_Kordinat') is-invalid @enderror" id="Titik_Kordinat" placeholder="Masukkan titik kordinat" name="Titik_Kordinat" value="{{ $cp->Titik_Kordinat ?? old('Titik_Kordinat') }}">
+                            @error('Titik_Kordinat') <span class="textdanger">{{ $message }}</span> @enderror
                         </div>
                     </div>
                     <div class="card-footer">
-    <button type="submit" class="btn btn- btn-save"><i class="fas fa-save"> Simpan </i></button>
-    <a href="{{ route('datacalonpelanggan.index') }}" class="btn btn-secondary btn-cancel"><i class="fa fa-times-circle"> Batal </i></a>
-</div>
-                        
-                        </a>
+                        <button type="submit" class="btn btn- btn-save"><i class="fas fa-save"> Simpan </i></button>
+                        <a href="{{ route('datacalonpelanggan.index') }}" class="btn btn-secondary btn-cancel"><i class="fa fa-times-circle"> Batal </i></a>
                     </div>
                     </form>
                </table>
@@ -321,6 +332,40 @@
         background-color: #7FFFD4; /* Warna latar belakang tombol saat dihover (biru lebih gelap) */
         color: white; /* Warna teks tombol saat dihover (putih) */
     }
+
+    .button-container {
+    display: flex;
+    align-items: center;
+}
+
+.button-space {
+    flex: 1; /* Take up remaining space */
+}
+
+.btn {
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s,  border-color 0.3s;
+}
+
+.btn-info {
+    color: #3498db; /* Blue color */
+    background-color: transparent;
+}
+
+.btn-danger {
+    color: #e74c3c; /* Red color */
+    background-color: transparent;
+}
+
+.btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #333;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
     
 </style>
 
