@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('reportsurvey', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('site')->nullable();
+            // $table->string('site')->nullable();
             $table->date('tanggal_survey')->nullable();
             $table->string('waktu')->nullable();
             $table->string('nama_teknisi')->nullable();
@@ -30,6 +30,8 @@ return new class extends Migration
             $table->enum('status', ['Bisa Dipasang', 'Tidak Bisa Dipasang']);
             $table->unsignedBigInteger('id_jadwalsurvey');
             $table->foreign('id_jadwalsurvey')->references('id')->on('jadwalsurvey')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('id_site');
+            $table->foreign('id_site')->references('id')->on('site')->onDelete('cascade');
             $table->timestamps();
         });
     }
