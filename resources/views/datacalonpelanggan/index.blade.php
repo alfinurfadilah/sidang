@@ -37,26 +37,26 @@
                         </thead>
                     <tbody>
 
-                        @foreach($datacalonpelanggan as $key => $cp)
+                        @foreach($datacalonpelanggan as $key => $item)
                         <tr>
                             <td class="center-heading">{{$key+1}}</td>
-                            <td>{{$cp->Nama}}</td>
+                            <td>{{$item->Nama}}</td>
                             <td class="center-image">
-                                <img src="storage/{{$cp->Foto}}"
-                                    alt="{{$cp->Foto}} tidak tampil" class="img-thumbnail" width="50%">
+                                <img src="storage/{{$item->Foto}}"
+                                    alt="{{$item->Foto}} tidak tampil" class="img-thumbnail" width="50%">
                             </td>
-                            <td>{{$cp->Nomor_Handphone}}</td>
-                            <td>{{$cp->fpaket->Nama_Paket}}</td>
-                            <td>{{$cp->Alamat_Pemasangan}}</td>
-                            <td>{{$cp->Titik_Kordinat}}</td>
+                            <td>{{$item->Nomor_Handphone}}</td>
+                            <td>{{$item->fpaket->Nama_Paket}}</td>
+                            <td>{{$item->Alamat_Pemasangan}}</td>
+                            <td>{{$item->Titik_Kordinat}}</td>
                             <td>
                                 <div class="button-container">
                                     <button class="btn btn-info btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#staticBackdrop3{{$cp->id}}" data-id="{{$cp->id}}">
+                                        data-bs-target="#staticBackdrop3{{$item->id}}" data-id="{{$item->id}}">
                                         <i class="fa fa-pen"></i> Edit
                                     </button>
                                     <div class="button-space"></div> <!-- Spacer between buttons -->
-                                    <a href="{{route('paket.destroy', $cp)}}" onclick="notificationBeforeDelete(event, this)"
+                                    <a href="{{route('paket.destroy', $item)}}" onclick="notificationBeforeDelete(event, this)"
                                         class="btn btn-danger btn-sm">
                                         <i class="fa fa-trash"></i> Delete
                                     </a>
@@ -118,8 +118,8 @@
                             <select id="id_paket"
                                 class="form-select @error('Nama_Paket') is-invalid @enderror"
                                 name="id_paket" onchange="pilihPaket()">
-                                @foreach($paket as $cp)
-                                <option value="{{ $cp->id }}">{{ $cp->Nama_Paket }} - {{ $cp->Harga_Paket }}
+                                @foreach($paket as $item)
+                                <option value="{{ $item->id }}">{{ $item->Nama_Paket }} - {{ $item->Harga_Paket }}
                                 </option>
                                 @endforeach
                             </select>
@@ -160,46 +160,45 @@
     </div>
 </div>
 <!-- MODAL EDIT -->
-@foreach($datacalonpelanggan as $key => $cp)
-    <div class="modal fade" id="staticBackdrop3{{$cp->id}}" data-bs-backdrop="static" data-bs-keyboard="false"
-        tabindex="-1" aria-labelledby="modalTitle{{$cp->id}}" aria-hidden="true">
+@foreach($datacalonpelanggan as $key => $item)
+    <div class="modal fade" id="staticBackdrop3{{$item->id}}" data-bs-backdrop="static" data-bs-keyboard="false"
+        tabindex="-1" aria-labelledby="modalTitle{{$item->id}}" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable p-5">
             <div class="modal-content">
                 <div class="modal-header bg-info">
-                    <h1 class="modal-title fs-5" id="modalTitle{{$cp->id}}">Edit</h1>
+                    <h1 class="modal-title fs-5" id="modalTitle{{$item->id}}">Edit</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <table class="table table-hover table-bordered table-stripped" id="example2">
-
-                        <form action="{{ route('datacalonpelanggan.update', $cp->id) }}" method="post"
-                            enctype="multipart/form-data">
+                        
+                        <form action="{{ route('datacalonpelanggan.update', $item->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT') <!-- Tambahkan method PUT untuk update -->
 
                             <div class="form-group">
                             <label for="Nama">Nama</label>
                             <input type="text" class="form-control
-        @error('Nama') is-invalid @enderror" id="Nama" placeholder="Nama" name="Nama" value="{{$cp->Nama ??
+        @error('Nama') is-invalid @enderror" id="Nama" placeholder="Nama" name="Nama" value="{{$item->Nama ??
         old('Nama')}}">
                             @error('Nama') <span class="textdanger">{{$message}}</span> @enderror
                         </div>
                         <div class="form-group">
                             <label for="Foto" class="form-label">Foto</label>
-                            @if($cp->Foto)
+                            @if($item->Foto)
                             <!-- Jika ada foto sebelumnya -->
-                            <img src="storage/{{$cp->Foto}}" class="img-preview img-fluid mb-3 col-sm-5 d-block" style="width: 100px;">
+                            <img src="storage/{{$item->Foto}}" class="img-preview img-fluid mb-3 col-sm-5 d-block" style="width: 100px;">
                             @else
                             <!-- Jika tidak ada foto sebelumnya -->
                             <img src="/img/no-image.png" class="img-preview img-fluid mb-3 col-sm-5 d-block" style="width: 100px;">
                             @endif
-                            <input class="form-control @error('Foto') is-invalid @enderror" type="file" id="Foto" name="Foto" value="{{$cp->Foto ?? old('Foto')}}" onchange="previewImage()">
+                            <input class="form-control @error('Foto') is-invalid @enderror" type="file" id="Foto" name="Foto" value="{{$item->Foto ?? old('Foto')}}" onchange="previewImage()">
                             @error('Foto') <span class="text-danger">{{$message}}</span> @enderror
                         </div>
                         <div class="form-group">
                             <label for="Nomor_Handphone">Nomor_Handphone</label>
                             <input type="alamat" class="form-control
-                            @error('Nomor_Handphone') is-invalid @enderror" id="Nomor_Handphone" placeholder="Masukkan nomor handphone" name="Nomor_Handphone" value="{{$cp->Nomor_Handphone ??
+                            @error('Nomor_Handphone') is-invalid @enderror" id="Nomor_Handphone" placeholder="Masukkan nomor handphone" name="Nomor_Handphone" value="{{$item->Nomor_Handphone ??
                             old('Nomor_Handphone')}}">
                             @error('Nomor_Handphone') <span class="textdanger">{{$message}}</span> @enderror
                         </div>
@@ -207,7 +206,7 @@
                             <label for="Nama_Paket">Nama_Paket</label>
                             <select id="id_paket" class="form-select @error('Nama_Paket') is-invalid @enderror" name="id_paket" onchange="pilihPaket()">
                                 @foreach($paket as $p)
-                                    <option value="{{ $p->id }}" {{ ($cp->id_paket ?? old('id_paket')) == $p->id ? 'selected' : '' }}>
+                                    <option value="{{ $p->id }}" {{ ($item->id_paket ?? old('id_paket')) == $p->id ? 'selected' : '' }}>
                                         {{ $p->Nama_Paket }} - {{ $p->Harga_Paket }}
                                     </option>
                                 @endforeach
@@ -216,12 +215,12 @@
                         </div>
                         <div class="form-group">
                             <label for="Alamat_Pemasangan">Alamat_Pemasangan</label>
-                            <input type="text" class="form-control @error('Alamat_Pemasangan') is-invalid @enderror" id="Alamat_Pemasangan" placeholder="Masukkan nama alamat pemasangan" name="Alamat_Pemasangan" value="{{ $cp->Alamat_Pemasangan ?? old('Alamat_Pemasangan') }}">
+                            <input type="text" class="form-control @error('Alamat_Pemasangan') is-invalid @enderror" id="Alamat_Pemasangan" placeholder="Masukkan nama alamat pemasangan" name="Alamat_Pemasangan" value="{{ $item->Alamat_Pemasangan ?? old('Alamat_Pemasangan') }}">
                             @error('Alamat_Pemasangan') <span class="textdanger">{{ $message }}</span> @enderror
                         </div>
                         <div class="form-group">
                             <label for="Titik_Kordinat">Titik_Kordinat</label>
-                            <input type="text" class="form-control @error('Titik_Kordinat') is-invalid @enderror" id="Titik_Kordinat" placeholder="Masukkan titik kordinat" name="Titik_Kordinat" value="{{ $cp->Titik_Kordinat ?? old('Titik_Kordinat') }}">
+                            <input type="text" class="form-control @error('Titik_Kordinat') is-invalid @enderror" id="Titik_Kordinat" placeholder="Masukkan titik kordinat" name="Titik_Kordinat" value="{{ $item->Titik_Kordinat ?? old('Titik_Kordinat') }}">
                             @error('Titik_Kordinat') <span class="textdanger">{{ $message }}</span> @enderror
                         </div>
                     </div>

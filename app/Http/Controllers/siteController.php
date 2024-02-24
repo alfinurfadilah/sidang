@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\site;
 use App\Models\reportsurvey;
 use Illuminate\Http\Request;
@@ -55,7 +56,7 @@ class siteController extends Controller
             ]);
 
         // $paket = paket::create($array);
-        dd($request->all());
+        // dd($request->all());
         site::create([
         'site' => $request->site,
         'alamat_site' => $request->alamat_site,
