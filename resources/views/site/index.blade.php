@@ -6,16 +6,22 @@
 </div>
 @stop
 @section('content')
+<style>
+   
+    .center-heading {
+        text-align: center;
+    }
+</style>
 <div class="row justify-content-center">
     <div class="col-md-10">
         <div class="card card-primary">
-        <div class="card-body">
-        <button class="btn btn- mb-2 btn-create-new-data" aria-hidden="true" data-toggle="modal" data-target="#staticBackdrop2">
-    Create New Data
-</button>
+            <div class="card-body">
+                <button class="btn btn-primary mb-2" data-toggle="modal" data-target="#staticBackdrop2">
+                    Create New Data
+                </button>
                 <div class="table-responsive">
-                    <table class="table table-hover table-striped">
-                        <thead>
+                    <table class="table table-hover table-striped" id="example2">
+                        <thead class="center-heading">
                             <tr class="bg-info text-white">
                                 <th>No.</th>
                                 <th>Site</th>
@@ -290,10 +296,12 @@ mark {
     @csrf
 </form>
 <script>
-     $(document).ready(function () {
-        $('#example2').DataTable({
-            "responsive": true,
+      $(document).ready(function() {
+        $('#example1').DataTable({
+            "responsive": true
         });
+    });
+
 
         function notificationBeforeDelete(event, el) {
             event.preventDefault();
@@ -318,10 +326,7 @@ mark {
 
         // Search button functionality
         
-    
-$('#example2').DataTable({
-    "responsive": true,
-});
+
 
 function notificationBeforeDelete(event, el) {
     event.preventDefault();
@@ -340,7 +345,7 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
-     }
+     
 $("#Foto").change(function() {
     readURL(this);
 });

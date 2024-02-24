@@ -4,59 +4,63 @@
     <h1 class="m-0 text-dark"><mark>Report Pemasangan</mark></h1>
 @stop
 @section('content')
-    <div class="row">
-    <div class="col-12">
-        <div class="card">
+<style>
+    .center-heading {
+        text-align: center;
+    }
+</style>
+<div class="row justify-content-center">
+    <div class="col-md-12">
+        <div class="card card-primary">
             <div class="card-body">
-                <a href="{{route('reportpemasangan.create')}}" >
-                <i aria-hidden="true">  </i></a>
-                <table class="table table-hover table-bordered table-stripped table-responsive table-rounded" id="example2">
-                    <thead>
-                    <tr class="table-info">
-                    <th>No.</th>
-                    <th>Nama</th>
-                    <th>Site</th>
-                    <th>Tanggal Pemasangan</th>
-                    <th>Waktu</th>
-                    <th>Nama Teknisi</th>
-                    <th>Hasil Redaman</th>
-                    <th>Status Pemasangan</th>
-                    <th>Kebutuhan Access Point </th>
-                    <!-- <th>SN Access Point</th> -->
-                    <th>Kebutuhan HTB</th>
-                    <th>Opsi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($reportpemasangan as $sk => $item)
-                <tr>
-                    <td>{{$loop->iteration}}</td>
-                    <td>{{$item->nama}}</td>
-                    <td>{{$item->site}}</td>
-                    <td>{{$item->tanggal_pemasangan}}</td>
-                    <td>{{$item->waktu}}</td>
-                    <td>{{$item->nama_teknisi}}</td>
-                    <td>{{$item->hasil_redaman}}</td>
-                    <td>{{$item->status_pemasangan}}</td>
-                    <td>{{$item->kebutuhan_Access_Point}} {{$item->SN_Access_Point}}</td>
-                    <!-- <td>{{$item->SN_Access_Point}}</td> -->
-                    <td>{{$item->kebutuhan_HTB}}</td>
-                    <td>
-                    <button class="btn btn-xs mb-2 custom-btn-edit" data-bs-toggle="modal" data-bs-target="#staticBackdrop2{{$item->id}}" data-id="{{$item->id}}">
-                                <i class="fa fa-pen" aria-label="Edit"></i></button>
-                                
-                                <a href="{{route('reportpemasangan.destroy', $item)}}" onclick="notificationBeforeDelete(event, this)" class="btn btn-xs mb-2 custom-btn-delete">
-                                <i class="fa fa-trash" aria-label="Delete"></i></a>
-                                    
-                            </td>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped" id="example2">
+                        <thead class="center-heading">
+                            <tr class="bg-info text-white">
+                            <th>No.</th>
+                            <th>Nama</th>
+                            <th>Site</th>
+                            <th>Tanggal Pemasangan</th>
+                            <th>Waktu</th>
+                            <th>Nama Teknisi</th>
+                            <th>Hasil Redaman</th>
+                            <th>Status Pemasangan</th>
+                            <th>Kebutuhan Access Point </th>
+                            <!-- <th>SN Access Point</th> -->
+                            <th>Kebutuhan HTB</th>
+                            <th>Opsi</th>
                         </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                        @foreach ($reportpemasangan as $sk => $item)
+                        <tr>
+                            <td>{{$loop->iteration}}</td>
+                            <td>{{$item->nama}}</td>
+                            <td>{{$item->site}}</td>
+                            <td>{{$item->tanggal_pemasangan}}</td>
+                            <td>{{$item->waktu}}</td>
+                            <td>{{$item->nama_teknisi}}</td>
+                            <td>{{$item->hasil_redaman}}</td>
+                            <td>{{$item->status_pemasangan}}</td>
+                            <td>{{$item->kebutuhan_Access_Point}} {{$item->SN_Access_Point}}</td>
+                            <!-- <td>{{$item->SN_Access_Point}}</td> -->
+                            <td>{{$item->kebutuhan_HTB}}</td>
+                            <td>
+                            <button class="btn btn-xs mb-2 custom-btn-edit" data-bs-toggle="modal" data-bs-target="#staticBackdrop2{{$item->id}}" data-id="{{$item->id}}">
+                                        <i class="fa fa-pen" aria-label="Edit"></i></button>
+                                        
+                                        <a href="{{route('reportpemasangan.destroy', $item)}}" onclick="notificationBeforeDelete(event, this)" class="btn btn-xs mb-2 custom-btn-delete">
+                                        <i class="fa fa-trash" aria-label="Delete"></i></a>
+                                            
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 @foreach($reportpemasangan as $key => $item)
 <div class="modal fade" id="staticBackdrop2{{$item->id}}" data-bs-backdrop="static" data-bs-keyboard="false"
     tabindex="-1" aria-labelledby="modalTitle{{$item->id}}" aria-hidden="true">
