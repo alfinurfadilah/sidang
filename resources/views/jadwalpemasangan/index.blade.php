@@ -4,16 +4,19 @@
 <h1 class="m-0 text-dark"><mark>Jadwal Pemasangan</mark></h1>
 @stop
 @section('content')
-<div class="row">
-    <div class="col-12">
-        <div class="card">
+<style>
+    .center-heading {
+        text-align: center;
+    }
+</style>
+<div class="row justify-content-center">
+    <div class="col-md-12">
+        <div class="card card-primary">
             <div class="card-body">
-                <!-- <a href="{{route('jadwalpemasangan.create')}}" class="btn btn-primary">
-                <i class="fas fa-plus"></i> Tambah Jadwal Pemasangan</a> -->
-                <table class="table table-hover table-bordered table-stripped table-responsive table-rounded"
-                    id="example2">
-                    <thead>
-                        <tr class="table-info">
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped" id="example2">
+                        <thead class="center-heading">
+                            <tr class="bg-info text-white">
                             <th>No.</th>
                             <th>Nama</th>
                             <th>Nomor Handphone</th>
