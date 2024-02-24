@@ -91,22 +91,26 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="Site">Site</label>
-                            <input type="text" class="form-control @error('Site') is-invalid @enderror" name="site"
-                                value="{{ $item->site ?? old('site') }}" id="Site">
-                            @error('Site') <span class="text-danger">{{ $message }}</span> @enderror
-                        </div>
-
+                            <label for="id_site">Site</label>
+                            <select id="id_site"
+                                class="form-select @error('Site') is-invalid @enderror"
+                                name="id_site" onchange="pilihSite()">
+                                @foreach($site as $item)
+                                <option value="{{ $item->id }}">{{ $item->site }} - {{ $item->alamat_site }}
+                                </option>
+                                @endforeach
+                            </select>
+                            </div>
                         <div class="form-group">
                             <label for="Tanggal_Survey">Tanggal_Survey</label>
-                            <input type="text" class="form-control @error('Tanggal_Survey') is-invalid @enderror" name="tanggal_survey"
+                            <input type="date" class="form-control @error('Tanggal_Survey') is-invalid @enderror" name="tanggal_survey"
                                 value="{{ $item->tanggal_survey ?? old('tanggal_survey') }}" id="Tanggal_Survey">
                             @error('Tanggal_Survey') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
 
                         <div class="form-group">
                             <label for="Waktu">Waktu</label>
-                            <input type="text" class="form-control @error('Waktu') is-invalid @enderror"
+                            <input type="time" class="form-control @error('Waktu') is-invalid @enderror"
                                 id="waktu" placeholder="Masukkan Waktu" name="waktu"
                                 value="{{ $item->waktu ?? old('waktu') }}">
                             @error('Waktu') <span class="text-danger">{{ $message }}</span> @enderror

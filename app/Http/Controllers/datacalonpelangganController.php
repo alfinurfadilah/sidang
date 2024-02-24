@@ -99,7 +99,7 @@ class datacalonpelangganController extends Controller
             'Nama' => 'required',
             'Foto' => 'image|file|max:2048',
             'Nomor_Handphone' => 'required',
-            'Nama_Paket' => 'required',
+            // 'Nama_Paket' => 'required',
             'Alamat_Pemasangan' => 'required',
             'Titik_Kordinat' => 'required',
         ]);
@@ -114,11 +114,11 @@ class datacalonpelangganController extends Controller
         $datacalonpelanggan->Nama = $request->Nama;
         if ($request->hasFile('Foto')) {
             // Hapus foto lama jika ada dan simpan foto baru
-            unlink("storage/" . $guru->foto);
-            $guru->foto = $request->file('Foto')->store('Foto');
+            unlink("storage/" . $datacalonpelanggan->Foto);
+            $datacalonpelanggan->Foto = $request->file('Foto')->store('Foto');
         }
         $datacalonpelanggan->Nomor_Handphone = $request->Nomor_Handphone;
-        $datacalonpelanggan->Nama_Paket = $datacapel->Nama_Paket;
+        // $datacalonpelanggan->Nama_Paket = $datacapel->Nama_Paket;
         $datacalonpelanggan->Alamat_Pemasangan = $request->Alamat_Pemasangan;
         $datacalonpelanggan->Titik_Kordinat = $request->Titik_Kordinat;
     

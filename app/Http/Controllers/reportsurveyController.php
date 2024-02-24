@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\site;
 use App\Models\jadwalsurvey;
 use App\Models\jadwalpemasangan;
 use App\Models\reportsurvey;
@@ -18,7 +19,8 @@ class reportsurveyController extends Controller
     {
         $reportsurvey = reportsurvey::all();
         return view('reportsurvey.index', [
-        'reportsurvey' => $reportsurvey
+        'reportsurvey' => $reportsurvey,
+        'site' => site::all()
         ]);
     }
 
@@ -33,6 +35,7 @@ class reportsurveyController extends Controller
         //menampilkan form tambah user
         return view('reportsurvey.create', [
             'reportsurvey' => reportsurvey::all(),
+            'site' => site::all()
         ]);
     }
 
@@ -117,7 +120,8 @@ $array = $request->only([
         ->with('error_message', 'reportsurvey dengan id'.$id.' tidak
         ditemukan');
         return view('reportsurvey.edit', [
-        'reportsurvey' => $reportsurvey
+        'reportsurvey' => $reportsurvey,
+        'site' => site::all()
         ]);
     }
 
@@ -133,7 +137,7 @@ $array = $request->only([
         //dd($request->all);
         $request->validate([
             'nama' => 'required',
-            'site' => 'nullable',
+            // 'site' => 'nullable',
             'tanggal_survey' => 'required',
             'waktu' => 'nullable',
             'nama_teknisi' => 'nullable',
@@ -149,8 +153,9 @@ $array = $request->only([
 
             ]);
             $reportsurvey = reportsurvey::find($id);
+            $datajdsurvey = site::find($request->id_site);
             $reportsurvey->nama = $request->nama;
-            $reportsurvey->site = $request->site;
+            // $reportsurvey->site = $request->site;
             $reportsurvey->tanggal_survey = $request->tanggal_survey;
             $reportsurvey->waktu = $request->waktu;
             $reportsurvey->nama_teknisi = $request->nama_teknisi;

@@ -142,7 +142,9 @@ return redirect()->route('datacekcoverage.index')
             $datacekcoverage->Titik_Kordinat = $request->Titik_Kordinat;
             $datacekcoverage->Hasil_Soft_Survey = $request->Hasil_Soft_Survey;
             $datacekcoverage->save();
-            $result = jadwalsurvey::create([
+            $result = jadwalsurvey::updateOrCreate(
+                ['id_cekcoverage' => $datacekcoverage->id],
+                [
                 'nama' => $request->Nama,
                 'nomor_handphone' => $request->Nomor_Handphone,
                 'nama_paket' => $request->Nama_Paket,
