@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\reportsurvey;
-use App\Models\datacekcoverage;
-use App\Models\jadwalsurvey;
-use App\Models\jadwalsurveyteknisi;
-use App\Models\jadwalpemasangan;
+use App\Models\Reportsurvey;
+use App\Models\Datacekcoverage;
+use App\Models\Jadwalsurvey;
+use App\Models\Jadwalsurveyteknisi;
+use App\Models\Jadwalpemasangan;
 use Illuminate\Http\Request;
 
-class jadwalsurveyController extends Controller
+class JadwalsurveyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class jadwalsurveyController extends Controller
      */
     public function index()
     {
-        $jadwalsurvey  =  jadwalsurvey::all(); 
+        $jadwalsurvey  =  Jadwalsurvey::all(); 
         return  view('jadwalsurvey.index',  [
             'jadwalsurvey'  =>  $jadwalsurvey
             ]);    
@@ -34,7 +34,7 @@ class jadwalsurveyController extends Controller
     {
         //menampilkan form tambah user
         return view('jadwalsurvey.create', [
-            'jadwalsurvey' => jadwalsurvey::all(),
+            'jadwalsurvey' => Jadwalsurvey::all(),
         ]);
     }
 
@@ -104,7 +104,7 @@ $array = $request->only([
      */
     public function edit($id)
     {
-        $jadwalsurvey = jadwalsurvey::find($id);
+        $jadwalsurvey = Jadwalsurvey::find($id);
         if (!$jadwalsurvey) return redirect()->route('jadwalsurvey.index')
         ->with('error_message', 'jadwalsurvey dengan id'.$id.' tidak
         ditemukan');
@@ -135,7 +135,7 @@ $array = $request->only([
             
 
             ]);
-            $jadwalsurvey = jadwalsurvey::find($id);
+            $jadwalsurvey = Jadwalsurvey::find($id);
             $jadwalsurvey->nama = $request->nama;
             $jadwalsurvey->nomor_handphone = $request->nomor_handphone;
             $jadwalsurvey->nama_paket = $request->nama_paket;
@@ -145,7 +145,7 @@ $array = $request->only([
             $jadwalsurvey->tanggal_survey = $request->tanggal_survey;
             $jadwalsurvey->waktu = $request->waktu;
             $jadwalsurvey->save();
-            $result = reportsurvey::create([
+            $result = Reportsurvey::create([
                 'nama' => $request->nama,
                 'nomor_handphone'=> $request->nomor_handphone,
                 'tanggal_survey'=> $request->tanggal_survey,
@@ -165,7 +165,7 @@ $array = $request->only([
     public function destroy($id)
     {
          //Menghapus distributor
-         $jadwalsurvey = jadwalsurvey::find($id);
+         $jadwalsurvey = Jadwalsurvey::find($id);
 
          // if ($id == $request->user()->id) return redirect()->route('users.index')->with('error_message', 'Anda tidak dapat menghapus diri
          // sendiri.');

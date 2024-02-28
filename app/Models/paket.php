@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class paket extends Model
+class Paket extends Model
 {
     use HasFactory;
     protected $table = 'paket';
@@ -16,6 +16,6 @@ class paket extends Model
 
     public function datacalonpelanggan()
     {
-        return $this->hasOne(datacalonpelanggan::class, 'id_paket');
+        return $this->hasOne(Datacalonpelanggan::class, 'id_paket');
     }
 }

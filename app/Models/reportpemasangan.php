@@ -6,7 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class reportpemasangan extends Model
+class Reportpemasangan extends Model
 {
     use HasFactory;
     protected $table = 'reportpemasangan';
@@ -28,7 +28,7 @@ class reportpemasangan extends Model
     ];
     
     public function fjadwalpemasangan(){
-        return $this->belongsTo(jadwalpemasangan::class, 'id_jadwalpemasangan', 'id');
+        return $this->belongsTo(Jadwalpemasangan::class, 'id_jadwalpemasangan', 'id');
         }
 
  // public function datacalonpelanggan()

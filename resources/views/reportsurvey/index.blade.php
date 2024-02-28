@@ -91,16 +91,16 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="id_site">Site</label>
-                            <select id="id_site"
-                                class="form-select @error('Site') is-invalid @enderror"
-                                name="id_site" onchange="pilihSite()">
-                                @foreach($site as $item)
-                                <option value="{{ $item->id }}">{{ $item->site }} - {{ $item->alamat_site }}
-                                </option>
+                            <label for="Site">Site</label>
+                            <select id="id_site" class="form-select @error('site') is-invalid @enderror" name="id_site" onchange="pilihSite()">
+                                @foreach($site as $st)
+                                    <option value="{{ $st->id }}" {{ ($item->id_site ?? old('id_site')) == $st->id ? 'selected' : '' }}>
+                                        {{ $st->site }} - {{ $st->alamat_site }}
+                                    </option>
                                 @endforeach
                             </select>
-                            </div>
+                            @error('site') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
                         <div class="form-group">
                             <label for="Tanggal_Survey">Tanggal_Survey</label>
                             <input type="date" class="form-control @error('Tanggal_Survey') is-invalid @enderror" name="tanggal_survey"

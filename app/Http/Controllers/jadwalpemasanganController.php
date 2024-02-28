@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\reportpemasangan;
-use App\Models\reportsurvey;
-use App\Models\jadwalsurvey;
-use App\Models\jadwalpemasangan;
+use App\Models\Reportpemasangan;
+use App\Models\Reportsurvey;
+use App\Models\Jadwalsurvey;
+use App\Models\Jadwalpemasangan;
 use Illuminate\Http\Request;
 
-class jadwalpemasanganController extends Controller
+class JadwalpemasanganController extends Controller
 {
     public function index()
     {
         //
-        $jadwalpemasangan= jadwalpemasangan::all();
+        $jadwalpemasangan= Jadwalpemasangan::all();
         // dd($nomorhandphone);
         return view('jadwalpemasangan.index', [
             'jadwalpemasangan' => $jadwalpemasangan,
-            'jadwalsurvey' => jadwalsurvey::all()
+            'jadwalsurvey' => Jadwalsurvey::all()
             
 
         ]);
@@ -27,9 +27,9 @@ class jadwalpemasanganController extends Controller
     {
         return view(
             'jadwalpemasangan.create' , [
-            'reportsurvey' => reportsurvey::all(),
-            'jadwalsurvey' => jadwalsurvey::all(),
-            'surveyjadwal' => jadwalsurvey::all()
+            'reportsurvey' => Reportsurvey::all(),
+            'jadwalsurvey' => Jadwalsurvey::all(),
+            'surveyjadwal' => Jadwalsurvey::all()
 
         ]);
     }
@@ -49,13 +49,13 @@ class jadwalpemasanganController extends Controller
     $array = $request->only([
     'nama','nomor_handphone', 'nama_paket', 'alamat_pemasangan','tanggal_pemasangan', 'waktu','titik_kordinat'
         ]);
-        jadwalpemasangan::create($array);
+        Jadwalpemasangan::create($array);
         return redirect()->route('jadwalpemasangan.index')->with('success_message', 'Berhasil menambah Detail Penjualan Baru');
     }
 
     public function edit($id)
     {
-        $jadwalpemasangan= jadwalpemasangan::find($id);
+        $jadwalpemasangan= Jadwalpemasangan::find($id);
         if (!$jadwalpemasangan) return redirect()->route('jadwalpemasangan.index')
         ->with('error_message', 'jadwalpemasangan dengan id'.$id.' tidak
         ditemukan');
@@ -81,7 +81,7 @@ class jadwalpemasanganController extends Controller
 
             ]);
             
-            $jadwalpemasangan = jadwalpemasangan::find($id);
+            $jadwalpemasangan = Jadwalpemasangan::find($id);
             $jadwalpemasangan->nama = $request->nama;
             $jadwalpemasangan->nomor_handphone = $request->nomor_handphone;
             $jadwalpemasangan->nama_paket = $request->nama_paket;
@@ -96,7 +96,7 @@ class jadwalpemasanganController extends Controller
             //     'tanggal_survey'=> $request->tanggal_survey,
             //     'id_jadwalsurvey' => $jadwalsurvey->id,
             // ]);
-            $result = reportpemasangan::create([
+            $result = Reportpemasangan::create([
                 'nama' => $request->nama,
                 'id_jadwalpemasangan' => $jadwalpemasangan->id,
             ]);
@@ -107,7 +107,7 @@ class jadwalpemasanganController extends Controller
     public function destroy($id)
     {
          //Menghapus pemasangan
-         $jadwalpemasangan = jadwalpemasangan::find($id);
+         $jadwalpemasangan = Jadwalpemasangan::find($id);
 
          // if ($id == $request->user()->id) return redirect()->route('users.index')->with('error_message', 'Anda tidak dapat menghapus diri
          // sendiri.');

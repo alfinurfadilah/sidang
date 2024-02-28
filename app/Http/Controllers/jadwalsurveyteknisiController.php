@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\jadwalsurveyteknisi;
+use App\Models\Jadwalsurveyteknisi;
 use App\Models\jadwalsurvey;
 use Illuminate\Http\Request;
 
-class jadwalsurveyteknisiController extends Controller
+class JadwalsurveyteknisiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class jadwalsurveyteknisiController extends Controller
      */
     public function index()
     {
-        $jadwalsurvey = jadwalsurvey::all();
+        $jadwalsurvey = Jadwalsurvey::all();
         return view('jadwalsurveyteknisi.index',[
             'jadwalsurvey' => $jadwalsurvey
         ]);

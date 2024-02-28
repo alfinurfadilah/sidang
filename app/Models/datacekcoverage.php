@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class datacekcoverage extends Model
+class Datacekcoverage extends Model
 {
     use HasFactory;
     protected $table = 'datacekcoverage';
@@ -24,11 +24,11 @@ class datacekcoverage extends Model
 
     public function datacalonpelanggan()
     {
-        return $this->belongsTo(datacalonpelanggan::class, 'id_calon_pelanggan');
+        return $this->belongsTo(Datacalonpelanggan::class, 'id_calon_pelanggan');
     } 
 
     public function fdatacalonpelanggan(){
-    return  $this->belongsTo(datacekcoverage::class,  'id_datacalonpelanggan',  'id');
+    return  $this->belongsTo(Dtacekcoverage::class,  'id_datacalonpelanggan',  'id');
     }
 
 }

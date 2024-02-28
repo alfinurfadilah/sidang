@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('nomor_handphone');
-            $table->string('tanggal_akstivasi');
+            $table->string('tanggal_aktivasi');
             $table->string('user_PPOE');
             $table->string('password_PPOE');
             $table->datetime('sn_ONT');

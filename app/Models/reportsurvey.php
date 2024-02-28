@@ -6,7 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class reportsurvey extends Model
+class Reportsurvey extends Model
 {
     use HasFactory;
     protected $table = 'reportsurvey';
@@ -30,8 +30,12 @@ class reportsurvey extends Model
     ];
     
     public function fjadwalsurvey(){
-        return $this->belongsTo(jadwalsurvey::class, 'id_jadwalsurvey', 'id');
+        return $this->belongsTo(Jadwalsurvey::class, 'id_jadwalsurvey', 'id');
         }
+
+        public function fsite(){
+            return  $this->belongsTo(Site::class,  'id_site',  'id');
+            }
 
  // public function datacalonpelanggan()
     // {

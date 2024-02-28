@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\site;
+use App\Models\Site;
 use App\Models\reportsurvey;
 use Illuminate\Http\Request;
 
-class siteController extends Controller
+class SiteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class siteController extends Controller
      */
     public function index()
     {
-        $site = site::all();
+        $site = Site::all();
         return view('site.index', [
         'site' => $site
         ]);
@@ -29,7 +29,7 @@ class siteController extends Controller
     public function create()
     {
         return view('site.create', [
-            'site' => site::all(),
+            'site' => Site::all(),
         ]);
     }
 
@@ -57,7 +57,7 @@ class siteController extends Controller
 
         // $paket = paket::create($array);
         // dd($request->all());
-        site::create([
+        Site::create([
         'site' => $request->site,
         'alamat_site' => $request->alamat_site,
         ]);
@@ -86,7 +86,7 @@ class siteController extends Controller
      */
     public function edit($id)
     {
-        $site = site::find($id);
+        $site = Site::find($id);
         if (!$site) return redirect()->route('site.index')
         ->with('error_message', 'site dengan id'.$id.' tidak ditemukan');
         return view('site.edit', [
@@ -108,7 +108,7 @@ class siteController extends Controller
             'alamat_site' => 'required',
 
             ]);
-            $site = site::find($id);
+            $site = Site::find($id);
             $site->site = $request->site;
             $site->alamat_site = $request->alamat_site;
             $site->save();
@@ -124,7 +124,7 @@ class siteController extends Controller
      */
     public function destroy($id)
     {
-        $site = site::find($id);
+        $site = Site::find($id);
         if ($site) $site->delete();
         return redirect()->route('site.index')->with('success_message', 'Berhasil menghapus site');
     }

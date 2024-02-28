@@ -35,7 +35,7 @@
                                 <td class="center-heading">{{$key+1}}</td>
                                 <td>{{$pk->Nama_Paket}}</td>
                                 <td>Rp {{number_format($pk->Harga_Paket, 0, ',', '.')}}</td>
-                                <td>
+                                <td                                              class="center-heading">
                                     <button class="btn btn-info btn-sm" data-bs-toggle="modal"
                                         data-bs-target="#staticBackdrop3{{$pk->id}}" data-id="{{$pk->id}}">
                                         <i class="fa fa-pen"></i> Edit

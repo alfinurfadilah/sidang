@@ -36,12 +36,15 @@
 
 <body>
 
+
+
     <div>
         <h1 class="m-0 text-dark"><mark>Dashboard</mark></h1>
     </div>
     @stop
 
     @section('content')
+    
     <div class="row">
         <div class="col-lg-3 col-6">
             <!-- small box -->
