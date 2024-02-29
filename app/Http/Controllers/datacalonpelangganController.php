@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\paket;
-use App\Models\datacekcoverage;
-use App\Models\datacalonpelanggan;
+use App\Models\Paket;
+use App\Models\Datacekcoverage;
+use App\Models\Datacalonpelanggan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class datacalonpelangganController extends Controller
+class DatacalonpelangganController extends Controller
 {
     public function index()
     {
         //menampilkan distributor
-        $datacalonpelanggan = datacalonpelanggan::all();
+        $datacalonpelanggan = Datacalonpelanggan::all();
         return view('datacalonpelanggan.index', [
             'datacalonpelanggan' => $datacalonpelanggan,
-            'paket' => paket::all()
+            'paket' => Paket::all()
         ]);
     }
 
@@ -24,8 +24,8 @@ class datacalonpelangganController extends Controller
     {
         //menampilkan form tambah user
         return view('datacalonpelanggan.create', [
-            'datacalonpelanggan' => datacalonpelanggan::all(),
-            'paket' => paket::all()
+            'datacalonpelanggan' => Patacalonpelanggan::all(),
+            'paket' => Paket::all()
         ]);
     }
 
@@ -61,10 +61,10 @@ class datacalonpelangganController extends Controller
     $array['Foto'] = $request->file('Foto')->store('Foto');
     
 
-    $datacalonpelanggan = datacalonpelanggan::create($array);
+    $datacalonpelanggan = Datacalonpelanggan::create($array);
     // dd($request->all());
     $datacapel = paket::find($request->id_paket);
-    datacekcoverage::create([
+    Datacekcoverage::create([
     'Nama' => $request->Nama,
     'Nomor_Handphone' => $request->Nomor_Handphone,
     'Nama_Paket' => $datacapel->Nama_Paket,
@@ -81,14 +81,14 @@ class datacalonpelangganController extends Controller
     public function edit($id)
     {
         // Menampilkan Form Edit
-        $datacalonpelanggan = datacalonpelanggan::find($id);
+        $datacalonpelanggan = Datacalonpelanggan::find($id);
         if (!$datacalonpelanggan) {
             return redirect()->route('datacalonpelanggan.index')
                 ->with('error_message', 'Data Calon Pelanggan dengan ID ' . $id . ' tidak ditemukan');
         }
         return view('datacalonpelanggan.edit', [
             'datacalonpelanggan' => $datacalonpelanggan,
-            'paket' => paket::all(),
+            'paket' => Paket::all(),
         ]);
     }
     
@@ -104,8 +104,8 @@ class datacalonpelangganController extends Controller
             'Titik_Kordinat' => 'required',
         ]);
     
-        $datacalonpelanggan = datacalonpelanggan::find($id);
-        $datacapel = paket::find($request->id_paket);
+        $datacalonpelanggan = Datacalonpelanggan::find($id);
+        $datacapel = Paket::find($request->id_paket);
         if (!$datacalonpelanggan) {
             return redirect()->route('datacalonpelanggan.index')
                 ->with('error_message', 'Data Calon Pelanggan dengan ID ' . $id . ' tidak ditemukan');
@@ -132,7 +132,7 @@ class datacalonpelangganController extends Controller
     public function destroy($id)
     {
         //Menghapus distributor
-        $datacalonpelanggan = datacalonpelanggan::find($id);
+        $datacalonpelanggan = Datacalonpelanggan::find($id);
         if ($datacalonpelanggan) $datacalonpelanggan->delete();
         return redirect()->route('datacalonpelanggan.index')->with('success_message', 'Berhasil menghapus datacalonpelanggan');
     }

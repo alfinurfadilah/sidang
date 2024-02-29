@@ -40,6 +40,7 @@
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
+
         </div>
 
         {{-- Password field --}}
@@ -58,7 +59,8 @@
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
-        </div>
+        </div> 
+
 
         {{-- Login field --}}
         <div class="row">

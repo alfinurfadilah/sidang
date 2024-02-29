@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\jadwalsurvey;
-use App\Models\datacalonpelanggan;
-use App\Models\datacekcoverage;
+use App\Models\Jadwalsurvey;
+use App\Models\Datacalonpelanggan;
+use App\Models\Datacekcoverage;
 
 use Illuminate\Http\Request;
 
-class datacekcoverageController extends Controller
+class DatacekcoverageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class datacekcoverageController extends Controller
      */
     public function index()
     {
-        $datacekcoverage  =  datacekcoverage::all();   
+        $datacekcoverage  =  Datacekcoverage::all();   
         // dd($datacekcoverage);
         return  view('datacekcoverage.index',  [
             'datacekcoverage'  =>  $datacekcoverage
@@ -34,7 +34,7 @@ class datacekcoverageController extends Controller
     {
         return view(
             'datacekcoverage.create',[
-            'datacekcoverage' => datacekcoverage::all(),
+            'datacekcoverage' => Datacekcoverage::all(),
             ]);
     }
 
@@ -101,7 +101,7 @@ return redirect()->route('datacekcoverage.index')
      */
     public function edit($id)
     {
-        $datacekcoverage = datacekcoverage::find($id);
+        $datacekcoverage = Datacekcoverage::find($id);
         if (!$datacekcoverage) return redirect()->route('datacekcoverage.index')
         ->with('error_message', 'datacekcoverage dengan id'.$id.' tidak
         ditemukan');
@@ -134,7 +134,7 @@ return redirect()->route('datacekcoverage.index')
             
 
             ]);
-            $datacekcoverage = datacekcoverage::find($id);
+            $datacekcoverage = Datacekcoverage::find($id);
             $datacekcoverage->Nama = $request->Nama;
             $datacekcoverage->Nomor_Handphone = $request->Nomor_Handphone;
             $datacekcoverage->Nama_Paket = $request->Nama_Paket;
@@ -142,7 +142,7 @@ return redirect()->route('datacekcoverage.index')
             $datacekcoverage->Titik_Kordinat = $request->Titik_Kordinat;
             $datacekcoverage->Hasil_Soft_Survey = $request->Hasil_Soft_Survey;
             $datacekcoverage->save();
-            $result = jadwalsurvey::updateOrCreate(
+            $result = Jadwalsurvey::updateOrCreate(
                 ['id_cekcoverage' => $datacekcoverage->id],
                 [
                 'nama' => $request->Nama,

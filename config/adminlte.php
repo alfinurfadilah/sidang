@@ -405,6 +405,12 @@ return [
             'icon' => 'fa fa-user-circle',
         ],
 
+        // [
+        //     'text' => 'Login Mikrotik',
+        //     'url'  => '/loginmikrotik/index',
+        //     'icon' => 'fa fa-user-circle',
+        // ],
+
         [
             'text' => 'paket',
             'url'  => '/paket',
@@ -503,6 +509,12 @@ return [
             'text'       => 'Report Pemasangan',
             'icon_color' => 'cyan',
             'url'        => '/reportpemasangan',
+            // 'can' => 'Teknisi-only',
+        ],
+        [
+            'text'       => 'PPPoe User',
+            'icon_color' => 'cyan',
+            'url'        => '/pppoe/index',
             // 'can' => 'Teknisi-only',
         ],
 

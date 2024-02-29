@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\site;
-use App\Models\jadwalsurvey;
-use App\Models\jadwalpemasangan;
-use App\Models\reportsurvey;
+use App\Models\Site;
+use App\Models\Jadwalsurvey;
+use App\Models\Jadwalpemasangan;
+use App\Models\Reportsurvey;
 use Illuminate\Http\Request;
 
-class reportsurveyController extends Controller
+class ReportsurveyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class reportsurveyController extends Controller
         $reportsurvey = reportsurvey::all();
         return view('reportsurvey.index', [
         'reportsurvey' => $reportsurvey,
-        'site' => site::all()
+        'site' => Site::all()
         ]);
     }
 
@@ -89,7 +89,7 @@ $array = $request->only([
 
    ]);
 //    dd($request->all()); 
-   $reportsurvey = reportsurvey::create($array);
+   $reportsurvey = Reportsurvey::create($array);
    //return redirect()->route('reportsurvey.index')->with('success_message', 'Berhasil menambah reportsurvey baru');
 }
 
@@ -115,13 +115,13 @@ $array = $request->only([
      */
     public function edit($id)
     {
-        $reportsurvey = reportsurvey::find($id);
+        $reportsurvey = Reportsurvey::find($id);
         if (!$reportsurvey) return redirect()->route('reportsurvey.index')
         ->with('error_message', 'reportsurvey dengan id'.$id.' tidak
         ditemukan');
         return view('reportsurvey.edit', [
         'reportsurvey' => $reportsurvey,
-        'site' => site::all()
+        'site' => Site::all()
         ]);
     }
 
@@ -134,11 +134,11 @@ $array = $request->only([
      */
     public function update(Request $request, $id)
     {
-        //dd($request->all);
+        // dd($request->all);
         $request->validate([
             'nama' => 'required',
             // 'site' => 'nullable',
-            'tanggal_survey' => 'required',
+            'tanggal_survey' => 'nullable',
             'waktu' => 'nullable',
             'nama_teknisi' => 'nullable',
             'hard_survey' => 'nullable',
@@ -152,8 +152,12 @@ $array = $request->only([
             
 
             ]);
-            $reportsurvey = reportsurvey::find($id);
-            $datajdsurvey = site::find($request->id_site);
+            $reportsurvey = Reportsurvey::find($id);
+            $datareport = Site::find($request->id_site);
+            if (!$reportsurvey) {
+                return redirect()->route('reportsurvey.index')
+                    ->with('error_message', 'Data Calon Pelanggan dengan ID ' . $id . ' tidak ditemukan');
+            }
             $reportsurvey->nama = $request->nama;
             // $reportsurvey->site = $request->site;
             $reportsurvey->tanggal_survey = $request->tanggal_survey;
@@ -169,7 +173,7 @@ $array = $request->only([
             $reportsurvey->status = $request->status;
             $reportsurvey->save();
             // dd($reportsurvey);
-            $result = jadwalpemasangan::create([
+            $result = Jadwalpemasangan::create([
                 'nama' => $request->nama,
                 'id_reportsurvey' => $reportsurvey->id,
             ]);
@@ -186,7 +190,7 @@ $array = $request->only([
     public function destroy($id)
     {
         //Menghapus distributor
-        $reportsurvey = reportsurvey::find($id);
+        $reportsurvey = Reportsurvey::find($id);
 
         // if ($id == $request->user()->id) return redirect()->route('users.index')->with('error_message', 'Anda tidak dapat menghapus diri
         // sendiri.');

@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\jadwalpemasangan;
-use App\Models\reportpemasangan;
+use App\Models\Jadwalpemasangan;
+use App\Models\Reportpemasangan;
 use Illuminate\Http\Request;
 
-class reportpemasanganController extends Controller
+class ReportpemasanganController extends Controller
 {
     public function index()
     {
         //
-        $reportpemasangan= reportpemasangan::all();
+        $reportpemasangan= Reportpemasangan::all();
         return view('reportpemasangan.index', [
             'reportpemasangan' => $reportpemasangan,
-            'jadwalpemasangan' => jadwalpemasangan::all()
+            'jadwalpemasangan' => Jadwalpemasangan::all()
             
 
         ]);
@@ -28,7 +28,7 @@ class reportpemasanganController extends Controller
     {
         //menampilkan form tambah user
         return view('reportpemasangan.create', [
-            'reportpemasangan' => reportpemasangan::all(),
+            'reportpemasangan' => Reportpemasangan::all(),
         ]);
     }
 
@@ -89,7 +89,7 @@ $array = $request->only([
 
    ]);
 //    dd($request->all()); 
-   $reportpemasangan = reportpemasangan::create($array);
+   $reportpemasangan = Reportpemasangan::create($array);
    //return redirect()->route('reportsurvey.index')->with('success_message', 'Berhasil menambah reportsurvey baru');
 }
 
@@ -115,7 +115,7 @@ $array = $request->only([
      */
     public function edit($id)
     {
-        $reportpemasangan = reportpemasangan::find($id);
+        $reportpemasangan = Reportpemasangan::find($id);
         if (!$reportpemasangan) return redirect()->route('reportpemasangan.index')
         ->with('error_message', 'reportpemasangan dengan id'.$id.' tidak
         ditemukan');
@@ -154,7 +154,7 @@ $array = $request->only([
             
 
             ]);
-            $reportpemasangan = reportpemasangan::find($id);
+            $reportpemasangan = Reportpemasangan::find($id);
             $reportpemasangan->nama = $request->nama;
             $reportpemasangan->site = $request->site;
             $reportpemasangan->tanggal_pemasangan = $request->tanggal_pemasangan;
@@ -190,7 +190,7 @@ $array = $request->only([
     public function destroy($id)
     {
         //Menghapus distributor
-        $reportpemasangan = reportpemasangan::find($id);
+        $reportpemasangan = Reportpemasangan::find($id);
 
         // if ($id == $request->user()->id) return redirect()->route('users.index')->with('error_message', 'Anda tidak dapat menghapus diri
         // sendiri.');

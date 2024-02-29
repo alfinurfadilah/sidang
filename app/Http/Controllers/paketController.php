@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\paket;
-use App\Models\datacalonpelanggan;
+use App\Models\Paket;
+use App\Models\Datacalonpelanggan;
 use Illuminate\Http\Request;
 
-class paketController extends Controller
+class PaketController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class paketController extends Controller
      */
     public function index()
     {
-        $paket = paket::all();
+        $paket = Paket::all();
         return view('paket.index', [
         'paket' => $paket
         ]);
@@ -28,7 +28,7 @@ class paketController extends Controller
     public function create()
     {
         return view('paket.create', [
-            'paket' => paket::all(),
+            'paket' => Paket::all(),
         ]);
     }
 
@@ -56,7 +56,7 @@ class paketController extends Controller
 
         // $paket = paket::create($array);
         // dd($request->all());
-        paket::create([
+        Paket::create([
         'Nama_Paket' => $request->Nama_Paket,
         'Harga_Paket' => $request->Harga_Paket,
         ]);
@@ -85,7 +85,7 @@ class paketController extends Controller
      */
     public function edit($id)
     {
-        $paket = paket::find($id);
+        $paket = Paket::find($id);
         if (!$paket) return redirect()->route('paket.index')
         ->with('error_message', 'paket dengan id'.$id.' tidak ditemukan');
         return view('paket.edit', [
@@ -107,7 +107,7 @@ class paketController extends Controller
             'Harga_Paket' => 'required',
 
             ]);
-            $paket = paket::find($id);
+            $paket = Paket::find($id);
             $paket->Nama_Paket = $request->Nama_Paket;
             $paket->Harga_Paket = $request->Harga_Paket;
             $paket->save();
@@ -123,7 +123,7 @@ class paketController extends Controller
      */
     public function destroy($id)
     {
-        $paket = paket::find($id);
+        $paket = Paket::find($id);
         if ($paket) $paket->delete();
         return redirect()->route('paket.index')->with('success_message', 'Berhasil menghapus paket');
     }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class datacalonpelanggan extends Model
+class Datacalonpelanggan extends Model
 {
     
     use HasFactory;
@@ -23,12 +23,12 @@ class datacalonpelanggan extends Model
 
     public function datacekcoverage()
     {
-        return $this->hasOne(datacekcoverage::class, 'id_calon_pelanggan');
+        return $this->hasOne(Datacekcoverage::class, 'id_calon_pelanggan');
     }
     
 
     public function fpaket(){
-    return  $this->belongsTo(paket::class,  'id_paket',  'id');
+    return  $this->belongsTo(Paket::class,  'id_paket',  'id');
     }
 
 }

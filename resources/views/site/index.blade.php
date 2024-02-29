@@ -35,13 +35,15 @@
                                 <td>{{$key+1}}</td>
                                 <td>{{$st->site}}</td>
                                 <td>{{$st->alamat_site}}</td>
-                                <td>
-                                <button class="btn btn-xs mb-2 custom-btn-edit" data-bs-toggle="modal" data-bs-target="#staticBackdrop3{{$st->id}}" data-id="{{$st->id}}">
-                                <i class="fa fa-pen" aria-label="Edit"></i></button>
-                                
-                                <a href="{{route('datacalonpelanggan.destroy', $st)}}" onclick="notificationBeforeDelete(event, this)" class="btn btn-xs mb-2 custom-btn-delete">
-                                <i class="fa fa-trash" aria-label="Delete"></i></a>
-                                </td>
+                                <td class="center-heading">
+                                <button class="btn btn-info btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop3{{$st->id}}" data-id="{{$st->id}}">
+                                        <i class="fa fa-pen"></i> Edit
+                                    </button>
+                                    <a href="{{route('site.destroy', $st)}}" onclick="notificationBeforeDelete(event, this)"
+                                        class="btn btn-danger btn-sm">
+                                        <i class="fa fa-trash"></i> Delete
+                                    </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -139,10 +141,10 @@
         old('alamat_site')}}">
                             @error('alamat_site') <span class="textdanger">{{$message}}</span> @enderror
                         </div>
-                    <div class="card-footer">
-    <button type="submit" class="btn btn- btn-save"><i class="fas fa-save"> Simpan </i></button>
-    <a href="{{ route('datacalonpelanggan.index') }}" class="btn btn-secondary btn-cancel"><i class="fa fa-times-circle"> Batal </i></a>
-</div>
+                        <div class="card-footer">
+                        <button type="submit" class="btn btn- btn-save"><i class="fas fa-save"> Simpan </i></button>
+                        <a href="{{ route('site.index') }}" class="btn btn-secondary btn-cancel"><i class="fa fa-times-circle"> Batal </i></a>
+                    </div>
                         
                         </a>
                     </div>

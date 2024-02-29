@@ -25,7 +25,7 @@
                 <div class="table-responsive">
                     <table class="table table-hover table-striped" id="example2">
                         <thead class="center-heading">
-                            <tr class="bg-primary text-white">
+                            <tr class="bg-info text-white">
                             <th>No.</th>
                             <th>Nama</th>
                             <th>Foto KTP</th>
