@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->enum('divisi', ['Admin', 'NOC', 'Teknisi']);
             $table->string('password');
+            $table->enum('divisi', ['Admin', 'NOC', 'Teknisi']);
             $table->boolean('aktif')->default(true);
             $table->rememberToken();
             $table->timestamps();

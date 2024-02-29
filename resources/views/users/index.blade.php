@@ -100,12 +100,9 @@
                                             <label for="divisi">Divisi</label>
                                             <select class="form-control @error('divisi') isinvalid @enderror"
                                                 id="divisi" name="divisi">
-                                                <option value="Admin" @if(old('divisi')=='Admin' )selected @endif>Admin
-                                                </option>
-                                                <option value="Noc" @if(old('divisi')=='Noc' )selected @endif>Noc
-                                                </option>
-                                                <option value="Teknisi" @if(old('divisi')=='Teknisi' )selected @endif>
-                                                    Teknisi</option>
+                                                <option value="Admin" @if(old('divisi')=='Admin' )selected @endif>Admin</option>
+                                                <option value="Noc" @if(old('divisi')=='Noc' )selected @endif>Noc</option>
+                                                <option value="Teknisi" @if(old('divisi')=='Teknisi' )selected @endif>Teknisi</option>
                                             </select>
                                             @error('divisi') <span class="textdanger">{{$message}}</span> @enderror
                                         </div>
