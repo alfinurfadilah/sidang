@@ -418,8 +418,14 @@ return [
         ],
 
         [
-            'text' => 'site',
+            'text' => 'Site',
             'url'  => '/site',
+            'icon' => 'fa fa-user-circle',
+        ],
+
+        [
+            'text' => 'Teknisi',
+            'url'  => '/teknisi',
             'icon' => 'fa fa-user-circle',
         ],
 

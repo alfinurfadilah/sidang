@@ -42,8 +42,7 @@
                             <td class="center-heading">{{$key+1}}</td>
                             <td>{{$item->Nama}}</td>
                             <td class="center-image">
-                                <img src="storage/{{$item->Foto}}"
-                                    alt="{{$item->Foto}} tidak tampil" class="img-thumbnail" width="50%">
+                                <img src="{{ asset('storage/Foto/'. $item->Foto)}}" alt="{{$item->Foto}} tidak tampil" class="img-thumbnail" width="50%">
                             </td>
                             <td>{{$item->Nomor_Handphone}}</td>
                             <td>{{$item->fpaket->Nama_Paket}}</td>
@@ -56,7 +55,7 @@
                                         <i class="fa fa-pen"></i> Edit
                                     </button>
                                     <div class="button-space"></div> <!-- Spacer between buttons -->
-                                    <a href="{{route('paket.destroy', $item)}}" onclick="notificationBeforeDelete(event, this)"
+                                    <a href="{{route('datacalonpelanggan.destroy', $item)}}" onclick="notificationBeforeDelete(event, this)"
                                         class="btn btn-danger btn-sm">
                                         <i class="fa fa-trash"></i> Delete
                                     </a>
@@ -70,6 +69,7 @@
         </div>
     </div>
 </div>
+
 <!-- MODAL -->
 <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdrop2" aria-hidden="true">
@@ -96,7 +96,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="Foto" class="input-group">Foto KTP</label>
-                                <img src="/img/no-image.png" class="img-thumbnail d-block" name="tampil" alt="..."
+                               <img src="/img/no-image.png" class="img-thumbnail d-block" name="tampil" alt="..."
                                     width="15%" id="tampil">
                                 <input class="form-control @error('Foto') is-invalid @enderror" type="file" id="Foto"
                                     name="Foto">
@@ -114,6 +114,15 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="selected_namapaket">Nama_Paket</label>
+                                <div class="input-group">
+                                    <input type="hidden" name="id_paket" id="selected_namapaket_id" value="{{ old('id_paket') }}">
+                                    <input type="text" class="form-control border @error('id_paket') is-invalid @enderror" placeholder="Nama_Paket" id="selected_namapaket" name="selected_namapaket" value="{{ old('selected_namapaket') }}" aria-label="users" aria-describedby="cari" readonly>
+                                    <button type="button" class="btn btn-warning" data-action="create"><i class="fa fa-search"> Cari Data Paket</i></button>
+                                </div>
+                            </div>
+
+                            <!-- <div class="form-group">
                             <label for="id_paket">Nama_Paket</label>
                             <select id="id_paket"
                                 class="form-select @error('Nama_Paket') is-invalid @enderror"
@@ -123,7 +132,7 @@
                                 </option>
                                 @endforeach
                             </select>
-                            </div>
+                            </div> -->
 
                             <div class="form-group">
                                 <label for="Alamat_Pemasangan">Alamat_Pemasangan</label>
@@ -159,6 +168,7 @@
         </div>
     </div>
 </div>
+
 <!-- MODAL EDIT -->
 @foreach($datacalonpelanggan as $key => $item)
     <div class="modal fade" id="staticBackdrop3{{$item->id}}" data-bs-backdrop="static" data-bs-keyboard="false"
@@ -187,7 +197,7 @@
                             <label for="Foto" class="form-label">Foto</label>
                             @if($item->Foto)
                             <!-- Jika ada foto sebelumnya -->
-                            <img src="storage/{{$item->Foto}}" class="img-preview img-fluid mb-3 col-sm-5 d-block" style="width: 100px;">
+                            <img src="storage/Foto/{{$item->Foto}}" class="img-preview img-fluid mb-3 col-sm-5 d-block" style="width: 100px;">
                             @else
                             <!-- Jika tidak ada foto sebelumnya -->
                             <img src="/img/no-image.png" class="img-preview img-fluid mb-3 col-sm-5 d-block" style="width: 100px;">
@@ -203,15 +213,12 @@
                             @error('Nomor_Handphone') <span class="textdanger">{{$message}}</span> @enderror
                         </div>
                         <div class="form-group">
-                            <label for="Nama_Paket">Nama_Paket</label>
-                            <select id="id_paket" class="form-select @error('Nama_Paket') is-invalid @enderror" name="id_paket" onchange="pilihPaket()">
-                                @foreach($paket as $p)
-                                    <option value="{{ $p->id }}" {{ ($item->id_paket ?? old('id_paket')) == $p->id ? 'selected' : '' }}>
-                                        {{ $p->Nama_Paket }} - {{ $p->Harga_Paket }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('Nama_Paket') <span class="text-danger">{{ $message }}</span> @enderror
+                            <label for="selected_namapaket">Nama_Paket</label>
+                                <div class="input-group">
+                                <input type="hidden" name="id_paket" id="selected_namapaket_edit_{{$item->id}}" value="{{$item->fpaket->id ?? old('id_paket')}}">
+                                <input type="text" class="form-control border @error('id_paket') is-invalid @enderror" placeholder="Nama_Paket" id="selected_namapaket_{{$item->id}}" name="selected_namapaket" value="{{$item->fpaket->Nama_Paket?? old('selected_namapaket')}}" aria-describedby="cari">
+                                <button type="button" class="btn btn-warning" data-action="edit" data-paket-id="{{ $item->id }}">Cari Data Paket</button>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="Alamat_Pemasangan">Alamat_Pemasangan</label>
@@ -235,6 +242,49 @@
     </div>
 </div>
 @endforeach
+
+<!-- Modal -->
+<div class="modal fade" id="paketModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable p-5">
+        <div class="modal-content">
+        <div class="modal-header bg-info">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Pencarian data paket </h1>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closePaketModal()"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+            <table class="table table-hover table-bordered table-stripped" id="example1">
+                    <thead>
+                        <tr>
+                        <tr class="bg-info text-white">
+                            <th>No.</th>
+                            <th>Nama_Paket</th>
+                            <th>Harga_Paket</th>
+                            <th>Opsi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($paket as $key => $pk)
+                        <tr>
+                            <td>{{ $key + 1 }}</td>
+                            <td>{{$pk->Nama_Paket}}</td>
+                            <td>{{$pk->Harga_Paket}}</td>
+                            <td>
+                            <button type="button" class="btn btn-
+                                btn-xs" onclick="pilih('{{$pk->id}}', '{{$pk->Nama_Paket}}', '{{$pk->Harga_Paket}}',)" data-bs-dismiss="modal">
+                                    Pilih
+                                </button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+
 @stop
 @push('js')
 
@@ -373,30 +423,15 @@
     @csrf
 </form>
 <script>
-    $(document).ready(function() {
+$('#example2').DataTable({
+    "responsive": true,
+});
+
+$(document).ready(function() {
         $('#example1').DataTable({
             "responsive": true
         });
     });
-
-    function pilihPaket(id, Nama_Paket, Harga_Paket) {
-        var idPaketElement = document.getElementById('id_paket');
-        var nomorHandphoneElement = document.getElementById('Nama_Paket');
-
-        // Periksa apakah elemen ditemukan sebelum mengubah nilainya
-        if (idPaketElement && namaPaketElement) {
-            idPaketElement.value = id;
-            namaPaketElement.value = Nama_Paket;
-        } else {
-            console.error("Elemen tidak ditemukan.");
-        }
-    }
-    
-</script>
-<script>
-$('#example2').DataTable({
-    "responsive": true,
-});
 
 function notificationBeforeDelete(event, el) {
     event.preventDefault();
@@ -417,6 +452,60 @@ function readURL(input) {
 }
 $("#Foto").change(function() {
     readURL(this);
+});
+
+function closePaketModal() {
+        $('#paketModal').modal('hide');
+    }
+
+    function pilih(paketId, namapaket, hargapaket) {
+    var action = $('#paketModal').data('action');
+
+    if (action === 'edit') {
+        // Set input values in the edit modal form
+        $('#selected_namapaket_edit_' + $('#paketModal').data('paket-id')).val(paketId);
+        $('#selected_namapaket_' + $('#paketModal').data('paket-id')).val(namapaket);
+    } else {
+        // Set input values in the create modal form
+        $('#selected_namapaket_id').val(paketId);
+        $('#selected_namapaket').val(namapaket);
+    }
+
+    // Hide the modal after selecting a package
+    $('#paketModal').modal('hide');
+}
+
+$(document).ready(function() {
+    // Fungsi untuk membuka modal pemilihan pengguna dengan tindakan (edit atau create)
+    function openPaketModal(action, paketId = null) {
+        $('#paketModal').data('action', action);
+        $('#paketModal').data('paket-id', paketId); // Simpan ID karyawan untuk mode edit
+        $('#paketModal').modal('show');
+    }
+
+    // Event handler untuk tombol "Cari Data Users" pada mode edit
+    $('[data-action="edit"]').on('click', function() {
+        // Dapatkan ID karyawan dari atribut data-karyawan-id pada tombol yang diklik
+        var paketId = $(this).data('paket-id');
+        // Panggil fungsi openUserModal dengan tindakan edit dan ID karyawan
+        openPaketModal('edit', paketId);
+    });
+
+    // Event handler untuk tombol "Cari Data Users" pada mode create
+    $('[data-action="create"]').on('click', function() {
+        // Panggil fungsi openUserModal dengan tindakan create
+        openPaketModal('create');
+    });
+
+    // Fungsi untuk menangani pemilihan pengguna saat menggunakan tombol "pilih"
+    $('[data-action="pilih"]').on('click', function() {
+        var paketId = $(this).data('paket-id');
+        var namapaket = $(this).data('namapaket');
+        var hargapaket = $(this).data('hargapaket');
+        
+        // Panggil fungsi pilih dengan data pengguna yang dipilih
+        pilih(paketId, namapaket, hargapaket);
+    });
 });
 </script>
 @endpush

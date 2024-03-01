@@ -1,23 +1,29 @@
+
 @extends('adminlte::page')
-
-@section('title', 'List User')
+@section('title', 'Data User')
 @section('content_header')
-<h1 class="m-0 text-dark"><mark>List User</mark></h1> @stop
+<div style="text-align:center;">
+    <h1 class="m-0 text-dark">Data User</h1>
+</div>
+@stop
 @section('content')
-<div class="row g-10">
-    <div class="col-12">
-        <div class="card mt-5">
+<style>
+   
+    .center-heading {
+        text-align: center;
+    }
+</style>
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card card-primary">
             <div class="card-body">
-
-                <!-- <a href="{{route('users.create')}}" class="btn btn btn-primary mb-2">
-                <b aria-hidden="true"> Tambah </b> -->
-                <button class="btn btn btn-info mb-2" aria-hidden="true" data-toggle="modal"
-                    data-target="#staticBackdrop2" class="fa fa-plus mb-2"> Create New Data </button>
-
-                </a>
-                <table class="table	align-middle table-row-dashed vs-6 gy-5 " id="example2">
-                    <thead>
-                        <tr class="table-info">
+                <button class="btn btn-primary mb-2" data-toggle="modal" data-target="#staticBackdrop2">
+                    Create New Data
+                </button>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped" id="example2">
+                        <thead class="center-heading">
+                            <tr class="bg-info text-white">
                             <th>No.</th>
                             <th>Nama</th>
                             <th>Email</th>
@@ -41,11 +47,13 @@
                                 <a href="{{route('users.destroy', $user)}}"
                                     onclick="notificationBeforeDelete(event, this)" class="btn btn-warning btn-xs"> <i
                                         class="fa fa-trash"> Delete </i></a>
-                                </a>
-                            </td>
-                        </tr> @endforeach
-                    </tbody>
-                </table>
+                                        </a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -100,12 +108,9 @@
                                             <label for="divisi">Divisi</label>
                                             <select class="form-control @error('divisi') isinvalid @enderror"
                                                 id="divisi" name="divisi">
-                                                <option value="Admin" @if(old('divisi')=='Admin' )selected @endif>Admin
-                                                </option>
-                                                <option value="Noc" @if(old('divisi')=='Noc' )selected @endif>Noc
-                                                </option>
-                                                <option value="Teknisi" @if(old('divisi')=='Teknisi' )selected @endif>
-                                                    Teknisi</option>
+                                                <option value="Admin" @if(old('divisi')=='Admin' )selected @endif>Admin</option>
+                                                <option value="Noc" @if(old('divisi')=='Noc' )selected @endif>Noc</option>
+                                                <option value="Teknisi" @if(old('divisi')=='Teknisi' )selected @endif>Teknisi</option>
                                             </select>
                                             @error('divisi') <span class="textdanger">{{$message}}</span> @enderror
                                         </div>

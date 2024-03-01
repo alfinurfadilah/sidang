@@ -13,16 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('teknisi', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->enum('divisi', ['Admin', 'NOC', 'Teknisi']);
-            $table->boolean('aktif')->default(true);
-            $table->rememberToken();
+            $table->string('Nama_Teknisi');
+            // $table->string('Site');
+            $table->unsignedBigInteger('id_site')->nullable();
+            $table->foreign('id_site')->references('id')->on('site')->onDelete('cascade');
             $table->timestamps();
+
         });
     }
 
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('teknisi');
     }
 };

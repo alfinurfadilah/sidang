@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\users;
+use App\Models\User;
 use App\Models\Paket;
 use App\Models\Site;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -18,12 +18,32 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        \App\Models\User::factory()->create([
+        \App\Models\User::create([
             'name' => 'admin',
             'email' => 'admin@gmail.com',
+            'password' => bcrypt('12345678'),
             'divisi' => 'Admin',
-            // 'Password' => '12345678',
-            // 'aktif' => 'aktif',
+            'aktif' => '1',
+
+            
+        ]);
+
+        \App\Models\User::create([
+            'name' => 'noc',
+            'email' => 'noc@gmail.com',
+            'password' => bcrypt('12345678'),
+            'divisi' => 'Noc',
+            'aktif' => '1',
+
+            
+        ]);
+
+        \App\Models\User::create([
+            'name' => 'teknisi',
+            'email' => 'teknisi@gmail.com',
+            'password' => bcrypt('12345678'),
+            'divisi' => 'Teknisi',
+            'aktif' => '1',
 
             
         ]);
@@ -49,6 +69,14 @@ class DatabaseSeeder extends Seeder
         \App\Models\Site::create([
             'site' => 'Site Gentar',
             'alamat_site' => 'blablabla',
+
+            
+        ]);
+
+        
+        \App\Models\Site::create([
+            'site' => 'Site Rangmul',
+            'alamat_site' => 'blebleble',
 
             
         ]);
