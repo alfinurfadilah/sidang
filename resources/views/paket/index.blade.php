@@ -108,7 +108,7 @@
     </div>
 </div>
 </div>
-<!-- MODAL EDIT -->
+
 <!-- MODAL EDIT -->
 @foreach($paket as $key => $pk)
     <div class="modal fade" id="staticBackdrop3{{$pk->id}}" data-bs-backdrop="static" data-bs-keyboard="false"
@@ -321,5 +321,7 @@ function readURL(input) {
 $("#Foto").change(function() {
     readURL(this);
 });
+
+
 </script>
 @endpush

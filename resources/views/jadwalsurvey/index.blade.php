@@ -1,10 +1,13 @@
 @extends('adminlte::page')
-@section('title', 'Jadwal Survey Teknisi')
+@section('title', 'Jadwal Survey')
 @section('content_header')
-<h1 class="m-0 text-dark"><mark>Jadwal Survey Teknisi</mark></h1>
+<div style="text-align:center;">
+    <h1 class="m-0 text-dark">Jadwal Survey</h1>
+</div>
 @stop
 @section('content')
-<<style>
+<style>
+   
     .center-heading {
         text-align: center;
     }
@@ -13,6 +16,9 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-body">
+                <!-- <button class="btn btn-primary mb-2" data-toggle="modal" data-target="#staticBackdrop2">
+                    Create New Data -->
+                </button>
                 <div class="table-responsive">
                     <table class="table table-hover table-striped" id="example2">
                         <thead class="center-heading">

@@ -6,6 +6,7 @@ use App\Models\Paket;
 use App\Models\Datacekcoverage;
 use App\Models\Datacalonpelanggan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
 class DatacalonpelangganController extends Controller
@@ -24,60 +25,64 @@ class DatacalonpelangganController extends Controller
     {
         //menampilkan form tambah user
         return view('datacalonpelanggan.create', [
-            'datacalonpelanggan' => Patacalonpelanggan::all(),
+            'datacalonpelanggan' => Datacalonpelanggan::all(),
             'paket' => Paket::all()
         ]);
     }
 
+
     public function store(Request $request)
     {
-    // dd($request->all());   //Menyimpan Data distributor baru
-    $request->validate([  
-
-    'Nama' => 'required',
-    'Foto' => 'required|image|max:2048',
-    'Nomor_Handphone' => 'required',
-    // 'Nama_Paket' => 'required',
-    'Alamat_Pemasangan' => 'required',
-    'Titik_Kordinat' => 'required',
-    'id_paket' => 'required',
+        // Validasi input
+        $request->validate([  
+            'Nama' => 'required',
+            'Foto' => 'required|image|max:2048', // Pastikan hanya menerima file gambar
+            'Nomor_Handphone' => 'required',
+            'Alamat_Pemasangan' => 'required',
+            'Titik_Kordinat' => 'required',
+            'id_paket' => 'required',
+        ]);
     
-
-    ]);
-
-    $array = $request->only([
-        
-     'Nama',
-     'Foto',
-     'Nomor_Handphone', 
-    //  'Nama_Paket',
-     'Alamat_Pemasangan',
-     'Titik_Kordinat',
-     'id_paket'
-     
-
-    ]);
+        // Ambil data yang diperlukan dari request
+        $array = $request->only([
+            'Nama',
+            'Nomor_Handphone', 
+            'Alamat_Pemasangan',
+            'Titik_Kordinat',
+            'id_paket'
+        ]);
     
-    $array['Foto'] = $request->file('Foto')->store('Foto');
+        // Cek apakah ada file Foto yang diunggah
+        if ($request->hasfile('Foto')) {
+            // Simpan file Foto ke storage
+            $file = $request->file('Foto');
+            $fileName = Str::random(10) . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('Foto', $fileName, 'public');
     
-
-    $datacalonpelanggan = Datacalonpelanggan::create($array);
-    // dd($request->all());
-    $datacapel = paket::find($request->id_paket);
-    Datacekcoverage::create([
-    'Nama' => $request->Nama,
-    'Nomor_Handphone' => $request->Nomor_Handphone,
-    'Nama_Paket' => $datacapel->Nama_Paket,
-    'Alamat_Pemasangan' => $request->Alamat_Pemasangan,
-    'Titik_Kordinat' => $request->Titik_Kordinat,
-    'id_calon_pelanggan' => $datacalonpelanggan->id,
-    ]);
-        
-
-            return redirect()->route('datacalonpelanggan.index') 
-            ->with('success_message', 'Berhasil menambah datacalonpelanggan baru');
+            // Tambahkan nama file Foto ke array
+            $array['Foto'] = $fileName;
+        }
+    
+        // Buat Datacalonpelanggan baru
+        $datacalonpelanggan = Datacalonpelanggan::create($array);
+    
+        // Temukan datacapel berdasarkan id_paket
+        $datacapel = paket::find($request->id_paket);
+    
+        // Buat Datacekcoverage baru
+        Datacekcoverage::create([
+            'Nama' => $request->Nama,
+            'Nomor_Handphone' => $request->Nomor_Handphone,
+            'Nama_Paket' => $datacapel->Nama_Paket,
+            'Alamat_Pemasangan' => $request->Alamat_Pemasangan,
+            'Titik_Kordinat' => $request->Titik_Kordinat,
+            'id_calon_pelanggan' => $datacalonpelanggan->id,
+        ]);
+    
+        // Redirect dengan pesan sukses
+        return redirect()->route('datacalonpelanggan.index')->with('success_message', 'Berhasil menambah data calon pelanggan baru');
     }
-
+    
     public function edit($id)
     {
         // Menampilkan Form Edit

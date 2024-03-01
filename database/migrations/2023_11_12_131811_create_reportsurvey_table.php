@@ -19,7 +19,7 @@ return new class extends Migration
             // $table->string('site')->nullable();
             $table->date('tanggal_survey')->nullable();
             $table->string('waktu')->nullable();
-            $table->string('nama_teknisi')->nullable();
+            $table->enum('nama_teknisi', ['Adi', 'Anggi']);
             // $table->string('FDT')->nullable();
             // $table->string('ODP')->nullable();
             // $table->string('kabel')->nullable();
