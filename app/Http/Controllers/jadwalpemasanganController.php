@@ -96,8 +96,12 @@ class JadwalpemasanganController extends Controller
             //     'tanggal_survey'=> $request->tanggal_survey,
             //     'id_jadwalsurvey' => $jadwalsurvey->id,
             // ]);
-            $result = Reportpemasangan::create([
+            $result = Reportpemasangan::updateOrCreate(
+                ['id_jadwalpemasangan' => $jadwalpemasangan->id],
+                [
                 'nama' => $request->nama,
+                'tanggal_pemasangan' => $request->tanggal_pemasangan,
+                'waktu' => $request->waktu,
                 'id_jadwalpemasangan' => $jadwalpemasangan->id,
             ]);
             return redirect()->route('jadwalpemasangan.index')
@@ -108,9 +112,6 @@ class JadwalpemasanganController extends Controller
     {
          //Menghapus pemasangan
          $jadwalpemasangan = Jadwalpemasangan::find($id);
-
-         // if ($id == $request->user()->id) return redirect()->route('users.index')->with('error_message', 'Anda tidak dapat menghapus diri
-         // sendiri.');
          if ($jadwalpemasangan) $jadwalpemasangan->delete();
          return redirect()->route('jadwalpemasangan.index')->with('success_message', 'Berhasil menghapus data jadwal pemasangan');
     }

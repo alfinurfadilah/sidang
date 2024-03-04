@@ -22,13 +22,18 @@ class Reportpemasangan extends Model
         'kebutuhan_Access_Point',
         'SN_Access_Point',
         'kebutuhan_HTB',
-        'id_jadwalpemasangan'
+        'id_jadwalpemasangan',
+        'id_site'
         
         
     ];
     
     public function fjadwalpemasangan(){
         return $this->belongsTo(Jadwalpemasangan::class, 'id_jadwalpemasangan', 'id');
+        }
+
+    public function fsite(){
+        return $this->belongsTo(Site::class, 'id_site', 'id');
         }
 
  // public function datacalonpelanggan()

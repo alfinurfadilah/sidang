@@ -145,11 +145,12 @@ $array = $request->only([
             $jadwalsurvey->tanggal_survey = $request->tanggal_survey;
             $jadwalsurvey->waktu = $request->waktu;
             $jadwalsurvey->save();
-            $result = Reportsurvey::create([
+            $result = Reportsurvey::updateOrCreate(
+                ['id_jadwalsurvey' => $jadwalsurvey->id],
+                [
                 'nama' => $request->nama,
-                'nomor_handphone'=> $request->nomor_handphone,
                 'tanggal_survey'=> $request->tanggal_survey,
-
+                'waktu' => $request->waktu,
                 'id_jadwalsurvey' => $jadwalsurvey->id,
             ]);
             return redirect()->route('jadwalsurvey.index')

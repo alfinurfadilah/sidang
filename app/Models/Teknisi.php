@@ -10,8 +10,8 @@ class Teknisi extends Model
     use HasFactory;
     protected $table = 'teknisi';
     protected $fillable = [
-        'Nama_Teknisi',
-        'Site',
+        'nama_teknisi',
+        'site',
         'id_site'
     ];
 
