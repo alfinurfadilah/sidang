@@ -46,7 +46,7 @@ class DatacekcoverageController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+    $request->validate([
         'Nama'=>'required',
         'Nomor_Handphone' => 'required',
         'Nama_Paket' =>'required',

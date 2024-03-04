@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Site;
+use App\Models\Reportpemasangan;
 use App\Models\reportsurvey;
 use Illuminate\Http\Request;
 

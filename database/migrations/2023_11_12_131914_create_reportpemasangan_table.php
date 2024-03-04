@@ -29,6 +29,8 @@ return new class extends Migration
             $table->text('kebutuhan_HTB')->nullable();
             $table->unsignedBigInteger('id_jadwalpemasangan');
             $table->foreign('id_jadwalpemasangan')->references('id')->on('jadwalpemasangan')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('id_site')->nullable();
+            $table->foreign('id_site')->references('id')->on('site')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->timestamps();
         });
     }

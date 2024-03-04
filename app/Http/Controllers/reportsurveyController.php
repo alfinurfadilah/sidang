@@ -35,7 +35,7 @@ class ReportsurveyController extends Controller
         //menampilkan form tambah user
         return view('reportsurvey.create', [
             'reportsurvey' => reportsurvey::all(),
-            'site' => site::all()
+
         ]);
     }
 
@@ -153,13 +153,8 @@ $array = $request->only([
 
             ]);
             $reportsurvey = Reportsurvey::find($id);
-            $datareport = Site::find($request->id_site);
-            if (!$reportsurvey) {
-                return redirect()->route('reportsurvey.index')
-                    ->with('error_message', 'Data Calon Pelanggan dengan ID ' . $id . ' tidak ditemukan');
-            }
             $reportsurvey->nama = $request->nama;
-            // $reportsurvey->site = $request->site;
+            $reportsurvey->id_site = $request->id_site;
             $reportsurvey->tanggal_survey = $request->tanggal_survey;
             $reportsurvey->waktu = $request->waktu;
             $reportsurvey->nama_teknisi = $request->nama_teknisi;

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Site;
 use App\Models\Jadwalpemasangan;
 use App\Models\Reportpemasangan;
 use Illuminate\Http\Request;
@@ -14,7 +15,8 @@ class ReportpemasanganController extends Controller
         $reportpemasangan= Reportpemasangan::all();
         return view('reportpemasangan.index', [
             'reportpemasangan' => $reportpemasangan,
-            'jadwalpemasangan' => Jadwalpemasangan::all()
+            'jadwalpemasangan' => Jadwalpemasangan::all(),
+            'site' => Site::all()
             
 
         ]);
@@ -120,7 +122,8 @@ $array = $request->only([
         ->with('error_message', 'reportpemasangan dengan id'.$id.' tidak
         ditemukan');
         return view('reportpemasangan.edit', [
-        'reportpemasangan' => $reportpemasangan
+        'reportpemasangan' => $reportpemasangan,
+        'site' => Site::all()
         ]);
     }
 
@@ -156,7 +159,8 @@ $array = $request->only([
             ]);
             $reportpemasangan = Reportpemasangan::find($id);
             $reportpemasangan->nama = $request->nama;
-            $reportpemasangan->site = $request->site;
+            // $reportpemasangan = Site::find($id);
+            $reportpemasangan->id_site = $request->id_site;
             $reportpemasangan->tanggal_pemasangan = $request->tanggal_pemasangan;
             $reportpemasangan->waktu = $request->waktu;
             $reportpemasangan->nama_teknisi = $request->nama_teknisi;
@@ -191,9 +195,6 @@ $array = $request->only([
     {
         //Menghapus distributor
         $reportpemasangan = Reportpemasangan::find($id);
-
-        // if ($id == $request->user()->id) return redirect()->route('users.index')->with('error_message', 'Anda tidak dapat menghapus diri
-        // sendiri.');
         if ($reportpemasangan) $reportpemasangan->delete();
         return redirect()->route('reportpemasangan.index')->with('success_message', 'Berhasil menghapus reportpemasangan');
     }
