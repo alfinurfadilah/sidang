@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\site;
+use App\Models\Site;
 use App\Models\Teknisi;
+use App\Models\Reportsurvey;
 use Illuminate\Http\Request;
 
 class TeknisiController extends Controller
@@ -38,7 +39,12 @@ class TeknisiController extends Controller
     $teknisi = Teknisi::create($array);
 
     if ($request->ajax()) {
-        return response()->json(['success' => true, 'teknisi' => $teknisi]);
+        $site = Teknisi::with(['fsite'])->where('id', $teknisi->id)->first();
+        return response()->json(['success' => true, 
+        'id' => $teknisi->id,
+        'nama_teknisi' => $teknisi->nama_teknisi,
+        'site' => $site->fsite->site,
+    ]);
     } else {
         return redirect()->route('teknisi.index')->with('success_message', 'Berhasil menambah teknisi baru');
     }

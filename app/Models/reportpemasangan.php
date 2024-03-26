@@ -36,6 +36,11 @@ class Reportpemasangan extends Model
         return $this->belongsTo(Site::class, 'id_site', 'id');
         }
 
+    public function teknisis()
+        {
+            return $this->belongsToMany(Teknisi::class, 'reportpemasangan_teknisi', 'id_reportpemasangan', 'id_teknisi');
+        }
+
  // public function datacalonpelanggan()
     // {
     //     return $this->belongsTo(datacalonpelanggan::class, 'id_calon_pelanggan');

@@ -5,12 +5,6 @@
 @stop
 @section('content')
 <style>
-    /* CSS untuk membuat pinggiran tabel lebih bulat */
-    /* .table {
-        border-radius: 25px; 
-        overflow: hidden; 
-    } */
-
     .center-heading {
         text-align: center;
     }

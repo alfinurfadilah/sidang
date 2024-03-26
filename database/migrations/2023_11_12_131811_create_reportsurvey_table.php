@@ -16,16 +16,10 @@ return new class extends Migration
         Schema::create('reportsurvey', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            // $table->string('site')->nullable();
+            $table->string('site')->nullable();
             $table->date('tanggal_survey')->nullable();
             $table->string('waktu')->nullable();
-            $table->enum('nama_teknisi', ['Adi', 'Anggi']);
-            // $table->string('FDT')->nullable();
-            // $table->string('ODP')->nullable();
-            // $table->string('kabel')->nullable();
-            // $table->string('clamp')->nullable();
-            // $table->string('kabel_tis')->nullable();
-            // $table->string('fascon')->nullable();
+            $table->string('nama_teknisi')->nullable();
             $table->string('hard_survey')->nullable();
             $table->enum('status', ['Bisa Dipasang', 'Tidak Bisa Dipasang']);
             $table->unsignedBigInteger('id_jadwalsurvey');

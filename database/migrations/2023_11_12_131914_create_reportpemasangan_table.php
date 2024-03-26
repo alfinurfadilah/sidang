@@ -20,8 +20,6 @@ return new class extends Migration
             $table->date('tanggal_pemasangan')->nullable();
             $table->time('waktu')->nullable();
             $table->string('nama_teknisi')->nullable();
-            // $table->string('FDT');
-            // $table->string('ODP');
             $table->string('hasil_redaman')->nullable();
             $table->string('status_pemasangan')->nullable();
             $table->text('kebutuhan_Access_Point')->nullable();

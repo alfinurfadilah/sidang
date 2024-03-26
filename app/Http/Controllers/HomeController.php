@@ -24,7 +24,7 @@ class HomeController extends Controller
     public function index()
     {
         $ip = session()->get('ip');
-        $user = session()->get('useer');
+        $user = session()->get('user');
         $pass = session()->get('pass');
         $API = new RouterosAPI();
         $API -> debug('false');

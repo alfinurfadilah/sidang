@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RouterosAPI;
 use Illuminate\Http\Request;
 
 class PppoeController extends Controller
@@ -13,7 +14,27 @@ class PppoeController extends Controller
      */
     public function index()
     {
-        return  view('pppoe.index');
+        $ip = session()->get('ip');
+        $user = session()->get('user');
+        $pass = session()->get('pass');
+        $API = new RouterosAPI();
+        $API -> debug('false');
+            if($API->Connect($ip, $user, $pass)){
+                $secret = $API->comm('/ppp/secret/print');
+                $profile = $API->comm('/ppp/profile/print');
+            }else {
+                return 'Koneksi Gagal';
+            }
+        // dd($routermodel);
+        $data = [
+            'totalsecret' => count($secret),
+            'secret' => $secret,
+            'profile' => $profile,
+        ];
+
+        // dd($data);
+
+        return  view('pppoe.secret', $data);
     }
 
     /**
@@ -21,9 +42,37 @@ class PppoeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function add(Request $request)
     {
-        //
+        $request->validate([
+            'user'=>'required',
+            'password' => 'required',
+        ]);
+
+
+        // dd($request)->all;
+        $ip = session()->get('ip');
+        $user = session()->get('user');
+        $pass = session()->get('pass');
+        $API = new RouterosAPI();
+        $API -> debug('false');
+
+        if($API->connect($ip, $user, $pass)){
+           $API-> comm('/ppp/secret/add',array (
+            'name'=> $request['user'],
+            'password'=> $request['password'],
+            'service'=> $request['service'] == ''? 'any' : $request['service'],
+            'profile'=> $request['profile'] == ''? 'default' : $request['profile'],
+            'local-address'=> $request['localaddress'] =='' ? '0.0.0.0' : $request['localaddress'],
+            'remote-address'=> $request['remoteaddress'] =='' ? '0.0.0.0' : $request['remoteaddress'],
+            'comment'=> $request['comment'] =='' ? '' : $request['comment'],
+
+           ));
+        //  dd($request)->all;   
+        }else {
+            return 'Koneksi Gagal';
+        }
+        return  redirect()->route('pppoe.secret');
     }
 
     /**
