@@ -44,7 +44,7 @@
                                     <div class="input-group">
                                         <input type="hidden" name="id_site" id="id_site" value="{{$fsite->site->id ?? old('id_site')}}">
                                         <input type="text" class="form-control @error('site') is-invalid @enderror" placeholder="site" id="site" name="site"
-                                            value="{{ $item->site ? $fsite->site->site : (old('site') ?? '') }}" aria-label="Site" aria-describedby="cari" readonly>
+                                            value="{{ $item->site ? $fsite->site->site : (old('site') ?? '') }}" aria-label="Site" aria-describedby="cari">
                                         <button class="btn btn-warning" type="button" data-bs-toggle="modal" id="cari" data-bs-target="#staticBackdrop">
                                             Cari Data Site
                                         </button>

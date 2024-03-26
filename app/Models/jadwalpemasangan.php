@@ -9,7 +9,7 @@ class Jadwalpemasangan extends Model
 {
     use HasFactory;
     protected $table = 'jadwalpemasangan';
-    // protected $with = ['jadwalsurvey'];
+    // protected $with = ['reportsurvey'];
     protected $fillable = [
         'nama',
         'nomor_handphone',
@@ -20,6 +20,7 @@ class Jadwalpemasangan extends Model
         'titik_kordinat',
         'id_jadwalsurvey',
         'id_reportsurvey',
+        'id_paket',
         
     ];
     public function freportsurvey(){
@@ -28,5 +29,9 @@ class Jadwalpemasangan extends Model
 
         public function fjadwalsurvey(){
             return $this->belongsTo(Jadwalsurvey::class, 'id_jadwalsurvey', 'id');
+            }
+
+        public function fpaket(){
+            return  $this->belongsTo(Paket::class,  'id_paket',  'id');
             }
 }

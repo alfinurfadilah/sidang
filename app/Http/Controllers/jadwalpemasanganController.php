@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Paket;
 use App\Models\Reportpemasangan;
 use App\Models\Reportsurvey;
 use App\Models\Jadwalsurvey;
@@ -17,7 +18,8 @@ class JadwalpemasanganController extends Controller
         // dd($nomorhandphone);
         return view('jadwalpemasangan.index', [
             'jadwalpemasangan' => $jadwalpemasangan,
-            'jadwalsurvey' => Jadwalsurvey::all()
+            'jadwalsurvey' => Jadwalsurvey::all(),
+            'paket' => Paket::all()
             
 
         ]);
@@ -29,7 +31,8 @@ class JadwalpemasanganController extends Controller
             'jadwalpemasangan.create' , [
             'reportsurvey' => Reportsurvey::all(),
             'jadwalsurvey' => Jadwalsurvey::all(),
-            'surveyjadwal' => Jadwalsurvey::all()
+            'surveyjadwal' => Jadwalsurvey::all(),
+            'paket' => Paket::all()
 
         ]);
     }
@@ -60,7 +63,9 @@ class JadwalpemasanganController extends Controller
         ->with('error_message', 'jadwalpemasangan dengan id'.$id.' tidak
         ditemukan');
         return view('jadwalpemasangan.edit', [
-        'jadwalpemasangan' => $jadwalpemasangan
+        'jadwalpemasangan' => $jadwalpemasangan,
+        'paket' => Paket::all(),
+        'surveyjadwal' => Jadwalsurvey::all(),
         ]);
     }
 
@@ -69,9 +74,9 @@ class JadwalpemasanganController extends Controller
         // dd($request->all());
         $request->validate([
             'nama' => 'required',
-            'nomor_handphone' => 'required',
-            'nama_paket' => 'required',
-            'alamat_pemasangan' => 'required',
+            'nomor_handphone' => 'nullable',
+            'nama_paket' => 'nullable',
+            'alamat_pemasangan' => 'nullable',
             'tanggal_pemasangan' =>'nullable',
             'waktu' =>'nullable',
             'titik_kordinat' => 'required',
