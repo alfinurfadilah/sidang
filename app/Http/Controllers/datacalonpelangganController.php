@@ -99,39 +99,50 @@ class DatacalonpelangganController extends Controller
     
     public function update(Request $request, $id)
     {
-        // dd($request->all());
         $request->validate([
             'Nama' => 'required',
             'Foto' => 'image|file|max:2048',
             'Nomor_Handphone' => 'required',
-            // 'Nama_Paket' => 'required',
             'Alamat_Pemasangan' => 'required',
             'Titik_Kordinat' => 'required',
         ]);
     
         $datacalonpelanggan = Datacalonpelanggan::find($id);
         $datacapel = Paket::find($request->id_paket);
+    
         if (!$datacalonpelanggan) {
             return redirect()->route('datacalonpelanggan.index')
                 ->with('error_message', 'Data Calon Pelanggan dengan ID ' . $id . ' tidak ditemukan');
         }
     
+        // Update atribut-atribut data calon pelanggan
         $datacalonpelanggan->Nama = $request->Nama;
-        if ($request->hasFile('Foto')) {
-            // Hapus foto lama jika ada dan simpan foto baru
-            unlink("storage/" . $datacalonpelanggan->Foto);
-            $datacalonpelanggan->Foto = $request->file('Foto')->store('Foto');
-        }
         $datacalonpelanggan->Nomor_Handphone = $request->Nomor_Handphone;
-        // $datacalonpelanggan->Nama_Paket = $datacapel->Nama_Paket;
         $datacalonpelanggan->Alamat_Pemasangan = $request->Alamat_Pemasangan;
         $datacalonpelanggan->Titik_Kordinat = $request->Titik_Kordinat;
     
+// Proses foto baru
+if ($request->hasfile('Foto')) {
+    // Hapus foto lama dari storage jika ada
+    Storage::disk('public')->delete('Foto/' . $datacalonpelanggan->Foto);
+
+    // Simpan file Foto ke storage
+    $file = $request->file('Foto');
+    $fileName = Str::random(10) . '.' . $file->getClientOriginalExtension();
+    $file->storeAs('Foto', $fileName, 'public');
+
+    // Tambahkan nama file Foto ke atribut model
+    $datacalonpelanggan->Foto = $fileName;
+}
+
+        // Simpan perubahan
         $datacalonpelanggan->save();
-        
+    
         return redirect()->route('datacalonpelanggan.index')
             ->with('success_message', 'Berhasil mengubah data Calon Pelanggan');
     }
+    
+
     
 
     public function destroy($id)

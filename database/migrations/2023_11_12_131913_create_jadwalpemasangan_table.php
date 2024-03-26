@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('nomor_handphone')->nullable();
-            $table->enum('nama_paket', ['ALPHA', 'BETA', 'GAMMA', 'KENDA', 'SELESA']);
+            $table->string('nama_paket')->nullable();
             $table->string('alamat_pemasangan')->nullable();
-            $table->string('tanggal_pemasangan')->nullable();
+            $table->date('tanggal_pemasangan')->nullable();
             $table->time('waktu')->nullable();
             $table->string('titik_kordinat')->nullable();
             $table->unsignedBigInteger('id_jadwalsurvey')->nullable();
@@ -27,6 +27,8 @@ return new class extends Migration
             $table->unsignedBigInteger('id_reportpemasangan')->nullable();
             $table->foreign('id_jadwalsurvey')->references('id')->on('jadwalsurvey')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_reportsurvey')->references('id')->on('reportsurvey')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('id_paket')->nullable();
+            $table->foreign('id_paket')->references('id')->on('paket')->onDelete('cascade');
             $table->timestamps();
         });
     }

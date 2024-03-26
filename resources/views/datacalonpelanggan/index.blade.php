@@ -194,17 +194,17 @@
                             @error('Nama') <span class="textdanger">{{$message}}</span> @enderror
                         </div>
                         <div class="form-group">
-                            <label for="Foto" class="form-label">Foto</label>
-                            @if($item->Foto)
-                            <!-- Jika ada foto sebelumnya -->
-                            <img src="storage/Foto/{{$item->Foto}}" class="img-preview img-fluid mb-3 col-sm-5 d-block" style="width: 100px;">
-                            @else
-                            <!-- Jika tidak ada foto sebelumnya -->
+                        <label for="Foto" class="form-label">Foto</label>
+                        @if($item->Foto)
+                            <!-- Menampilkan gambar lama jika ada -->
+                            <img src="{{ asset('storage/Foto/'. $item->Foto)}}" id="tampil" class="img-preview img-fluid mb-3 col-sm-5 d-block" style="width: 100px;">
+                        @else
+                            <!-- Menampilkan placeholder jika tidak ada gambar lama -->
                             <img src="/img/no-image.png" class="img-preview img-fluid mb-3 col-sm-5 d-block" style="width: 100px;">
-                            @endif
-                            <input class="form-control @error('Foto') is-invalid @enderror" type="file" id="Foto" name="Foto" value="{{$item->Foto ?? old('Foto')}}" onchange="previewImage()">
-                            @error('Foto') <span class="text-danger">{{$message}}</span> @enderror
-                        </div>
+                        @endif
+                        <input class="form-control @error('Foto') is-invalid @enderror" type="file" id="Foto" name="Foto" value="{{$item->Foto ?? old('Foto')}}">
+                        @error('Foto') <span class="text-danger">{{$message}}</span> @enderror
+                    </div>
                         <div class="form-group">
                             <label for="Nomor_Handphone">Nomor_Handphone</label>
                             <input type="alamat" class="form-control
@@ -507,5 +507,27 @@ $(document).ready(function() {
         pilih(paketId, namapaket, hargapaket);
     });
 });
+</script>
+@endpush
+
+@push('js')
+<script>
+    // Function to handle image preview for edit mode
+    function readEditURL(input, previewId) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $(previewId).attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    // Iterate over each edit modal and attach change event handlers
+    @foreach($datacalonpelanggan as $key => $item)
+        $("#staticBackdrop3{{$item->id}} #Foto").change(function () {
+            readEditURL(this, '#staticBackdrop3{{$item->id}} #tampil');
+        });
+    @endforeach
 </script>
 @endpush
