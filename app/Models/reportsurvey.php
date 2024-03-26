@@ -17,14 +17,10 @@ class Reportsurvey extends Model
         'tanggal_survey',
         'waktu',
         'nama_teknisi',
-        'FDT',
-        'ODP',
-        'kabel',
-        'clamp',
-        'kabel_tis',
-        'fascon',
         'status',
-        'id_jadwalsurvey'
+        'id_jadwalsurvey',
+        'id_teknisi',
+        'id_site'
         
         
     ];
@@ -33,9 +29,15 @@ class Reportsurvey extends Model
         return $this->belongsTo(Jadwalsurvey::class, 'id_jadwalsurvey', 'id');
         }
 
-        public function fsite(){
-            return  $this->belongsTo(Site::class,  'id_site',  'id');
-            }
+    public function fsite(){
+        return  $this->belongsTo(Site::class,  'id_site',  'id');
+        }
+
+    public function teknisis()
+        {
+            return $this->belongsToMany(Teknisi::class, 'reportsurvey_teknisi', 'id_reportsurvey', 'id_teknisi');
+        }
+        
 
  // public function datacalonpelanggan()
     // {

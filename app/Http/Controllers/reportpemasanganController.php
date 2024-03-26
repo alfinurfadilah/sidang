@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Site;
+use App\Models\Teknisi;
 use App\Models\Jadwalpemasangan;
 use App\Models\Reportpemasangan;
 use Illuminate\Http\Request;
@@ -12,9 +13,14 @@ class ReportpemasanganController extends Controller
     public function index()
     {
         //
-        $reportpemasangan= Reportpemasangan::all();
+        $reportpemasangan = Reportpemasangan::with('teknisis')->get();
+        $site = Site::all(); 
+        $jadwalpemasangan = Jadwalpemasangan::all(); 
         return view('reportpemasangan.index', [
             'reportpemasangan' => $reportpemasangan,
+            'site' => $site,
+            'jadwalpemasangan' => $jadwalpemasangan,
+            'teknisis' => Teknisi::all(),
             'jadwalpemasangan' => Jadwalpemasangan::all(),
             'site' => Site::all()
             
@@ -92,7 +98,7 @@ $array = $request->only([
    ]);
 //    dd($request->all()); 
    $reportpemasangan = Reportpemasangan::create($array);
-   //return redirect()->route('reportsurvey.index')->with('success_message', 'Berhasil menambah reportsurvey baru');
+   //return redirect()->route('reportpemasangan.index')->with('success_message', 'Berhasil menambah reportpemasangan baru');
 }
 
 
@@ -123,7 +129,8 @@ $array = $request->only([
         ditemukan');
         return view('reportpemasangan.edit', [
         'reportpemasangan' => $reportpemasangan,
-        'site' => Site::all()
+        'site' => Site::all(),
+        'teknisi' => Teknisi::all(),
         ]);
     }
 
@@ -159,28 +166,29 @@ $array = $request->only([
             ]);
             $reportpemasangan = Reportpemasangan::find($id);
             $reportpemasangan->nama = $request->nama;
-            // $reportpemasangan = Site::find($id);
             $reportpemasangan->id_site = $request->id_site;
             $reportpemasangan->tanggal_pemasangan = $request->tanggal_pemasangan;
             $reportpemasangan->waktu = $request->waktu;
-            $reportpemasangan->nama_teknisi = $request->nama_teknisi;
             $reportpemasangan->hasil_redaman = $request->hasil_redaman;
             $reportpemasangan->status_pemasangan = $request->status_pemasangan;
             $reportpemasangan->kebutuhan_Access_Point = $request->kebutuhan_Access_Point;
             $reportpemasangan->SN_Access_Point = $request->SN_Access_Point;
             $reportpemasangan->kebutuhan_HTB = $request->kebutuhan_HTB;
-            // $reportsurvey->FDT = $request->FDT;
-            // $reportsurvey->ODP = $request->ODP;
-            // $reportsurvey->kabel = $request->kabel;
-            // $reportsurvey->clamp = $request->clamp;
-            // $reportsurvey->kabel_tis = $request->kabel_tis;
-            // $reportsurvey->fascon = $request->fascon;
             $reportpemasangan->save();
-            // dd($reportsurvey);
-            // $result = reportsurvey::create([
-            //     'nama' => $request->nama,
-            //     'id_jadwalsurvey' => $jadwalsurvey->id,
-            // ]);
+           
+            $nama_teknisi = explode(", ", $request->input('nama_teknisi', ''));
+            $id_teknisi_array = [];
+            foreach ($nama_teknisi as $nama) {
+                // Tambahkan tanda kutip pada nilai nama dalam kueri
+                $teknisi = Teknisi::where('nama_teknisi', $nama)->first();
+                if ($teknisi) {
+                    $id_teknisi_array[] = $teknisi->id;
+                }
+            }
+            // Sinkronkan relasi many-to-many antara reportpemasangan dan Teknisi
+            $reportpemasangan = Reportpemasangan::find($id);
+            $reportpemasangan->teknisis()->sync($id_teknisi_array);
+            $reportpemasangan->save();
             return redirect()->route('reportpemasangan.index')
             ->with('success_message', 'Berhasil mengubah reportpemasangan');
     }

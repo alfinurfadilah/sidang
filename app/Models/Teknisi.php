@@ -23,4 +23,9 @@ class Teknisi extends Model
     public function fsite(){
         return  $this->belongsTo(Site::class,  'id_site',  'id');
         }
+
+    public function reportsurveys()
+    {
+        return $this->belongsToMany(reportsurvey::class, 'reportsurvey_teknisi', 'id_reportsurvey', 'id_teknisi');
+    }
 }

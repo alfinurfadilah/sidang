@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Site;
+use App\Models\Teknisi;
 use App\Models\Jadwalsurvey;
 use App\Models\Jadwalpemasangan;
 use App\Models\Reportsurvey;
@@ -17,11 +18,15 @@ class ReportsurveyController extends Controller
      */
     public function index()
     {
-        $reportsurvey = reportsurvey::all();
+        $reportsurvey = Reportsurvey::with('teknisis')->get();
+        $site = site::all(); 
         return view('reportsurvey.index', [
-        'reportsurvey' => $reportsurvey,
-        'site' => Site::all()
+            'reportsurvey' => $reportsurvey,
+            'site' => $site,
+            'teknisis' => Teknisi::all(),
+            'site' => Site::all(),
         ]);
+        
     }
 
 
@@ -46,52 +51,38 @@ class ReportsurveyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-    // dd($request->all()); //Menyimpan Data distributor baru
+{
     $request->validate([  
-    
-    'nama' => 'required',
-    'site' => 'required',
-    'tanggal_survey' => 'required',
-    'waktu' => 'required',
-    'nama_teknisi' => 'required',
-    'hard_survey' => 'required',
-    // 'FDT' => 'required',
-    // 'ODP' => 'required',
-    // 'kabel' => 'required',
-    // 'clamp' => 'required',
-    // 'kabel_tis' => 'required',
-    // 'fascon' => 'required',
-    'status' => 'required',
-    'id_jadwalsurvey' => 'nullable'
-    
-        
-]);
+        'nama' => 'required',
+        'site' => 'nullable',
+        'tanggal_survey' => 'required',
+        'waktu' => 'required',
+        'nama_teknisi' => 'required',
+        'hard_survey' => 'required',
+        'status' => 'required',
+        'id_jadwalsurvey' => 'nullable'
+    ]);
 
-$array = $request->only([
-    
-    'nama',
-    'site', 
-    'tanggal_survey',
-    'waktu',
-    'nama_teknisi',
-    'hard_survey',
-    // 'FDT',
-    // 'ODP',
-    // 'kabel',
-    // 'clamp',
-    // 'kabel_tis',
-    // 'fascon',
-    'status',
-    'id_jadwalsurvey'
-    
-    
+    // Tangkap data teknisi yang dipilih dari formulir
+    $selectedTeknisiIds = $request->input('nama_teknisi');
 
-   ]);
-//    dd($request->all()); 
-   $reportsurvey = Reportsurvey::create($array);
-   //return redirect()->route('reportsurvey.index')->with('success_message', 'Berhasil menambah reportsurvey baru');
+    // Buat entri baru survei laporan
+    $reportsurvey = Reportsurvey::create($request->only([
+        'nama',
+        'site', 
+        'tanggal_survey',
+        'waktu',
+        'hard_survey',
+        'status',
+        'id_jadwalsurvey'
+    ]));
+
+    // Hubungkan teknisi yang dipilih dengan entri survei laporan baru
+    $reportsurvey->fteknisi()->sync($selectedTeknisiIds);
+
+    return redirect()->route('reportsurvey.index')->with('success_message', 'Berhasil menambah reportsurvey baru');
 }
+
 
 
 
@@ -121,7 +112,8 @@ $array = $request->only([
         ditemukan');
         return view('reportsurvey.edit', [
         'reportsurvey' => $reportsurvey,
-        'site' => Site::all()
+        'site' => Site::all(),
+        'teknisi' => Teknisi::all(),
         ]);
     }
 
@@ -132,49 +124,59 @@ $array = $request->only([
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        // dd($request->all);
-        $request->validate([
-            'nama' => 'required',
-            // 'site' => 'nullable',
-            'tanggal_survey' => 'nullable',
-            'waktu' => 'nullable',
-            'nama_teknisi' => 'nullable',
-            'hard_survey' => 'nullable',
-            // 'FDT' => 'nullable',
-            // 'ODP' => 'nullable',
-            // 'kabel' => 'nullable',
-            // 'clamp' => 'nullable',
-            // 'kabel_tis' => 'nullable',
-            // 'fascon' => 'nullable',
-            'status' => 'nullable',
-            
+    // ReportsurveyController.php
+// ReportsurveyController.php
+public function update(Request $request, $id)
+{
+    // Validasi input
+    // dd($request)->all();
+    $request->validate([
+        'nama' => 'required',
+        'site' => 'nullable',
+        'tanggal_survey' => 'nullable',
+        'waktu' => 'nullable',
+        'nama_teknisi' => 'required', // Ubah validasi menjadi nama_teknisi
+        'hard_survey' => 'nullable',
+        'status' => 'nullable',
+    ]);
 
-            ]);
-            $reportsurvey = Reportsurvey::find($id);
-            $reportsurvey->nama = $request->nama;
-            $reportsurvey->id_site = $request->id_site;
-            $reportsurvey->tanggal_survey = $request->tanggal_survey;
-            $reportsurvey->waktu = $request->waktu;
-            $reportsurvey->nama_teknisi = $request->nama_teknisi;
-            $reportsurvey->hard_survey = $request->hard_survey;
-            // $reportsurvey->FDT = $request->FDT;
-            // $reportsurvey->ODP = $request->ODP;
-            // $reportsurvey->kabel = $request->kabel;
-            // $reportsurvey->clamp = $request->clamp;
-            // $reportsurvey->kabel_tis = $request->kabel_tis;
-            // $reportsurvey->fascon = $request->fascon;
-            $reportsurvey->status = $request->status;
-            $reportsurvey->save();
-            // dd($reportsurvey);
-            $result = Jadwalpemasangan::create([
-                'nama' => $request->nama,
-                'id_reportsurvey' => $reportsurvey->id,
-            ]);
-            return redirect()->route('reportsurvey.index')
-            ->with('success_message', 'Berhasil mengubah reportsurvey');
+    // Ambil instance Reportsurvey berdasarkan ID
+    $reportsurvey = Reportsurvey::find($id);
+    $reportsurvey->nama = $request->nama;
+    $reportsurvey->id_site = $request->id_site;
+    $reportsurvey->tanggal_survey = $request->tanggal_survey;
+    $reportsurvey->waktu = $request->waktu;
+    $reportsurvey->save();
+    
+
+    // Ambil nama teknisi dari input dan cari ID-nya
+    $nama_teknisi = explode(", ", $request->input('nama_teknisi', ''));
+    $id_teknisi_array = [];
+    foreach ($nama_teknisi as $nama) {
+        // Tambahkan tanda kutip pada nilai nama dalam kueri
+        $teknisi = Teknisi::where('nama_teknisi', $nama)->first();
+        if ($teknisi) {
+            $id_teknisi_array[] = $teknisi->id;
+        }
     }
+    // Sinkronkan relasi many-to-many antara Reportsurvey dan Teknisi
+    $reportsurvey = Reportsurvey::find($id);
+    $reportsurvey->teknisis()->sync($id_teknisi_array);
+    $reportsurvey->hard_survey = $request->hard_survey;
+    $reportsurvey->status = $request->status;
+    $reportsurvey->save();
+
+    // Buat instance Jadwalpemasangan
+    $result = Jadwalpemasangan::create([
+        'nama' => $request->nama,
+        'id_reportsurvey' => $reportsurvey->id,
+    ]);
+
+    return redirect()->route('reportsurvey.index')
+        ->with('success_message', 'Berhasil mengubah reportsurvey');
+}
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -186,9 +188,6 @@ $array = $request->only([
     {
         //Menghapus distributor
         $reportsurvey = Reportsurvey::find($id);
-
-        // if ($id == $request->user()->id) return redirect()->route('users.index')->with('error_message', 'Anda tidak dapat menghapus diri
-        // sendiri.');
         if ($reportsurvey) $reportsurvey->delete();
         return redirect()->route('reportsurvey.index')->with('success_message', 'Berhasil menghapus reportsurvey');
     }

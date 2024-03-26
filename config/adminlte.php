@@ -520,7 +520,7 @@ return [
         [
             'text'       => 'PPPoe User',
             'icon_color' => 'cyan',
-            'url'        => '/pppoe/index',
+            'url'        => '/pppoe/secret',
             // 'can' => 'Teknisi-only',
         ],
 

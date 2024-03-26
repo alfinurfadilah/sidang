@@ -164,9 +164,23 @@ $(document).ready(function() {
             success: function(response) {
                 console.log(response); // Debug response dari server
                 alert('Data berhasil disimpan!'); // Tampilkan alert sukses
+                
                 // Perbarui tabel dengan data baru
-                updateTable(response.teknisi);
+                var tableBody = $('#example2 tbody'); // Ganti dengan selector yang sesuai untuk tabel Anda
+                
+                // Tambahkan baris baru untuk setiap entri data
+                var number = $('#example2 tbody tr').length;
+                var newNumber = number + 1;
+
+                var row = '<tr class="center-heading">'+
+                    '<td>' + newNumber + '</td>'+ // Menambah nomor urut baru
+                    '<td>' + response.nama_teknisi + '</td>'+
+                    '<td>' + response.site + '</td>'+
+                    '<td><button type="button" class="btn btn-primary btn-sm" onclick="showEditForm(' + response.id + ')"><i class="fa fa-pen" aria-label="Edit"></i></button> <a href="#" onclick="notificationBeforeDelete(event, this)" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a></td>'+
+                    '</tr>';
+                tableBody.append(row);
             },
+
             error: function(xhr, status, error) {
                 console.error(xhr.responseText); // Debug error dari server
                 alert('Terjadi kesalahan! Mohon coba lagi.'); // Tampilkan alert kesalahan
@@ -176,20 +190,7 @@ $(document).ready(function() {
     });
 });
 
-function updateTable(data) {
-    var tableBody = $('#example2 tbody row_1 '); // Ganti dengan selector yang sesuai untuk tabel Anda
-    tableBody.empty(); // Kosongkan isi tabel
-    // Tambahkan baris baru untuk setiap entri data
-    data.forEach(function(item) {
-        var row = '<tr>';
-        row += '<td>' + item.id + '</td>'; // Ganti dengan properti yang sesuai dari data teknisi
-        row += '<td>' + item.nama_teknisi + '</td>';
-        row += '<td>' + item.site + '</td>';
-        row += '<td><button type="button" class="btn btn-primary btn-sm" onclick="showEditForm(' + item.id + ')"><i class="fa fa-pen" aria-label="Edit"></i></button> <a href="' + item.delete_url + '" onclick="notificationBeforeDelete(event, this)" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a></td>';
-        row += '</tr>';
-        tableBody.append(row);
-    });
-}
+
 
 function deleteTeknisi(id) {
     if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {

@@ -48,7 +48,7 @@
 			      		</div>
                         <div class="form-group mb-3">
                             <label class="label" for="pass">Password</label>
-                        <input type="pass" class="form-control @error('pass') is-invalid @enderror" name="pass" placeholder="Password" required>
+                        <input type="pass" class="form-control" name="pass" placeholder="Password" >
                         </div>
                         <div class="form-group">
                             <button type="submit" class="form-control btn btn-primary rounded submit px-3">Login</button>

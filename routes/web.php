@@ -25,7 +25,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/loginmikrotik/index', [App\Http\Controllers\LoginMikrotikController::class, 'index'])->name('loginmikrotik.index');
 Route::post('/loginmikrotik/index', [App\Http\Controllers\LoginMikrotikController::class, 'login'])->name('login.post');
 
-Route::get('/pppoe/index', [App\Http\Controllers\PppoeController::class, 'index'])->name('pppoe.index');
+Route::get('/pppoe/secret', [App\Http\Controllers\PppoeController::class, 'index'])->name('pppoe.secret');
+Route::post('/pppoe/secret/add', [App\Http\Controllers\PppoeController::class, 'add'])->name('pppoe.add');
 
 
 Auth::routes();
