@@ -4,6 +4,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\Models\Paket;
 use App\Models\Site;
+use App\Models\Teknisi;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -77,6 +78,55 @@ class DatabaseSeeder extends Seeder
         \App\Models\Site::create([
             'site' => 'Site Rangmul',
             'alamat_site' => 'blebleble',
+
+            
+        ]);
+
+        \App\Models\Teknisi::create([
+            'nama_teknisi' => 'Adi',
+            'site' => 'Site Caca',
+
+            
+        ]);
+
+        \App\Models\Teknisi::create([
+            'nama_teknisi' => 'Anggi',
+            'site' => 'Site Caca',
+
+            
+        ]);
+
+        \App\Models\Teknisi::create([
+            'nama_teknisi' => 'Epan',
+            'site' => 'Site Caca',
+
+            
+        ]);
+
+        \App\Models\Teknisi::create([
+            'nama_teknisi' => 'Viko',
+            'site' => 'Site Caca',
+
+            
+        ]);
+
+        \App\Models\Teknisi::create([
+            'nama_teknisi' => 'Gentar',
+            'site' => 'Site Rangmul',
+
+            
+        ]);
+
+        \App\Models\Teknisi::create([
+            'nama_teknisi' => 'Rangmul',
+            'site' => 'Site Rangmul',
+
+            
+        ]);
+
+        \App\Models\Teknisi::create([
+            'nama_teknisi' => 'Satria',
+            'site' => 'Site Rangmul',
 
             
         ]);

@@ -1,30 +1,185 @@
 @extends('adminlte::page')
-@section('title', 'Jadwal Pemasangan')
+@section('title', 'Data Jadwal Pemasangan')
 @section('content_header')
-    <h1 class="m-0 text-dark row justify-content-center">Jadwal Pemasangan</h1>
+<div style="text-align:center;">
+    <h1 class="m-0 text-dark" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 36px; color: #3366ff; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);">Data Jadwal Pemasangan</h1>
+</div>
+
 @stop
 @section('content')
-    <style>
-        .center-heading {
-            text-align: center;
-        }
+<style>
+    
+    .center-heading {
+        text-align: center;
+    }
 
-        .btn-group-action {
-            margin-bottom: 15px;
-        }
+    .table-responsive {
+        overflow-x: auto;
+    }
 
-        .form-group-row {
-            display: flex;
-            justify-content: space-between;
-        }
+    .btn-create {
+        background-color: #007bff; /* Warna biru */
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 10px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
 
-        .form-group-col {
-            width: 48%; /* Sesuaikan lebar kolom */
-        }
+    .btn-create:hover {
+        background-color: #0056b3; /* Warna biru lebih gelap saat hover */
+    }
+    .btn-edit {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        transition: all 0.3s ease;
+        border-radius: 20px;
+    }
 
-    </style>
-    <div class="row justify-content-center">
-        <div class="col-md-12">
+    .btn-edit:hover {
+        background-color: #0056b3;
+        color: #fff;
+        transform: scale(1.05);
+    }
+
+    .btn-delete {
+        background-color: #dc3545;
+        color: #fff;
+        border: none;
+        transition: all 0.3s ease;
+        border-radius: 20px;
+    }
+
+    .btn-delete:hover {
+        background-color: #c82333;
+        color: #fff;
+        transform: scale(1.05);
+    }
+
+    .bg-info-custom {
+        background-color: #17a2b8 !important;
+        color: #fff;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+    }
+
+    /* Gaya untuk tabel */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        border-radius: 20px;
+        overflow: hidden;
+     
+    }
+
+    th,
+    td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        text-align: center;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        color: #333;
+        text-align: center; /* Membuat teks th menjadi terpusat */
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tbody tr:hover {
+        background-color: #ddd;
+    }
+
+    .table-container {
+        background-color: #f2f2f2; /* Warna senada dengan table */
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .card-body-custom {
+        background-color: #f2f2f2; /* Warna yang Anda inginkan untuk card body */
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+
+    .modal-content {
+    border-radius: 20px; /* Atur nilai border-radius sesuai keinginan */
+}
+
+.form-control {
+    background-color: #FFFAFA; /* Warna latar belakang yang Anda inginkan */
+}
+
+/* Warna latar belakang untuk form field saat dalam keadaan fokus */
+.form-control:focus {
+    background-color: #e6e6e6; /* Warna latar belakang yang berbeda saat form field mendapat fokus */
+}
+
+.form-control {
+    border-radius: 10px; /* Atur nilai border-radius sesuai dengan keinginan Anda */
+}
+
+.btn-save {
+    border-radius: 20px; /* Atur nilai border-radius sesuai dengan keinginan Anda */
+}
+
+.btn-warning {
+    border-radius: 30px; /* Atur nilai border-radius sesuai dengan keinginan Anda */
+}
+
+.form-group {
+        margin-bottom: 20px;
+    }
+
+    .input-group {
+        display: flex;
+        align-items: center;
+    }
+
+    .input-group input[type="text"] {
+        flex: 1;
+        border-radius: 20px 0 0 20px;
+        border-right: none;
+    }
+
+    .input-group button {
+        border-radius: 0 20px 20px 0;
+    }
+
+    .btn-pilih {
+    border-radius: 20px; /* Atur nilai border-radius sesuai dengan keinginan Anda */
+    background-color: #dc5c5c; /* Warna biru */
+    color: white; /* Warna teks putih */
+}
+
+.btn-pilih:hover {
+    background-color: #ffff00; /* Warna biru lebih gelap saat hover */
+}
+</style>
+
+<div class="row justify-content-center">
+    <div class="col-md-12 table-container">
             <div class="card card-info">
                 <div class="card-header">
                     <h3 class="card-title">Form Jadwal Pemasangan</h3>
@@ -37,11 +192,11 @@
                                 @csrf
                                 @method('PUT')
                                 <!-- Tambahkan method PUT untuk update -->
-                                <div class="btn-group-action">
-                                    <button type="submit" class="btn btn-info">
+                                <div class="card-footer btn-container">
+                                    <button type="submit" class="btn btn-info btn-save">
                                         <i class="fas fa-save"></i> Simpan
                                     </button>
-                                    <a href="{{ route('jadwalpemasangan.index') }}" class="btn btn-danger">
+                                    <a href="{{ route('jadwalpemasangan.index') }}" class="btn btn-cancel">
                                         <i class="fa fa-times-circle"></i> Batal
                                     </a>
                                 </div>
@@ -166,10 +321,14 @@
                                 <td>{{$item->waktu}}</td>
                                 <td>{{$item->titik_kordinat}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-danger btn-sm"
-                                        onclick="showEditForm({{$item->id}})">
-                                        <i class="fa fa-pen" aria-label="Edit"></i>
-                                        </button>
+                                <div class="button-container">
+                                <button class="btn btn-edit btn-sm"  onclick="showEditForm({{$item->id}})">
+                                            <i class="fa fa-pen" aria-label="Edit"></i>
+                                    </button>
+                                    <a href="{{route('jadwalpemasangan.destroy', $item)}}" onclick="notificationBeforeDelete(event, this)"
+                                        class="btn btn-delete btn-sm">
+                                        <i class="fa fa-trash"></i> 
+</a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -210,7 +369,7 @@
                                 <td id={{$key+1}}>{{$pk->Harga_Paket}}</td>
                                 <td>
 
-                                    <button type="button" class="btn btn-primary btn-xs"
+                                    <button type="button" class="btn btn-primary btn-xs btn-pilih"
                                         onclick="pilihPaket('{{$pk->id}}', '{{$pk->Nama_Paket}}')"
                                         data-bs-dismiss="modal">
                                         Pilih
@@ -244,6 +403,7 @@
                                 <th>Nama</th>
                                 <th>Nomor Handphone</th>
                                 <th>Alamat Pemasangan</th>
+                                <th>Titik Kordinat</th>
                                 <th>Opsi</th>
                             </tr>
                         </thead>
@@ -254,9 +414,10 @@
                                 <td>{{$item->nama}}</td>
                                 <td>{{$item->nomor_handphone }}</td>
                                 <td>{{$item->alamat_pemasangan}}</td>
+                                <td>{{$item->titik_kordinat}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary 
-btn-xs" onclick="pilihNomorhandphone('{{$item->id}}','{{$item->nomor_handphone}}', '{{$item->alamat_pemasangan}}')"
+                                    <button type="button" class="btn btn-primary btn-pilih
+btn-xs" onclick="pilihNomorhandphone('{{$item->id}}','{{$item->nomor_handphone}}', '{{$item->alamat_pemasangan}}', '{{$item->titik_kordinat}}')"
                                         data-bs-dismiss="modal">
                                         Pilih
                                         </button>
@@ -273,6 +434,67 @@ btn-xs" onclick="pilihNomorhandphone('{{$item->id}}','{{$item->nomor_handphone}}
 <!-- End Modal -->
 @stop
 @push('js')
+<style>
+     .btn-save {
+    background-color: #CD5C5C;
+    /* Warna latar belakang tombol (merah) */
+    color: #fff;
+    /* Warna teks tombol (putih) */
+    border: none;
+    /* Tidak ada border */
+    padding: 10px 20px;
+    /* Padding tombol */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 10px;
+    /* Jarak kanan dari tombol "Batal" */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 20px; /* Atur nilai border-radius sesuai dengan keinginan Anda */
+
+    /* Border radius untuk sudut tombol */
+}
+
+/* Hover Effect untuk Tombol "Simpan" */
+.btn-save:hover {
+    background-color: #8b0000;
+    /* Warna latar belakang tombol saat dihover (merah lebih gelap) */
+    color: dark;
+    /* Warna teks tombol saat dihover (putih) */
+    transform: scale(1.05);
+}
+
+/* Gaya untuk Tombol "Batal" */
+.btn-cancel {
+    background-color: #6495ED;
+    /* Warna latar belakang tombol (biru) */
+    color: #fff;
+    /* Warna teks tombol (putih) */
+    border: none;
+    /* Tidak ada border */
+    padding: 10px 20px;
+    /* Padding tombol */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 20px; /* Atur nilai border-radius sesuai dengan keinginan Anda */
+    /* Border radius untuk sudut tombol */
+}
+
+/* Hover Effect untuk Tombol "Batal" */
+.btn-cancel:hover {
+    background-color: #191970;
+    /* Warna latar belakang tombol saat dihover (biru lebih gelap) */
+    color: white;
+    /* Warna teks tombol saat dihover (putih) */
+    transform: scale(1.05);
+}
+    </style>
     <script>
        $(document).ready(function () {
         $('#example2').DataTable({
