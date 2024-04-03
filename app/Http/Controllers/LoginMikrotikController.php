@@ -43,7 +43,7 @@ class LoginMikrotikController extends Controller
         // dd($data);
         $request->session()->put($data);
 
-        return redirect()->route('home');
+        return redirect()->route('dashboard');
     }
 
     /**

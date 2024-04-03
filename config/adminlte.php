@@ -527,6 +527,12 @@ return [
             'url'        => '/pppoe/secret',
             // 'can' => 'Teknisi-only',
         ],
+        [
+            'text'       => 'Traffic',
+            'icon_color' => 'cyan',
+            'url'        => '/report-traffic',
+            // 'can' => 'Teknisi-only',
+        ],
 
        
     ],

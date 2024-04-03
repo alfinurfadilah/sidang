@@ -20,14 +20,31 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+
+// DASHBOARD REALTIME
+Route::get('dashboard/report', [App\Http\Controllers\HomeController::class, 'report'])->name('dashboard.report');
+Route::get('dashboard/cpu', [App\Http\Controllers\HomeController::class, 'cpu'])->name('dashboard.cpu');
+Route::get('dashboard/uptime', [App\Http\Controllers\HomeController::class, 'uptime'])->name('dashboard.uptime');
+Route::get('dashboard/{traffic}', [App\Http\Controllers\HomeController::class, 'traffic'])->name('dashboard.traffic');
+
+//TRAFFIC UP/DOWN
+Route::get('report-traffic', [App\Http\Controllers\ReportController::class, 'index'])->name('traffic.index');
+Route::get('up', [App\Http\Controllers\ReportController::class, 'up'])->name('up');
+Route::get('down', [App\Http\Controllers\ReportController::class, 'down'])->name('down');
+
+
 
 Route::get('/loginmikrotik/index', [App\Http\Controllers\LoginMikrotikController::class, 'index'])->name('loginmikrotik.index');
 Route::post('/loginmikrotik/index', [App\Http\Controllers\LoginMikrotikController::class, 'login'])->name('login.post');
 
 Route::get('/pppoe/secret', [App\Http\Controllers\PppoeController::class, 'index'])->name('pppoe.secret');
 Route::post('/pppoe/secret/add', [App\Http\Controllers\PppoeController::class, 'add'])->name('pppoe.add');
-
+Route::get('/pppoe/secret/edit/{id}', [App\Http\Controllers\PppoeController::class, 'edit'])->name('pppoe.edit');
+Route::post('/pppoe/secret/update/', [App\Http\Controllers\PppoeController::class, 'update'])->name('pppoe.update');
+Route::get('/pppoe/secret/delete/{id}', [App\Http\Controllers\PppoeController::class, 'delete'])->name('pppoe.delete');
 
 Auth::routes();
 
@@ -53,5 +70,3 @@ Route::resource('reportpemasangan', \App\Http\Controllers\ReportpemasanganContro
 
 Route::resource('users', \App\Http\Controllers\UserController::class)->middleware('auth');
 
-// Route::post('/kirim-data', [DataController::class, 'kirimData']);
-Route::resource('dashboard', \App\Http\Controllers\HomeController::class)->middleware('auth');

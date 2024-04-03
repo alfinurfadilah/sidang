@@ -167,16 +167,17 @@
                                                 @endif
                                             </td>
                                             <td>{{ $item['comment'] ?? '' }} </td>
-                                            <td>
+                                            <td class="center-heading">
                                                 <div class="form-button-action">
-                                                    <a href="#" class="btn btn-link btn-primary btn-lg" data-toggle="tooltip" data-original-title="Edit Task">
-                                                        <i class="fa fa-edit"></i>
+                                                    <a href="{{ route('pppoe.edit', $id )}}" class="btn btn-info btn-sm" data-toggle="tooltip" data-original-title="Edit Task">
+                                                        <i class="fa fa-pen"></i>
                                                     </a>
 
-                                                    <a href="#" type="button" data-toggle="tooltip" class="btn btn-link btn-danger" data-original-title="Remove"
+                                                    <a href="{{ route('pppoe.delete', $id )}}" type="button" data-toggle="tooltip" class="btn btn-danger btn-sm" data-original-title="Remove"
                                                     onclick="return confirm('Apakah anda yakin menghapus secret {{ $item['name'] }} ?')">
-                                                    <i class="fa fa-times"></i>
+                                                    <i class="fa fa-trash"></i>
                                                 </a>
+                                            </td>
                                             </div>
                                         </td>
                                     </tr>

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'OneSpeed')
+@section('title', 'OSFinet')
 
 @section('content_header')
 
@@ -16,6 +16,9 @@
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  
+    <!-- Tautan Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-2xluNgGq2mfQm1lx0EDRM1Z7HzII8lZezBNOgA4gVRf2+06aXzFLpf2S4VpBqW1cbzCx0w4scPtv7Gz28pVQ6g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
@@ -39,7 +42,7 @@
 
 
     <div>
-        <h1 class="m-0 text-dark"><mark>Dashboard</mark></h1>
+        <h1>Dashboard</h1>
     </div>
     @stop
 
@@ -50,12 +53,12 @@
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3>150</h3>
+                    <h3 id="cpu"></h3>
 
-                    <p>New Orders</p>
+                    <p>CPU Load</p>
                 </div>
                 <div class="icon">
-                    <i class="ion ion-bag"></i>
+                    <i class="fa-solid fa-server"></i>
                 </div>
                 <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -65,9 +68,9 @@
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>53<sup style="font-size: 20px">%</sup></h3>
+                    <h3 id="uptime"></h3>
 
-                    <p>Bounce Rate</p>
+                    <p>Uptime</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
@@ -80,9 +83,9 @@
             <!-- small box -->
             <div class="small-box bg-warning">
                 <div class="inner">
-                    <h3>44</h3>
+                    <h3>{{$totalsecret}}</h3>
 
-                    <p>User Registrations</p>
+                    <p>Total PPPoE Secret</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
@@ -108,72 +111,172 @@
         <!-- ./col -->
     </div>
     <!-- /.row -->
-    <div>
-        <!DOCTYPE html>
-        <html lang="en">
+    <style>
+    .info-box-content {
+        min-height: 120px; /* Sesuaikan tinggi minimum sesuai kebutuhan */
+    }
+</style>
 
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Map</title>
-            <!-- Tambahkan pustaka LeafletJS -->
-            <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-            <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-omnivore/0.4.1/leaflet-omnivore.min.js">
-            </script>
-            <style>
-            #map {
-                /* Atur ukuran peta */
-                height: 400px;
-                width: 100%;
-            }
-            </style>
-        </head>
-
-        <body>
-            <div id="map"></div>
-
-            <script>
-            // Inisialisasi peta menggunakan LeafletJS
-            var map = L.map('map').setView([0, 0], 2); // Atur tampilan peta
-
-            // Tambahkan layer peta dari OpenStreetMap
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
-
-            // Tambahkan layer KMZ dari URL file KMZ Anda
-            var kmzLayer = omnivore.kml("{{ asset('/mapping/FTTHCIBINONG.kmz') }}").addTo(map);
-            </script>
-        </body>
-
-        </html>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Router Board Info</span>
+                        <span class="info-box-number">{{$identity}} Model : {{ $model }}</span>
+                        <span class="info-box-number">OS : {{ $version }}</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-success"><i class="far fa-flag"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Free Memory / HDD</span>
+                        <span class="info-box-number">Memory: {{$freememory}}</span>
+                        <span class="info-box-number">HDD: {{$freehdd}}</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-warning"><i class="ion ion-person-add"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Total PPPoE Active</span>
+                        <span class="info-box-number">{{$secretactive}}</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-danger"><i class="far fa-star"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Likes</span>
+                        <span class="info-box-number">93,139</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
     </div>
+    <!-- /.container-fluid -->
+</section>
 
+<!-- BAR CHART -->
+<div class="row">
+<div class="col-md-8">
+<div class="card card-info">
+        <div class="card-header">
+        <h3 class="card-title">Traffic Up</h3>
 
-    <!-- <canvas id="lineChart"></canvas> -->
-
-    <!-- Content Row -->
-
-    <!-- <div class="row"> -->
-
-    <!-- Area Chart -->
-    <!-- <div class="col-xl-8 col-lg-7">
-                            <div class="card shadow mb-4"> -->
-    <!-- Card Header - Dropdown -->
-
-    <!-- </div>
-                                </div> -->
-    <!-- Card Body -->
-    <!-- <div class="card-body">
-                                    <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
-                                    </div> -->
-    <!-- </div>
-                            </div>
-                        </div> -->
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove">
+            <i class="fas fa-times"></i>
+            </button>
+        </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="load"></div>
+            </div>
+        </div>
+        <!-- /.card-body -->
     </div>
+</div>
+    <div class="col-md-4">
+        <div class="card card-body">
+            <div class="form-group">
+                <label for="defaultSelect">Select Interface</label>
+                <select class="form-select form-control" name="interface" id="interface">
+                    @foreach ($interface as $data)
+                        <option value="{{ $data['name']}}">{{ $data['name']}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group" id="traffic"></div>
+        </div>
     </div>
+</div>
+    <!-- /.card -->
+    <script>
+        //-------------
+        //- BAR CHART -
+        //-------------
+        var barChartCanvas = $('#barChart').get(0).getContext('2d')
+        var barChartData = $.extend(true, {}, areaChartData)
+        var temp0 = areaChartData.datasets[0]
+        var temp1 = areaChartData.datasets[1]
+        barChartData.datasets[0] = temp1
+        barChartData.datasets[1] = temp0
 
+        var barChartOptions = {
+        responsive              : true,
+        maintainAspectRatio     : false,
+        datasetFill             : false
+        }
+
+        new Chart(barChartCanvas, {
+        type: 'bar',
+        data: barChartData,
+        options: barChartOptions
+        })
+
+    </script>
+<div>
 </html>
+
+<script type="text/javascript">
+    setInterval('cpu()', 1000);
+    function cpu() {
+        $('#cpu').load('{{ Route('dashboard.cpu') }}')
+    }
+
+    setInterval('uptime()', 1000);
+    function uptime() {
+        $('#uptime').load('{{ Route('dashboard.uptime') }}')
+    }
+
+    setInterval('load()', 1000);
+    function load() {
+        $('#load').load('{{ Route('dashboard.report') }}')
+    }
+
+    setInterval('traffic();', 1000);
+    function traffic(){
+        var traffic = $('#interface').val();
+        var url = '{{ route('dashboard.traffic', ':traffic') }}';
+        // console.log(traffic);
+
+        $('#traffic').load(url.replace(':traffic', traffic))
+    }
+</script>
+
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="../../plugins/chart.js/Chart.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+<!-- Page specific script -->
 @stop
