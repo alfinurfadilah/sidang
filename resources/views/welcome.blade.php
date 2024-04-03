@@ -97,7 +97,7 @@
         <div class="row">
           <div class="col-lg-10">
             <h2 data-aos="fade-up" data-aos-delay="100">Welcome to Our Website</h2>
-            <p data-aos="fade-up" data-aos-delay="200">Kami salah satu gabungan antara 2 kelompok yaitu Onespeed & Fivenet</p>
+            <p data-aos="fade-up" data-aos-delay="200"> Onespeed X Fivenet</p>
           </div>
           <div class="col-lg-5">
             <form action="{{ route('login') }}"  class="sign-up-form d-flex" data-aos="fade-up" data-aos-delay="300">
@@ -215,13 +215,13 @@
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
               <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Anggota Team</p>
+              <p>Team Members</p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="7" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1" class="purecounter"></span>
               <p>Client</p>
             </div>
           </div><!-- End Stats Item -->
@@ -356,7 +356,7 @@
 
         <div class="row gy-4 align-items-stretch justify-content-between features-item ">
           <div class="col-lg-6 d-flex align-items-center features-img-bg" data-aos="zoom-out">
-            <img src="{{asset('template')}}/assets/img/features-light-3.jpg" class="img-fluid" alt="">
+            <img src="{{asset('template')}}/assets/img/logo1.png" class="img-fluid" alt="">
           </div>
           <div class="col-lg-5 d-flex justify-content-center flex-column" data-aos="fade-up">
             <h3>Sunt consequatur ad ut est nulla</h3>
@@ -651,7 +651,7 @@
 
           <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="100">
             <div class="member-img">
-              <img src="{{asset('template')}}/assets/img/foto9.jpg" class="img-fluid" alt="">
+              <img src="{{asset('template')}}/assets/img/melani.jpg" class="img-fluid" alt="">
               <div class="social">
                 <a href="#"><i class="bi bi-twitter"></i></a>
                 <a href="#"><i class="bi bi-facebook"></i></a>
@@ -660,15 +660,15 @@
               </div>
             </div>
             <div class="member-info text-center">
-              <h4>Walter White</h4>
-              <span>Chief Executive Officer</span>
+              <h4>Melani Tiara Husnia</h4>
+              <span>Admin Reguler</span>
               <p>Aliquam iure quaerat voluptatem praesentium possimus unde laudantium vel dolorum distinctio dire flow</p>
             </div>
           </div><!-- End Team Member -->
 
           <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="200">
             <div class="member-img">
-              <img src="{{asset('template')}}/assets/img/foto10.jpg" class="img-fluid" alt="">
+              <img src="{{asset('template')}}/assets/img/tyas.jpg" class="img-fluid" alt="">
               <div class="social">
                 <a href="#"><i class="bi bi-twitter"></i></a>
                 <a href="#"><i class="bi bi-facebook"></i></a>
@@ -677,49 +677,49 @@
               </div>
             </div>
             <div class="member-info text-center">
-              <h4>Sarah Jhonson</h4>
-              <span>Product Manager</span>
+              <h4>Putri Ratnaningtyas</h4>
+              <span>Admin Finance & Marketing</span>
               <p>Labore ipsam sit consequatur exercitationem rerum laboriosam laudantium aut quod dolores exercitationem ut</p>
             </div>
           </div><!-- End Team Member -->
 
           <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="300">
             <div class="member-img">
-              <img src="{{asset('template')}}/assets/img/foto11.jpg" class="img-fluid" alt="">
+              <img src="{{asset('template')}}/assets/img/alfi.jpg" class="img-fluid" alt="">
               <div class="social">
                 <a href="#"><i class="bi bi-twitter"></i></a>
                 <a href="#"><i class="bi bi-facebook"></i></a>
-                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.instagram.com/alfi_nrfadilah/?next=%2F#"><i class="bi bi-instagram"></i></a>
                 <a href="#"><i class="bi bi-linkedin"></i></a>
               </div>
             </div>
             <div class="member-info text-center">
-              <h4>William Anderson</h4>
-              <span>CTO</span>
+              <h4>Alfi Nurfadilah</h4>
+              <span>Web Developer</span>
               <p>Illum minima ea autem doloremque ipsum quidem quas aspernatur modi ut praesentium vel tque sed facilis at qui</p>
             </div>
           </div><!-- End Team Member -->
 
           <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="400">
             <div class="member-img">
-              <img src="{{asset('template')}}/assets/img/team/team-4.jpg" class="img-fluid" alt="">
+              <img src="{{asset('template')}}/assets/img/caca.jpg" class="img-fluid" alt="">
               <div class="social">
                 <a href="#"><i class="bi bi-twitter"></i></a>
                 <a href="#"><i class="bi bi-facebook"></i></a>
-                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.instagram.com/caca_shalisya?igsh=MWl3MG1hN2Q4ZzFtbA=="><i class="bi bi-instagram"></i></a>
                 <a href="#"><i class="bi bi-linkedin"></i></a>
               </div>
             </div>
             <div class="member-info text-center">
-              <h4>Amanda Jepson</h4>
-              <span>Accountant</span>
+              <h4>Siti Shalisya Nurahma</h4>
+              <span>Marketing</span>
               <p>Magni voluptatem accusamus assumenda cum nisi aut qui dolorem voluptate sed et veniam quasi quam consectetur</p>
             </div>
           </div><!-- End Team Member -->
 
           <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="500">
             <div class="member-img">
-              <img src="{{asset('template')}}/assets/img/team/team-5.jpg" class="img-fluid" alt="">
+              <img src="{{asset('template')}}/assets/img/vanka.jpg" class="img-fluid" alt="">
               <div class="social">
                 <a href="#"><i class="bi bi-twitter"></i></a>
                 <a href="#"><i class="bi bi-facebook"></i></a>
@@ -728,7 +728,7 @@
               </div>
             </div>
             <div class="member-info text-center">
-              <h4>Brian Doe</h4>
+              <h4>Joevanka Aisyah Devista</h4>
               <span>Marketing</span>
               <p>Qui consequuntur quos accusamus magnam quo est molestiae eius laboriosam sunt doloribus quia impedit laborum velit</p>
             </div>
@@ -745,15 +745,15 @@
               </div>
             </div>
             <div class="member-info text-center">
-              <h4>Josepha Palas</h4>
-              <span>Operation</span>
+              <h4>Nazwa Aulia Hasyim</h4>
+              <span>Web Developer</span>
               <p>Sint sint eveniet explicabo amet consequatur nesciunt error enim rerum earum et omnis fugit eligendi cupiditate vel</p>
             </div>
           </div><!-- End Team Member -->
 
           <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="600">
             <div class="member-img">
-              <img src="{{asset('template')}}/assets/img/team/team-6.jpg" class="img-fluid" alt="">
+              <img src="{{asset('template')}}/assets/img/anggi.jpg" class="img-fluid" alt="">
               <div class="social">
                 <a href="#"><i class="bi bi-twitter"></i></a>
                 <a href="#"><i class="bi bi-facebook"></i></a>
@@ -762,15 +762,15 @@
               </div>
             </div>
             <div class="member-info text-center">
-              <h4>Josepha Palas</h4>
-              <span>Operation</span>
+              <h4>Anggi Permana Putra</h4>
+              <span>Teknisi & Noc</span>
               <p>Sint sint eveniet explicabo amet consequatur nesciunt error enim rerum earum et omnis fugit eligendi cupiditate vel</p>
             </div>
           </div><!-- End Team Member -->
 
           <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="600">
             <div class="member-img">
-              <img src="{{asset('template')}}/assets/img/team/team-6.jpg" class="img-fluid" alt="">
+              <img src="{{asset('template')}}/assets/img/hiro.jpg" class="img-fluid" alt="">
               <div class="social">
                 <a href="#"><i class="bi bi-twitter"></i></a>
                 <a href="#"><i class="bi bi-facebook"></i></a>
@@ -779,15 +779,15 @@
               </div>
             </div>
             <div class="member-info text-center">
-              <h4>Josepha Palas</h4>
-              <span>Operation</span>
+              <h4>Ebenhezer Hiro Dinitro</h4>
+              <span>Marketing</span>
               <p>Sint sint eveniet explicabo amet consequatur nesciunt error enim rerum earum et omnis fugit eligendi cupiditate vel</p>
             </div>
           </div><!-- End Team Member -->
 
           <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="600">
             <div class="member-img">
-              <img src="{{asset('template')}}/assets/img/team/team-6.jpg" class="img-fluid" alt="">
+              <img src="{{asset('template')}}/assets/img/efan.jpg" class="img-fluid" alt="">
               <div class="social">
                 <a href="#"><i class="bi bi-twitter"></i></a>
                 <a href="#"><i class="bi bi-facebook"></i></a>
@@ -796,15 +796,15 @@
               </div>
             </div>
             <div class="member-info text-center">
-              <h4>Josepha Palas</h4>
-              <span>Operation</span>
+              <h4>Efraim</h4>
+              <span>Teknisi</span>
               <p>Sint sint eveniet explicabo amet consequatur nesciunt error enim rerum earum et omnis fugit eligendi cupiditate vel</p>
             </div>
           </div><!-- End Team Member -->
 
           <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="600">
             <div class="member-img">
-              <img src="{{asset('template')}}/assets/img/team/team-6.jpg" class="img-fluid" alt="">
+              <img src="{{asset('template')}}/assets/img/adi.jpg" class="img-fluid" alt="">
               <div class="social">
                 <a href="#"><i class="bi bi-twitter"></i></a>
                 <a href="#"><i class="bi bi-facebook"></i></a>
@@ -813,8 +813,8 @@
               </div>
             </div>
             <div class="member-info text-center">
-              <h4>Josepha Palas</h4>
-              <span>Operation</span>
+              <h4>Adi</h4>
+              <span>Teknisi</span>
               <p>Sint sint eveniet explicabo amet consequatur nesciunt error enim rerum earum et omnis fugit eligendi cupiditate vel</p>
             </div>
           </div><!-- End Team Member -->
