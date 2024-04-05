@@ -53,6 +53,7 @@ Route::get('/home', function() {
 })->name('home')->middleware('auth');
 
 Route::resource('datacalonpelanggan', \App\Http\Controllers\DatacalonpelangganController::class)->middleware('auth');
+Route::resource('datapembayaran', \App\Http\Controllers\DatapembayaranController::class)->middleware('auth');
 Route::resource('paket', \App\Http\Controllers\PaketController::class)->middleware('auth');
 Route::resource('site', \App\Http\Controllers\SiteController::class)->middleware('auth');
 Route::resource('teknisi', \App\Http\Controllers\TeknisiController::class)->middleware('auth');

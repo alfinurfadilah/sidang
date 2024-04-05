@@ -458,6 +458,14 @@ return [
             'url'        => '/jadwalpemasangan',
             'can' => 'Admin-only',
         ],
+
+        [
+            'text'       => 'Data Pembayaran',
+            'icon' => 'fa fa-address-card ',
+            'url'        => '/datapembayaran',
+            'can' => 'Admin-only',
+        ],
+    
         // [
         //     'text'       => 'Calendar',
         //     'icon_color' => 'cyan',

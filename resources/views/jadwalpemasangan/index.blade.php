@@ -63,6 +63,7 @@
         transform: scale(1.05);
     }
 
+
     .bg-info-custom {
         background-color: #17a2b8 !important;
         color: #fff;
