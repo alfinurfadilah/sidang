@@ -13,9 +13,16 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    protected function authenticated(Request $request, $user)
     {
-        $this->middleware('auth');
+        if ($user->isadmin()) {
+            return redirect()->route('dashboard.admin');
+        } elseif ($user->isteknisi()) {
+            return redirect()->route('dashboard');
+        } else {
+            // Handle other roles or scenarios
+        }
+       
     }
 
     /**

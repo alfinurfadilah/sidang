@@ -3,22 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
     use AuthenticatesUsers;
 
     /**
@@ -26,8 +16,29 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/loginmikrotik/index';
+    protected $redirectTo = '/dashboard';
 
+    /**
+     * Handle an authenticated user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        if ($user->isAdmin()) {
+            return redirect()->route('dashboard.admin');
+        } elseif ($user->isNoc()) {
+            // Redirect to Mikrotik login form for NOC user
+            return redirect()->route('loginmikrotik.index');
+        } elseif ($user->isTechnician()) {
+            return redirect()->route('dashboard.teknisi');
+        } else {
+            // Default redirect for other roles
+            return redirect()->route('dashboard.admin');
+        }
+    }
 
     /**
      * Create a new controller instance.

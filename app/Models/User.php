@@ -43,4 +43,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isAdmin()
+    {
+        return $this->divisi === 'Admin'; // Misalkan 'admin' adalah nilai yang menunjukkan peran admin dalam tabel pengguna
+    }
+
+    // Method untuk memeriksa apakah pengguna adalah teknisi
+    public function isTechnician()
+    {
+        return $this->divisi === 'Teknisi'; // Misalkan 'teknisi' adalah nilai yang menunjukkan peran teknisi dalam tabel pengguna
+    }
+
+    // Method untuk memeriksa apakah pengguna adalah noc
+    public function isNoc()
+    {
+        return $this->divisi === 'NOC'; // Misalkan 'noc' adalah nilai yang menunjukkan peran noc dalam tabel pengguna
+    }
 }

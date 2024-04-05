@@ -148,6 +148,14 @@
 .btn-warning {
     border-radius: 30px; /* Atur nilai border-radius sesuai dengan keinginan Anda */
 }
+
+.red-label {
+    color: red;
+}
+
+.green-label {
+    color: green;
+}
 </style>
 
 <div class="row justify-content-center">
@@ -182,16 +190,17 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="site">Site</label>
-                                    <div class="input-group">
-                                        <input type="hidden" name="id_site" id="id_site" value="{{$fsite->site->id ?? old('id_site')}}">
-                                        <input type="text" class="form-control @error('site') is-invalid @enderror" placeholder="site" id="site" name="site"
-                                            value="{{ $item->site ? $fsite->site->site : (old('site') ?? '') }}" aria-label="Site" aria-describedby="cari" readonly>
-                                        <button class="btn btn-warning" type="button" data-bs-toggle="modal" id="cari" data-bs-target="#staticBackdrop">
-                                            Cari Data Site
-                                        </button>
-                                    </div>
+                                <label for="site">Site</label>
+                                <div class="input-group">
+                                    <input type="hidden" name="id_site" id="id_site" value="{{ $item->fsite->site->id ?? old('id_site') }}">
+                                    <input type="text" class="form-control @error('site') is-invalid @enderror" placeholder="Site" id="site" name="site"
+                                        value="{{ $item->fsite->site->site ?? old('site') }}" aria-label="Site" aria-describedby="cari" readonly>
+                                    <button class="btn btn-warning" type="button" data-bs-toggle="modal" id="cari" data-bs-target="#staticBackdrop">
+                                        Cari Data Site
+                                    </button>
                                 </div>
+                            </div>
+
 
                                 <div class="form-group">
                                     <label for="tanggal_pemasangan">Tanggal Pemasangan</label>
@@ -266,19 +275,12 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="status_pemasangan">Status Pemasangan</label>
-                                    <select class="form-control @error('status_pemasangan') is-invalid @enderror"
-                                        id="status_pemasangan" name="status_pemasangan">
-                                        <option value="--pilih--" @if(old('status_pemasangan')=='--pilih--' )selected
-                                            @endif>--pilih--</option>
-                                        <option value="Bisa Dipasang" @if(old('status_pemasangan')=='Bisa Dipasang'
-                                            )selected @endif>Bisa Dipasang</option>
-                                        <option value="Tidak Bisa Dipasang"
-                                            @if(old('status_pemasangan')=='Tidak Bisa Dipasang' )selected @endif>Tidak
-                                            Bisa Dipasang</option>
-                                    </select>
-                                    @error('status_pemasangan') <span class="text-danger">{{ $message }}</span>
-                                    @enderror
+                                    <label for="status_pemasangan">Progres Pemasangan</label>
+                                    <input type="range" class="form-control-range @error('status_pemasangan') is-invalid @enderror"
+                                        id="status_pemasangan" name="status_pemasangan" min="0%" max="100%" value="{{ $item->status_pemasangan ?? old('status_pemasangan') }}"
+                                        style="background: linear-gradient(to right, #28a745 0%, #28a745 50%, #dee2e6 50%, #dee2e6 100%);">
+                                    <div id="status_pemasangan_value">{{ $item->status_pemasangan ?? old('status_pemasangan') }}</div>
+                                    @error('status_pemasangan') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                         </div>
@@ -288,7 +290,7 @@
                 <div class="table-responsive">
                     <table class="table table-hover table-striped" id="example2">
                         <thead class="center-heading">
-                            <tr class="bg-info text-white">
+                            <tr class="bg-info text-white" >
                                 <th>No.</th>
                                 <th>Nama</th>
                                 <th>Site</th>
@@ -296,7 +298,7 @@
                                 <th>Waktu</th>
                                 <th>Nama Teknisi</th>
                                 <th>Hasil Redaman</th>
-                                <th>Status Pemasangan</th>
+                                <th>Progres Pemasangan</th>
                                 <th>Kebutuhan Access Point </th>
                                 <th>Kebutuhan HTB</th>
                                 <th>Opsi</th>
@@ -318,7 +320,7 @@
                                     @endforeach
                                 </td>
                                 <td>{{$item->hasil_redaman}}</td>
-                                <td>{{$item->status_pemasangan}}</td>
+                                <td><span class="badge bg-success" style="font-size: 16px;">{{$item->status_pemasangan}}%</span></td>
                                 <td>{{$item->kebutuhan_Access_Point}} {{$item->SN_Access_Point}}</td>
                                 <td>{{$item->kebutuhan_HTB}}</td>
                                 <td>
@@ -488,6 +490,28 @@
 }
     </style>
 <script>
+   
+    var slider = document.getElementById("status_pemasangan");
+    var output = document.getElementById("status_pemasangan_value");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function() {
+        output.innerHTML = this.value;
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var progressLabels = document.querySelectorAll('.progress-label');
+        
+        progressLabels.forEach(function(label) {
+            var progress = parseInt(label.innerText);
+            if (progress < 50) {
+                label.classList.add('red-label');
+            } else {
+                label.classList.add('green-label');
+            }
+        });
+    });
+
     $(document).ready(function() {
         $('#example2').DataTable({
             "responsive": true,
