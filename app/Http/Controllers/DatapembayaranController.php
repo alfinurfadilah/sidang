@@ -56,7 +56,7 @@ class DatapembayaranController extends Controller
         $datapembayaran = Datapembayaran::create($array);
     
         // Temukan datacapel berdasarkan id_paket
-        $datapel = paket::find($request->id_paket);
+        $datapem = paket::find($request->id_paket);
 
         // Redirect dengan pesan sukses
         return redirect()->route('datapembayaran.index')->with('success_message', 'Berhasil menambah data calon pelanggan baru');
@@ -81,9 +81,10 @@ class DatapembayaranController extends Controller
      */
     public function update(Request $request, $id)
     {
+            //  dd($request );
         $request->validate([
             'id_pelanggan' => 'required',
-            'nama' => 'required',
+            'nama' => 'required',          
             'harga_paket' => 'required',
             'payment_status' => 'required|boolean', // Validasi untuk payment_status
             'bulan'=>'required',
@@ -91,6 +92,14 @@ class DatapembayaranController extends Controller
             'id_paket'=> 'required',
 
             ]);
+
+             // Ambil data paket dari formulir
+    $selected_namapaket = $request->input('selected_namapaket');
+    // Simpan data ke dalam basis data
+    $paket = Paket::find($id);
+    $paket->nama_paket = $selected_namapaket;
+    $paket->save();
+    
             $datapembayaran = Datapembayaran::find($id);
             $datapembayaran->id_pelanggan = $request->id_pelanggan;
             $datapembayaran->nama = $request->nama;

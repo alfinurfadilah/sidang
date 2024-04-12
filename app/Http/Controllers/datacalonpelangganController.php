@@ -33,6 +33,7 @@ class DatacalonpelangganController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request );
         // Validasi input
         $request->validate([  
             'Nama' => 'required',
@@ -40,6 +41,7 @@ class DatacalonpelangganController extends Controller
             'Nomor_Handphone' => 'required',
             'Alamat_Pemasangan' => 'required',
             'Titik_Kordinat' => 'required',
+            'Status' => 'required',
             'id_paket' => 'required',
         ]);
     
@@ -49,6 +51,7 @@ class DatacalonpelangganController extends Controller
             'Nomor_Handphone', 
             'Alamat_Pemasangan',
             'Titik_Kordinat',
+            'Status',
             'id_paket'
         ]);
     
@@ -99,13 +102,22 @@ class DatacalonpelangganController extends Controller
     
     public function update(Request $request, $id)
     {
+        //    dd($request );
         $request->validate([
             'Nama' => 'required',
             'Foto' => 'image|file|max:2048',
             'Nomor_Handphone' => 'required',
             'Alamat_Pemasangan' => 'required',
             'Titik_Kordinat' => 'required',
+            'Status' => 'required',
         ]);
+    
+        // Ambil data paket dari formulir
+    $selected_namapaket = $request->input('selected_namapaket');
+    // Simpan data ke dalam basis data
+    $paket = Paket::find($id);
+    $paket->Nama_Paket = $selected_namapaket;
+    $paket->save();
     
         $datacalonpelanggan = Datacalonpelanggan::find($id);
         $datacapel = Paket::find($request->id_paket);
@@ -120,6 +132,7 @@ class DatacalonpelangganController extends Controller
         $datacalonpelanggan->Nomor_Handphone = $request->Nomor_Handphone;
         $datacalonpelanggan->Alamat_Pemasangan = $request->Alamat_Pemasangan;
         $datacalonpelanggan->Titik_Kordinat = $request->Titik_Kordinat;
+        $datacalonpelanggan->Status = $request->Status;
     
 // Proses foto baru
 if ($request->hasfile('Foto')) {

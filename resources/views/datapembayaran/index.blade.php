@@ -421,8 +421,10 @@
                         <div class="form-group">
                             <label for="selected_namapaket">Nama_Paket</label>
                                 <div class="input-group">
-                                <input type="hidden" name="id_paket" id="selected_namapaket_edit_{{$item->id}}" value="{{$item->fpaket->id ?? old('id_paket')}}">
-                                <input type="text" class="form-control border @error('id_paket') is-invalid @enderror" placeholder="Nama_Paket" id="selected_namapaket_{{$item->id}}" name="selected_namapaket" value="{{$item->fpaket->Nama_Paket?? old('selected_namapaket')}}" aria-describedby="cari">
+                                <!-- Formulir edit -->
+                                    <input type="hidden" name="id_paket" id="selected_namapaket_edit_{{$item->id}}" value="{{$item->fpaket->id ?? old('id_paket')}}">
+                                    <input type="text" class="form-control border @error('id_paket') is-invalid @enderror" placeholder="Nama_Paket" id="selected_namapaket_{{$item->id}}" name="selected_namapaket" value="{{$item->fpaket->Nama_Paket ?? old('selected_namapaket')}}" aria-describedby="cari">
+
                                 <button type="button" class="btn btn-warning" data-action="edit" data-paket-id="{{ $item->id }}">Cari Data Paket</button>
                             </div>
                         </div>
@@ -537,8 +539,8 @@
     aria-labelledby="lihatDataModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="lihatDataModalLabel">Data Pembayaran</h5>
+            <div class="modal-header bg-info">
+                <h5 class="modal-title" id="lihatDataModalLabel">Detail Data Pembayaran</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -747,25 +749,27 @@ function closePaketModal() {
 
 $(document).ready(function() {
     // Fungsi untuk membuka modal pemilihan pengguna dengan tindakan (edit atau create)
-    function openPaketModal(action, paketId = null) {
-        $('#paketModal').data('action', action);
-        $('#paketModal').data('paket-id', paketId); // Simpan ID karyawan untuk mode edit
-        $('#paketModal').modal('show');
-    }
+// Fungsi untuk membuka modal pemilihan paket dengan tindakan (edit atau create)
+function openPaketModal(action, paketId = null) {
+    $('#paketModal').data('action', action);
+    $('#paketModal').data('paket-id', paketId); // Simpan ID paket untuk mode edit
+    $('#paketModal').modal('show');
+}
 
-    // Event handler untuk tombol "Cari Data Users" pada mode edit
-    $('[data-action="edit"]').on('click', function() {
-        // Dapatkan ID karyawan dari atribut data-karyawan-id pada tombol yang diklik
-        var paketId = $(this).data('paket-id');
-        // Panggil fungsi openUserModal dengan tindakan edit dan ID karyawan
-        openPaketModal('edit', paketId);
-    });
+// Event handler untuk tombol "Cari Data Paket" pada mode edit
+$('[data-action="edit"]').on('click', function() {
+    // Dapatkan ID paket dari atribut data-paket-id pada tombol yang diklik
+    var paketId = $(this).data('paket-id');
+    // Panggil fungsi openPaketModal dengan tindakan edit dan ID paket
+    openPaketModal('edit', paketId);
+});
 
-    // Event handler untuk tombol "Cari Data Users" pada mode create
-    $('[data-action="create"]').on('click', function() {
-        // Panggil fungsi openUserModal dengan tindakan create
-        openPaketModal('create');
-    });
+// Event handler untuk tombol "Cari Data Paket" pada mode create
+$('[data-action="create"]').on('click', function() {
+    // Panggil fungsi openPaketModal dengan tindakan create
+    openPaketModal('create');
+});
+
 
     // Fungsi untuk menangani pemilihan pengguna saat menggunakan tombol "pilih"
     $('[data-action="pilih"]').on('click', function() {

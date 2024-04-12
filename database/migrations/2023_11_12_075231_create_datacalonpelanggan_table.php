@@ -23,6 +23,7 @@ return new class extends Migration
             // $table->string('Nama_Paket');
             $table->string('Alamat_Pemasangan');
             $table->char('Titik_Kordinat');
+            $table->enum('Status', ['coverage', 'survey', 'pemasangan', 'aktif'])->nullable();
             $table->timestamps();
           
 

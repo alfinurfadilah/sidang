@@ -17,6 +17,7 @@ class Datacalonpelanggan extends Model
         'Nama_Paket',
         'Alamat_Pemasangan',
         'Titik_Kordinat',
+        'Status',
         'id_paket'
         
     ];

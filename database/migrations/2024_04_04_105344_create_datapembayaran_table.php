@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('id_paket')->references('id')->on('paket')->onDelete('cascade');
             $table->string('id_pelanggan');
             $table->string('nama');
-            // $table->string('Nama_Paket');
+            // $table->string('nama_paket');
             $table->string('harga_paket');
             $table->boolean('payment_status')->default(false);
             $table->string('bulan');

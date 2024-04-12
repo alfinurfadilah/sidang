@@ -183,6 +183,40 @@
     background-color: #ffff00; /* Warna biru lebih gelap saat hover */
 }
 
+/* Gaya untuk tombol status */
+
+    /* Warna untuk setiap status */
+    /* Gaya untuk tombol status */
+.btn-status {
+    padding: 8px 16px; /* Padding untuk tombol */
+    font-size: 14px; /* Ukuran font */
+    cursor: pointer; /* Kursor menjadi tanda tangan saat mengarahkan */
+    outline: none; /* Hilangkan border saat tombol ditekan */
+    border: none; /* Hilangkan border tombol */
+    border-radius: 5px; /* Sudut border */
+}
+
+/* Warna untuk setiap status */
+.btn-coverage {
+    background-color: #cee9be; /* Hijau */
+    color: black; /* Warna teks putih */
+}
+
+.btn-survey {
+    background-color: #b0d0e7; /* Kuning */
+    color: black; /* Warna teks hitam */
+}
+
+.btn-pemasangan {
+    background-color: #ecc7ce; /* Biru */
+    color: black; /* Warna teks putih */
+}
+
+.btn-aktif {
+    background-color: #ffe57e; /* Merah */
+    color: black; /* Warna teks putih */
+}
+
 </style>
 
 <div class="row justify-content-center">
@@ -203,6 +237,7 @@
                             <th>Nama Paket</th>
                             <th>Alamat Pemasangan</th>
                             <th>Titik Kordinat</th>
+                            <th>Status</th>
                             <th>Opsi</th>
                         </thead>
                     <tbody>
@@ -218,6 +253,17 @@
                             <td>{{$item->fpaket->Nama_Paket}}</td>
                             <td>{{$item->Alamat_Pemasangan}}</td>
                             <td>{{$item->Titik_Kordinat}}</td>
+                            <td>
+                            @if($item->Status == 'coverage')
+                                <button class="btn btn-survey">{{$item->Status}}</button>
+                            @elseif($item->Status == 'survey')
+                                <button class="btn btn-coverage">{{$item->Status}}</button>
+                            @elseif($item->Status == 'pemasangan')
+                                <button class="btn btn-pemasangan">{{$item->Status}}</button>
+                            @elseif($item->Status == 'aktif')
+                                <button class="btn btn-aktif">{{$item->Status}}</button>
+                            @endif
+                        </td>
                             <td>
                                 <div class="button-container">
                                 <button class="btn btn-edit btn-sm" data-bs-toggle="modal"
@@ -284,13 +330,13 @@
                             </div>
 
                             <div class="form-group">
-    <label for="selected_namapaket">Nama_Paket</label>
-    <div class="input-group">
-        <input type="hidden" name="id_paket" id="selected_namapaket_id">
-        <input type="text" class="form-control border @error('id_paket') is-invalid @enderror" placeholder="Nama_Paket" id="selected_namapaket" name="selected_namapaket" value="{{ old('selected_namapaket') }}" aria-describedby="cari">
-        <button type="button" class="btn btn-warning" data-action="create" id="btn-search-paket">Cari Data Paket</button>
-    </div>
-</div>
+                            <label for="selected_namapaket">Nama_Paket</label>
+                            <div class="input-group">
+                                <input type="hidden" name="id_paket" id="selected_namapaket_id">
+                                <input type="text" class="form-control border @error('id_paket') is-invalid @enderror" placeholder="Nama_Paket" id="selected_namapaket" name="selected_namapaket" value="{{ old('selected_namapaket') }}" aria-describedby="cari">
+                                <button type="button" class="btn btn-warning" data-action="create" id="btn-search-paket">Cari Data Paket</button>
+                            </div>
+                        </div>
 
 
                             <!-- <div class="form-group">
@@ -324,9 +370,17 @@
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <!-- /.card-body -->
 
-                            
+                            <div class="form-group">
+                            <label for="Status">Status</label>
+                            <select class="form-control" id="Status" name="Status">
+                                <option value="coverage">Coverage</option>
+                                <option value="survey">Survey</option>
+                                <option value="pemasangan">Pemasangan</option>
+                                <option value="aktif">Aktif</option>
+                            </select>
+                        </div>
+
                             <div class="card-footer btn-container">
                                 <button type="submit" class="btn btn-danger btn-save"><i class="fas fa-save"> Simpan
                                     </i></button>
@@ -405,6 +459,15 @@
                             <input type="text" class="form-control @error('Titik_Kordinat') is-invalid @enderror" id="Titik_Kordinat" placeholder="Masukkan titik kordinat" name="Titik_Kordinat" value="{{ $item->Titik_Kordinat ?? old('Titik_Kordinat') }}">
                             @error('Titik_Kordinat') <span class="textdanger">{{ $message }}</span> @enderror
                         </div>
+                      <div class="form-group">
+                        <label for="Status">Status</label>
+                        <select class="form-control" id="Status" name="Status">
+                            <option value="coverage" {{ $item->Status == 'coverage' ? 'selected' : '' }}>Coverage</option>
+                            <option value="survey" {{ $item->Status == 'survey' ? 'selected' : '' }}>Survey</option>
+                            <option value="pemasangan" {{ $item->Status == 'pemasangan' ? 'selected' : '' }}>Pemasangan</option>
+                        </select>
+                    </div>
+
                     </div>
                     <div class="card-footer btn-container">
                                 <button type="submit" class="btn btn-danger btn-save"><i class="fas fa-save"> Simpan
