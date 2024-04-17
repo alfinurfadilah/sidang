@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Datapembayaran;
 use App\Models\Paket;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\DatapembayaranExport;
 
 class DatapembayaranController extends Controller
 {
@@ -18,6 +20,11 @@ class DatapembayaranController extends Controller
         ]);
     }
 
+    public function exportExcel()
+    {
+        return Excel::download(new DataPembayaranExport, 'datapembayaran.xlsx');
+    }
+    
     public function create()
     {
         //menampilkan form tambah user
@@ -35,7 +42,7 @@ class DatapembayaranController extends Controller
             'id_pelanggan'=> 'required',
             'nama'=> 'required',
             'harga_paket'=> 'required',
-            'payment_status' => 'required|boolean', // Validasi untuk payment_status
+            'payment_status' => 'required', // Validasi untuk payment_status
             'bulan'=>'required',
             'tahun'=>'required',
             'id_paket'=> 'required',
@@ -86,7 +93,7 @@ class DatapembayaranController extends Controller
             'id_pelanggan' => 'required',
             'nama' => 'required',          
             'harga_paket' => 'required',
-            'payment_status' => 'required|boolean', // Validasi untuk payment_status
+            'payment_status' => 'required', // Validasi untuk payment_status
             'bulan'=>'required',
             'tahun'=>'required',
             'id_paket'=> 'required',

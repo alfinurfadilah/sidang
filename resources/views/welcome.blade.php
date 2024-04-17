@@ -166,32 +166,32 @@
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="icon-box">
                   <i class="bi bi-buildings"></i>
-                  <h3>Eius provident</h3>
-                  <p>Magni repellendus vel ullam hic officia accusantium ipsa dolor omnis dolor voluptatem</p>
+                  <h3>Kualitas</h3>
+                  <p>Kami mengutamakan kualitas dalam segala hal yang kami lakukan, mulai dari layanan hingga dukungan pelanggan.</p>
                 </div>
               </div> <!-- End Icon Box -->
 
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
                 <div class="icon-box">
                   <i class="bi bi-clipboard-pulse"></i>
-                  <h3>Rerum aperiam</h3>
-                  <p>Autem saepe animi et aut aspernatur culpa facere. Rerum saepe rerum voluptates quia</p>
+                  <h3>Inovasi</h3>
+                  <p>Kami selalu mencari cara untuk meningkatkan layanan kami melalui inovasi dan teknologi terbaru.</p>
                 </div>
               </div> <!-- End Icon Box -->
 
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
                 <div class="icon-box">
                   <i class="bi bi-command"></i>
-                  <h3>Veniam omnis</h3>
-                  <p>Omnis perferendis molestias culpa sed. Recusandae quas possimus. Quod consequatur corrupti</p>
+                  <h3>Pelayanan Pelanggan</h3>
+                  <p>Kami mendengarkan dan memahami kebutuhan pelanggan kami, dan berusaha memberikan solusi yang tepat waktu dan efektif.</p>
                 </div>
               </div> <!-- End Icon Box -->
 
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
                 <div class="icon-box">
                   <i class="bi bi-graph-up-arrow"></i>
-                  <h3>Delares sapiente</h3>
-                  <p>Sint et dolor voluptas minus possimus nostrum. Reiciendis commodi eligendi omnis quideme lorenda</p>
+                  <h3>Komitmen pada Komunitas</h3>
+                  <p>Kami memahami peran kami dalam komunitas lokal dan berkomitmen untuk memberikan kontribusi positif kepada masyarakat tempat kami beroperasi.</p>
                 </div>
               </div> <!-- End Icon Box -->
 
@@ -251,8 +251,8 @@
 
       <!--  Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Services</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <h2>Divisi</h2>
+        <p>Berikut adalah tugas-tugas dari setiap divisi.</p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -263,8 +263,8 @@
             <div class="service-item d-flex">
               <div class="icon flex-shrink-0"><i class="bi bi-briefcase"></i></div>
               <div>
-                <h4 class="title"><a href="services-details.html" class="stretched-link">Lorem Ipsum</a></h4>
-                <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+                <h4 class="title"><a href="services-details.html" class="stretched-link">Admin Reguler</a></h4>
+                <p class="description">Tugas admin reguler, dengan peran mirip customer service, tugasnya meliputi memberikan layanan bantuan kepada pelanggan, memberikan pengingat kepada pelanggan untuk melakukan pembayaran tagihan bulanan secara tepat waktu, serta memberikan informasi dan dukungan terkait dengan layanan internet RT RW Net.</p>
               </div>
             </div>
           </div>
@@ -274,8 +274,8 @@
             <div class="service-item d-flex">
               <div class="icon flex-shrink-0"><i class="bi bi-card-checklist"></i></div>
               <div>
-                <h4 class="title"><a href="services-details.html" class="stretched-link">Dolor Sitema</a></h4>
-                <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+                <h4 class="title"><a href="services-details.html" class="stretched-link">Admin Finance</a></h4>
+                <p class="description">Tugas admin finance, meliputi pencatatan transaksi keuangan, pemrosesan pembayaran, pemantauan kas dan tagihan, serta penyusunan laporan keuangan untuk mendukung pengambilan keputusan manajemen terkait dengan keuangan perusahaan.</p>
               </div>
             </div>
           </div><!-- End Service Item -->
@@ -284,8 +284,8 @@
             <div class="service-item d-flex">
               <div class="icon flex-shrink-0"><i class="bi bi-bar-chart"></i></div>
               <div>
-                <h4 class="title"><a href="services-details.html" class="stretched-link">Sed ut perspiciatis</a></h4>
-                <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+                <h4 class="title"><a href="services-details.html" class="stretched-link">Noc</a></h4>
+                <p class="description">Tugas NOC , meliputi memantau kinerja jaringan, mengidentifikasi dan menangani gangguan jaringan, serta memberikan dukungan teknis dasar kepada pelanggan.</p>
               </div>
             </div>
           </div><!-- End Service Item -->
@@ -294,8 +294,8 @@
             <div class="service-item d-flex">
               <div class="icon flex-shrink-0"><i class="bi bi-binoculars"></i></div>
               <div>
-                <h4 class="title"><a href="services-details.html" class="stretched-link">Magni Dolores</a></h4>
-                <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                <h4 class="title"><a href="services-details.html" class="stretched-link">Marketing</a></h4>
+                <p class="description">Tugas marketing, bertanggung jawab untuk meningkatkan jumlah pelanggan dengan merancang strategi pemasaran lokal yang efektif, mempromosikan layanan internet ke masyarakat sekitar, dan menjaga hubungan baik dengan pelanggan yang ada untuk memastikan kepuasan mereka.</p>
               </div>
             </div>
           </div><!-- End Service Item -->
@@ -304,8 +304,8 @@
             <div class="service-item d-flex">
               <div class="icon flex-shrink-0"><i class="bi bi-brightness-high"></i></div>
               <div>
-                <h4 class="title"><a href="services-details.html" class="stretched-link">Nemo Enim</a></h4>
-                <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+                <h4 class="title"><a href="services-details.html" class="stretched-link">Web Developer</a></h4>
+                <p class="description">Tugas developer, bertanggung jawab untuk membuat sistem koordinasi untuk kebutuhan internal, kemudian memfasilitasi akses ke mikrotik melalui sebuah website, yang nantinya memungkinkan beberapa divisi untuk bisa mengakses mikrotik membantu NOC dalam memberikan layanan pelanggan, serta membuat profile perusahaan.</p>
               </div>
             </div>
           </div><!-- End Service Item -->
@@ -314,8 +314,8 @@
             <div class="service-item d-flex">
               <div class="icon flex-shrink-0"><i class="bi bi-calendar4-week"></i></div>
               <div>
-                <h4 class="title"><a href="services-details.html" class="stretched-link">Eiusmod Tempor</a></h4>
-                <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+                <h4 class="title"><a href="services-details.html" class="stretched-link">Teknisi</a></h4>
+                <p class="description">Tugas teknisi, meliputi instalasi, konfigurasi, dan pemeliharaan perangkat jaringan seperti router, switch, dan access point; penanganan perbaikan jaringan jika terjadi gangguan; memberikan dukungan teknis kepada pelanggan terkait masalah koneksi atau perangkat; serta melakukan pemantauan kinerja jaringan secara berkala untuk memastikan layanan internet berjalan lancar.</p>
               </div>
             </div>
           </div><!-- End Service Item -->
@@ -331,18 +331,17 @@
 
       <!--  Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Features</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <h2>Visi dan Misi</h2>
+        <p>"Dengan penuh kesadaran akan arah yang kami tuju, kami menetapkan visi dan misi sebagai landasan panduan utama kami".</p>
       </div><!-- End Section Title -->
 
       <div class="container">
 
         <div class="row gy-4 align-items-center features-item">
           <div class="col-lg-5 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-            <h3>Corporis temporibus maiores provident</h3>
+            <h3>Visi</h3>
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+            "Menjadi penyedia layanan internet terdepan yang mengubah cara orang terhubung dan berinteraksi di dunia digital."
             </p>
             <a href="#" class="btn btn-get-started">Get Started</a>
           </div>
@@ -359,12 +358,13 @@
             <img src="{{asset('template')}}/assets/img/logo1.png" class="img-fluid" alt="">
           </div>
           <div class="col-lg-5 d-flex justify-content-center flex-column" data-aos="fade-up">
-            <h3>Sunt consequatur ad ut est nulla</h3>
-            <p>Cupiditate placeat cupiditate placeat est ipsam culpa. Delectus quia minima quod. Sunt saepe odit aut quia voluptatem hic voluptas dolor doloremque.</p>
+            <h3>Misi</h3>
+            <p>Berikut Misi Kami: </p>
             <ul>
-              <li><i class="bi bi-check"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-              <li><i class="bi bi-check"></i><span> Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-              <li><i class="bi bi-check"></i> <span>Facilis ut et voluptatem aperiam. Autem soluta ad fugiat</span>.</li>
+              <li><i class="bi bi-check"></i> <span>1. Menyediakan akses internet berkualitas tinggi yang cepat, andal, dan terjangkau kepada semua pelanggan kami.</span></li>
+              <li><i class="bi bi-check"></i><span> 2. Memberikan pengalaman pelanggan yang unggul melalui pelayanan pelanggan yang ramah, responsif, dan profesional.</span></li>
+              <li><i class="bi bi-check"></i> <span>3. Mematuhi standar etika dan keamanan yang tertinggi dalam pengelolaan data pelanggan, melindungi privasi dan keamanan informasi pelanggan dengan cermat.</span>.</li>
+              <li><i class="bi bi-check"></i> <span>4. Menyediakan kesempatan bagi para siswa dan siswi untuk terlibat secara langsung dalam pengelolaan sebuah usaha yang berfokus pada penyediaan layanan internet.</span>.</li>
             </ul>
             <a href="#" class="btn btn-get-started align-self-start">Get Started</a>
           </div>
@@ -380,7 +380,7 @@
       <!--  Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Portfolio</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <p>Ini adalah dokumentasi lengkap mengenai setiap instalasi modem yang kami lakukan.</p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -494,147 +494,56 @@
 
     </section><!-- End Portfolio Section -->
 
-    <!-- Pricing Section - Home Page -->
-    <section id="pricing" class="pricing">
+<!-- Pricing Section - Home Page -->
+<section id="pricing" class="pricing">
 
-      <!--  Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Pricing</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
+  <!--  Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Pricing</h2>
+    <p>Nikmati paket internet berkualitas dengan harga terjangkau</p>
+  </div><!-- End Section Title -->
 
-      <div class="container" data-aos="zoom-in" data-aos-delay="100">
+  <div class="container" data-aos="zoom-in" data-aos-delay="100">
 
-        <div class="row g-4">
+    <div class="row justify-content-center">
 
-          <div class="col-lg-4">
-            <div class="pricing-item">
-              <h3>Free Plan</h3>
-              <div class="icon">
-                <i class="bi bi-box"></i>
-              </div>
-              <h4><sup>$</sup>0<span> / month</span></h4>
-              <ul>
-                <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
-                <li><i class="bi bi-check"></i> <span>Nec feugiat nisl pretium</span></li>
-                <li><i class="bi bi-check"></i> <span>Nulla at volutpat diam uteera</span></li>
-                <li class="na"><i class="bi bi-x"></i> <span>Pharetra massa massa ultricies</span></li>
-                <li class="na"><i class="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-              </ul>
-              <div class="text-center"><a href="#" class="buy-btn">Buy Now</a></div>
-            </div>
-          </div><!-- End Pricing Item -->
-
-          <div class="col-lg-4">
-            <div class="pricing-item featured">
-              <h3>Business Plan</h3>
-              <div class="icon">
-                <i class="bi bi-rocket"></i>
-              </div>
-
-              <h4><sup>$</sup>29<span> / month</span></h4>
-              <ul>
-                <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
-                <li><i class="bi bi-check"></i> <span>Nec feugiat nisl pretium</span></li>
-                <li><i class="bi bi-check"></i> <span>Nulla at volutpat diam uteera</span></li>
-                <li><i class="bi bi-check"></i> <span>Pharetra massa massa ultricies</span></li>
-                <li><i class="bi bi-check"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-              </ul>
-              <div class="text-center"><a href="#" class="buy-btn">Buy Now</a></div>
-            </div>
-          </div><!-- End Pricing Item -->
-
-          <div class="col-lg-4">
-            <div class="pricing-item">
-              <h3>Developer Plan</h3>
-              <div class="icon">
-                <i class="bi bi-send"></i>
-              </div>
-              <h4><sup>$</sup>49<span> / month</span></h4>
-              <ul>
-                <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
-                <li><i class="bi bi-check"></i> <span>Nec feugiat nisl pretium</span></li>
-                <li><i class="bi bi-check"></i> <span>Nulla at volutpat diam uteera</span></li>
-                <li><i class="bi bi-check"></i> <span>Pharetra massa massa ultricies</span></li>
-                <li><i class="bi bi-check"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-              </ul>
-              <div class="text-center"><a href="#" class="buy-btn">Buy Now</a></div>
-            </div>
-          </div><!-- End Pricing Item -->
-
-        </div>
-
-      </div>
-
-    </section><!-- End Pricing Section -->
-
-    <!-- Faq Section - Home Page -->
-    <section id="faq" class="faq">
-
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="content px-xl-5">
-              <h3><span>Frequently Asked </span><strong>Questions</strong></h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-              </p>
-            </div>
+      <div class="col-lg-4">
+        <div class="pricing-item">
+          <h3>Paket Murmer</h3>
+          <div class="icon">
+            <i class="bi bi-speedometer2"></i>
           </div>
-
-          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
-
-            <div class="faq-container">
-              <div class="faq-item faq-active">
-                <h3><span class="num">1.</span> <span>Non consectetur a erat nam at lectus urna duis?</span></h3>
-                <div class="faq-content">
-                  <p>Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <h3><span class="num">2.</span> <span>Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?</span></h3>
-                <div class="faq-content">
-                  <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <h3><span class="num">3.</span> <span>Dolor sit amet consectetur adipiscing elit pellentesque?</span></h3>
-                <div class="faq-content">
-                  <p>Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <h3><span class="num">4.</span> <span>Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?</span></h3>
-                <div class="faq-content">
-                  <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <h3><span class="num">5.</span> <span>Tempus quam pellentesque nec nam aliquam sem et tortor consequat?</span></h3>
-                <div class="faq-content">
-                  <p>Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-            </div>
-
-          </div>
+          <h4><sup>Rp</sup>100.000<span> / bulan</span></h4>
+          <ul>
+            <li><i class="bi bi-check"></i> <span>Kecepatan: 7 Mbps</span></li>
+            <li><i class="bi bi-check"></i> <span>Termasuk kuota data bulanan</span></li>
+            <li class="na"><i class="bi bi-x"></i> <span>Fitur tambahan tertentu</span></li>
+          </ul>
+          <div class="text-center"><a href="#" class="buy-btn">Beli Sekarang</a></div>
         </div>
+      </div><!-- End Pricing Item -->
 
-      </div>
+      <div class="col-lg-4">
+        <div class="pricing-item featured">
+          <h3>Paket Elite</h3>
+          <div class="icon">
+            <i class="bi bi-lightning"></i>
+          </div>
+          <h4><sup>Rp</sup>150.000<span> / bulan</span></h4>
+          <ul>
+            <li><i class="bi bi-check"></i> <span>Kecepatan: 15 Mbps</span></li>
+            <li><i class="bi bi-check"></i> <span>Termasuk kuota data bulanan</span></li>
+            <li><i class="bi bi-check"></i> <span>Fitur tambahan tertentu</span></li>
+          </ul>
+          <div class="text-center"><a href="#" class="buy-btn">Beli Sekarang</a></div>
+        </div>
+      </div><!-- End Pricing Item -->
 
-    </section><!-- End Faq Section -->
+    </div>
+
+  </div>
+
+</section><!-- End Pricing Section -->
 
     <!-- Team Section - Home Page -->
     <section id="team" class="team">
@@ -736,7 +645,7 @@
 
           <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="600">
             <div class="member-img">
-              <img src="{{asset('template')}}/assets/img/team/team-6.jpg" class="img-fluid" alt="">
+              <img src="{{asset('template')}}/assets/img/wawa.jpg" class="img-fluid" alt="">
               <div class="social">
                 <a href="#"><i class="bi bi-twitter"></i></a>
                 <a href="#"><i class="bi bi-facebook"></i></a>
@@ -962,143 +871,6 @@
       </div>
 
     </section><!-- End Call-to-action Section -->
-
-    
-
-    <!-- Testimonials Section - Home Page -->
-    <section id="testimonials" class="testimonials">
-
-      <div class="container">
-
-        <div class="row align-items-center">
-
-          <div class="col-lg-5 info" data-aos="fade-up" data-aos-delay="100">
-            <h3>Testimonials</h3>
-            <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-            </p>
-          </div>
-
-          <div class="col-lg-7" data-aos="fade-up" data-aos-delay="200">
-
-            <div class="swiper">
-              <script type="application/json" class="swiper-config">
-                {
-                  "loop": true,
-                  "speed": 600,
-                  "autoplay": {
-                    "delay": 5000
-                  },
-                  "slidesPerView": "auto",
-                  "pagination": {
-                    "el": ".swiper-pagination",
-                    "type": "bullets",
-                    "clickable": true
-                  }
-                }
-              </script>
-              <div class="swiper-wrapper">
-
-                <div class="swiper-slide">
-                  <div class="testimonial-item">
-                    <div class="d-flex">
-                      <img src="{{asset('template')}}/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img flex-shrink-0" alt="">
-                      <div>
-                        <h3>Saul Goodman</h3>
-                        <h4>Ceo & Founder</h4>
-                        <div class="stars">
-                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <p>
-                      <i class="bi bi-quote quote-icon-left"></i>
-                      <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
-                      <i class="bi bi-quote quote-icon-right"></i>
-                    </p>
-                  </div>
-                </div><!-- End testimonial item -->
-
-                <div class="swiper-slide">
-                  <div class="testimonial-item">
-                    <div class="d-flex">
-                      <img src="{{asset('template')}}/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img flex-shrink-0" alt="">
-                      <div>
-                        <h3>Sara Wilsson</h3>
-                        <h4>Designer</h4>
-                        <div class="stars">
-                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <p>
-                      <i class="bi bi-quote quote-icon-left"></i>
-                      <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
-                      <i class="bi bi-quote quote-icon-right"></i>
-                    </p>
-                  </div>
-                </div><!-- End testimonial item -->
-
-                <div class="swiper-slide">
-                  <div class="testimonial-item">
-                    <div class="d-flex">
-                      <img src="{{asset('template')}}/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img flex-shrink-0" alt="">
-                      <div>
-                        <h3>Jena Karlis</h3>
-                        <h4>Store Owner</h4>
-                        <div class="stars">
-                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <p>
-                      <i class="bi bi-quote quote-icon-left"></i>
-                      <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</span>
-                      <i class="bi bi-quote quote-icon-right"></i>
-                    </p>
-                  </div>
-                </div><!-- End testimonial item -->
-
-                <div class="swiper-slide">
-                  <div class="testimonial-item">
-                    <div class="d-flex">
-                      <img src="{{asset('template')}}/assets/img/testimonials/testimonials-4.jpg" class="testimonial-img flex-shrink-0" alt="">
-                      <div>
-                        <h3>Matt Brandon</h3>
-                        <h4>Freelancer</h4>
-                        <div class="stars">
-                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <p>
-                      <i class="bi bi-quote quote-icon-left"></i>
-                      <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.</span>
-                      <i class="bi bi-quote quote-icon-right"></i>
-                    </p>
-                  </div>
-                </div><!-- End testimonial item -->
-
-                <div class="swiper-slide">
-                  <div class="testimonial-item">
-                    <div class="d-flex">
-                      <img src="{{asset('template')}}/assets/img/testimonials/testimonials-5.jpg" class="testimonial-img flex-shrink-0" alt="">
-                      <div>
-                        <h3>John Larson</h3>
-                        <h4>Entrepreneur</h4>
-                        <div class="stars">
-                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <p>
-                      <i class="bi bi-quote quote-icon-left"></i>
-                      <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.</span>
-                      <i class="bi bi-quote quote-icon-right"></i>
-                    </p>
-                  </div>
-                </div><!-- End testimonial item -->
 
               </div>
               <div class="swiper-pagination"></div>
@@ -1328,7 +1100,7 @@
           <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
+            <li><a href="#">Divisi</a></li>
             <li><a href="#">Terms of service</a></li>
             <li><a href="#">Privacy policy</a></li>
           </ul>

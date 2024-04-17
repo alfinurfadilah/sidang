@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('nama');
             // $table->string('nama_paket');
             $table->string('harga_paket');
-            $table->boolean('payment_status')->default(false);
+            $table->enum('payment_status', ['Sudah Bayar', 'Belum Bayar'])->nullable();
             $table->string('bulan');
             $table->string('tahun');
             $table->timestamps();

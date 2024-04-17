@@ -35,6 +35,25 @@
     .btn-create:hover {
         background-color: #0056b3; /* Warna biru lebih gelap saat hover */
     }
+
+    .btn-excel {
+        background-color: #007bff; /* Warna biru */
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 10px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-excel:hover {
+        background-color: #0056b3; /* Warna biru lebih gelap saat hover */
+    }
     .btn-edit {
         background-color: #007bff;
         color: #fff;
@@ -207,6 +226,8 @@
                 <button class="btn btn-create mb-2" data-toggle="modal" data-target="#staticBackdrop2">
                     Create New Data
                 </button>
+              <a href="{{ route('export-excel') }}" class="btn btn-excel btn-success">
+        <i class="fa fa-file-excel"></i> Export to Excel</a>
                 <div class="table-responsive">
                     <table class="table table-hover" id="example2">
                         <thead class="center-heading bg-info-custom">
@@ -216,7 +237,8 @@
                                 <th>Nama </th>
                                 <th>Nama Paket</th>
                                 <th>Harga Paket</th>
-                                <th>Bulan/Tahun</th>
+                                <th>Bulan</th>
+                                <th>Tahun</th>
                                 <th>Opsi</th>
                                 <th>Status Pembayaran</th>
                             </tr>
@@ -229,7 +251,8 @@
                                 <td>{{$item->nama}}</td>
                                 <td>{{$item->fpaket->Nama_Paket}}</td>
                                 <td>Rp {{number_format($item->harga_paket, 0, ',', '.')}}</td>
-                                <td>{{$item->bulan}} {{$item->tahun}}</td>
+                                <td>{{$item->bulan}}</td>
+                                <td>{{$item->tahun}}</td>
                                 <td>
                                     <div class="button-container">
                                         <button class="btn btn-edit  btn-xs" data-bs-toggle="modal"
@@ -324,8 +347,8 @@
                             <div class="form-group">
                                 <label for="payment_status">Status Pembayaran</label>
                                 <select class="form-control" id="payment_status" name="payment_status">
-                                    <option value="1">Sudah Dibayar</option>
-                                    <option value="0">Belum Dibayar</option>
+                                <option value="Sudah Bayar">Sudah Bayar</option>
+                                <option value="Belum Bayar">Belum Bayar</option>
                                 </select>
                             </div>
                         </div>

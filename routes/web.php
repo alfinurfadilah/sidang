@@ -47,7 +47,8 @@ Route::post('/pppoe/secret/add', [App\Http\Controllers\PppoeController::class, '
 Route::get('/pppoe/secret/edit/{id}', [App\Http\Controllers\PppoeController::class, 'edit'])->name('pppoe.edit');
 Route::post('/pppoe/secret/update/', [App\Http\Controllers\PppoeController::class, 'update'])->name('pppoe.update');
 Route::get('/pppoe/secret/delete/{id}', [App\Http\Controllers\PppoeController::class, 'delete'])->name('pppoe.delete');
-
+Route::get('/pppoe/secret/delete/{id}', [App\Http\Controllers\PppoeController::class, 'delete'])->name('pppoe.delete');
+Route::get('/export-excel', [App\Http\Controllers\DatapembayaranController::class, 'exportExcel'])->name('export-excel');
 
 Route::resource('datacalonpelanggan', \App\Http\Controllers\DatacalonpelangganController::class)->middleware('auth');
 Route::resource('datapembayaran', \App\Http\Controllers\DatapembayaranController::class)->middleware('auth');
