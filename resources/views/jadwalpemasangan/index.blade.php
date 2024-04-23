@@ -214,15 +214,10 @@
                                         <div class="form-group">
                                         <label for="nomor_handphone">Nomor Handphone</label>
                                             <div class="input-group">
-                                                <input type="hidden" name="id_jadwalsurvey" id="id_jadwalsurvey"
-                                                    value="{{ $fjadwalsurvey->nomor_handphone->id ?? old('id_jadwalsurvey') }}">
-                                                <input type="text"
-                                                    class="form-control @error('nomor_handphone') is-invalid @enderror"
-                                                    placeholder="Masukkan Nomor Handphone" id="nomor_handphone" name="nomor_handphone"
-                                                    value="{{ $item->jadwalsurvey ? $jadwalsurvey->paket->nomor_handphone : (old('nomor_handphone') ?? '') }}"
-                                                    aria-label="nomor_handphone" aria-describedby="cari">
-                                                <button class="btn btn-warning" type="button" data-bs-toggle="modal" id="cari"
-                                                    data-bs-target="#staticBackdrop">
+                                                <input type="hidden" name="id_jadwalsurvey" id="id_jadwalsurvey-{{$item->id}}" value="{{ $fjadwalsurvey->nomor_handphone->id ?? old('id_jadwalsurvey') }}">
+                                                <input type="text" class="form-control @error('nomor_handphone') is-invalid @enderror" placeholder="Masukkan Nomor Handphone" id="nomor_handphone-{{$item->id}}" name="nomor_handphone"
+                                                    value="{{ $item->jadwalsurvey ? $jadwalsurvey->paket->nomor_handphone : (old('nomor_handphone') ?? '') }}" aria-label="nomor_handphone" aria-describedby="cari">
+                                                <button class="btn btn-warning" type="button" data-bs-toggle="modal" data-id="{{$item->id}}" id="cari" data-bs-target="#staticBackdrop">
                                                     Ambil No Hadnphone
                                                 </button>
                                             </div>
@@ -232,15 +227,10 @@
                                         <div class="form-group">
                                             <label for="nama_paket">Nama Paket</label>
                                             <div class="input-group">
-                                                <input type="hidden" name="id_paket" id="id_paket"
-                                                    value="{{ $fpaket->nama_paket->id ?? old('id_paket') }}">
-                                                <input type="text"
-                                                    class="form-control @error('nama_paket') is-invalid @enderror"
-                                                    placeholder="Masukkan Nama Paket" id="nama_paket" name="nama_paket"
-                                                    value="{{ $item->paket ? $fpaket->paket->nama_paket : (old('nama_paket') ?? '') }}"
-                                                    aria-label="nama_paket" aria-describedby="cari">
-                                                <button class="btn btn-warning" type="button" data-bs-toggle="modal" id="cari"
-                                                    data-bs-target="#staticBackdrop1">
+                                                <input type="hidden" name="id_paket" id="id_paket-{{$item->id}}" value="{{ $fpaket->nama_paket->id ?? old('id_paket') }}">
+                                                <input type="text" class="form-control @error('nama_paket') is-invalid @enderror" placeholder="Masukkan Nama Paket" id="nama_paket-{{$item->id}}" name="nama_paket"
+                                                    value="{{ $item->paket ? $fpaket->paket->nama_paket : (old('nama_paket') ?? '') }}" aria-label="nama_paket" aria-describedby="cari">
+                                                <button class="btn btn-warning" type="button" data-bs-toggle="modal" data-id="{{$item->id}}" id="cari" data-bs-target="#staticBackdrop1">
                                                     Cari Data Paket
                                                 </button>
                                             </div>
@@ -436,108 +426,89 @@ btn-xs" onclick="pilihNomorhandphone('{{$item->id}}','{{$item->nomor_handphone}}
 @stop
 @push('js')
 <style>
-     .btn-save {
-    background-color: #CD5C5C;
-    /* Warna latar belakang tombol (merah) */
-    color: #fff;
-    /* Warna teks tombol (putih) */
-    border: none;
-    /* Tidak ada border */
-    padding: 10px 20px;
-    /* Padding tombol */
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-right: 10px;
-    /* Jarak kanan dari tombol "Batal" */
-    transition-duration: 0.4s;
-    cursor: pointer;
-    border-radius: 20px; /* Atur nilai border-radius sesuai dengan keinginan Anda */
+    .btn-save {
+        background-color: #CD5C5C;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-right: 10px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        border-radius: 20px;
+    }
 
-    /* Border radius untuk sudut tombol */
-}
+    .btn-save:hover {
+        background-color: #8b0000;
+        color: dark;
+        transform: scale(1.05);
+    }
 
-/* Hover Effect untuk Tombol "Simpan" */
-.btn-save:hover {
-    background-color: #8b0000;
-    /* Warna latar belakang tombol saat dihover (merah lebih gelap) */
-    color: dark;
-    /* Warna teks tombol saat dihover (putih) */
-    transform: scale(1.05);
-}
+    .btn-cancel {
+        background-color: #6495ED;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        border-radius: 20px;
+    }
 
-/* Gaya untuk Tombol "Batal" */
-.btn-cancel {
-    background-color: #6495ED;
-    /* Warna latar belakang tombol (biru) */
-    color: #fff;
-    /* Warna teks tombol (putih) */
-    border: none;
-    /* Tidak ada border */
-    padding: 10px 20px;
-    /* Padding tombol */
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    border-radius: 20px; /* Atur nilai border-radius sesuai dengan keinginan Anda */
-    /* Border radius untuk sudut tombol */
-}
-
-/* Hover Effect untuk Tombol "Batal" */
-.btn-cancel:hover {
-    background-color: #191970;
-    /* Warna latar belakang tombol saat dihover (biru lebih gelap) */
-    color: white;
-    /* Warna teks tombol saat dihover (putih) */
-    transform: scale(1.05);
-}
-    </style>
-    <script>
-       $(document).ready(function () {
-        $('#example2').DataTable({
-            "responsive": true,
-        });
-    });
+    .btn-cancel:hover {
+        background-color: #191970;
+        color: white;
+        transform: scale(1.05);
+    }
+</style>
+<script>
     $(document).ready(function () {
-        $('#example1').DataTable({
-            "responsive": true,
-        });
-    });
-    $(document).ready(function () {
-        $('#example').DataTable({
+        $('#example2, #example1, #example').DataTable({
             "responsive": true,
         });
     });
 
-
-        function notificationBeforeDelete(event, el) {
-            event.preventDefault();
-            if (confirm('Apakah anda yakin akan menghapus data ? ')) {
-                $("#delete-form").attr('action', $(el).attr('href'));
-                $("#delete-form").submit();
+    function pilihPaket(id, nama_paket) {
+        var elements = document.querySelectorAll('[id*="edit-form-"]');
+        
+        elements.forEach(function(element) {
+            var getIdElement = element.id.split('-')[2];
+            if (window.getComputedStyle(element).display !== 'none') {
+                document.getElementById('id_paket-' + getIdElement).value = id;
+                document.getElementById('nama_paket-' + getIdElement).value = nama_paket;
             }
-        };
+        });
+    }
 
-        function pilihPaket(id, nama_paket) {
-            document.getElementById('id_paket').value = id;
-            document.getElementById('nama_paket').value = nama_paket;
-        };
+    function pilihNomorhandphone(id, nomor_handphone) {
+        var elements = document.querySelectorAll('[id*="edit-form-"]');
+        
+        elements.forEach(function(element) {
+            var getIdElement = element.id.split('-')[2];
+            if (window.getComputedStyle(element).display !== 'none') {
+                document.getElementById('id_jadwalsurvey-' + getIdElement).value = id;
+                document.getElementById('nomor_handphone-' + getIdElement).value = nomor_handphone;
+            }
+        });
+    }
 
-        function pilihNomorhandphone(id, nomor_handphone) {
-            document.getElementById('id_jadwalsurvey').value = id;
-            document.getElementById('nomor_handphone').value = nomor_handphone;
-        };
+    function notificationBeforeDelete(event, el) {
+        event.preventDefault();
+        if (confirm('Apakah anda yakin akan menghapus data ? ')) {
+            $("#delete-form").attr('action', $(el).attr('href'));
+            $("#delete-form").submit();
+        }
+    }
 
-        function showEditForm(id) {
-            // Menyembunyikan semua form edit
-            $('#edit-forms').children().hide();
-            // Menampilkan form edit yang sesuai dengan id yang diberikan
-            $('#edit-form-' + id).show();
-        };
-
-    </script>
+    function showEditForm(id) {
+        $('#edit-forms').children().hide();
+        $('#edit-form-' + id).show();
+    }
+</script>
 @endpush

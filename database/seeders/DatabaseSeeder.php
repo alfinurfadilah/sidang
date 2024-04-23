@@ -130,6 +130,13 @@ class DatabaseSeeder extends Seeder
 
             
         ]);
+
+        \App\Models\Teknisi::create([
+            'nama_teknisi' => 'Hasbi',
+            'site' => 'Site Rangmul',
+
+            
+        ]);
     }
 
     

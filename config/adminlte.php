@@ -396,8 +396,29 @@ return [
 
         [
             'text' => 'Dashboard',
+            'url' => '/dashboard-admin',
+            'icon' => '	fa fa-bars',
+            'can' => 'Admin-only',
+         
+
+            // 'active' => true,
+        ],
+
+        [
+            'text' => 'Dashboard',
+            'url' => '/dashboard-teknisi',
+            'icon' => '	fa fa-bars',
+            'can' => 'Teknisi-only',
+         
+
+            // 'active' => true,
+        ],
+
+        [
+            'text' => 'Dashboard',
             'url' => '/dashboard',
             'icon' => '	fa fa-bars',
+            'can' => 'NOC-only',
          
 
             // 'active' => true,
@@ -407,6 +428,7 @@ return [
             'text' => 'user',
             'url'  => '/users',
             'icon' => 'fa fa-user-circle',
+            'can' => 'Admin-only',
         ],
 
         // [
@@ -475,47 +497,47 @@ return [
 
         [
             'header' => 'NOC',
-            // 'can' => 'NOC-only',
+            'can' => 'NOC-only',
         ],
         [
             'text'       => 'Cek Coverage',
             'icon_color' => 'red',
             'url'        => '/datacekcoverage',
-            // 'can' => 'NOC-only',
+            'can' => 'NOC-only',
         ],
-        [
-            'text'       => 'Data Aktivasi',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-            // 'can' => 'NOC-only',
-        ],
+        // [
+        //     'text'       => 'Data Aktivasi',
+        //     'icon_color' => 'yellow',
+        //     'url'        => '#',
+        //     'can' => 'NOC-only',
+        // ],
 
         [
             'header' => 'TEKNISI',
-            // 'can' => 'Teknisi-only',
+            'can' => 'Teknisi-only',
         ],
         // [
         //     'text'       => 'Jadwal Survey Teknisi',
         //     'icon_color' => 'cyan',
         //     'url'        => '#',
         // ],
-        [
-            'text'       => 'Jadwal survey teknisi',
-            'icon_color' => 'cyan',
-            'url'        => '/jadwalsurveyteknisi',
-            // 'can' => 'Teknisi-only',
-        ],
-        [
-            'text'       => 'Jadwal pemasangan teknisi',
-            'icon_color' => 'cyan',
-            'url'        => '/jadwalpemasanganteknisi',
-            // 'can' => 'Teknisi-only',
-        ],
+        // [
+        //     'text'       => 'Jadwal survey teknisi',
+        //     'icon_color' => 'cyan',
+        //     'url'        => '/jadwalsurveyteknisi',
+        //     // 'can' => 'Teknisi-only',
+        // ],
+        // [
+        //     'text'       => 'Jadwal pemasangan teknisi',
+        //     'icon_color' => 'cyan',
+        //     'url'        => '/jadwalpemasanganteknisi',
+        //     // 'can' => 'Teknisi-only',
+        // ],
         [
             'text'       => 'Report Survey',
             'icon_color' => 'cyan',
             'url'        => '/reportsurvey',
-            // 'can' => 'Teknisi-only',
+            'can' => 'Teknisi-only',
         ],
         
         // [
@@ -527,19 +549,19 @@ return [
             'text'       => 'Report Pemasangan',
             'icon_color' => 'cyan',
             'url'        => '/reportpemasangan',
-            // 'can' => 'Teknisi-only',
+            'can' => 'Teknisi-only',
         ],
         [
             'text'       => 'PPPoe User',
             'icon_color' => 'cyan',
             'url'        => '/pppoe/secret',
-            // 'can' => 'Teknisi-only',
+            'can' => 'NOC-only',
         ],
         [
             'text'       => 'Traffic',
             'icon_color' => 'cyan',
             'url'        => '/report-traffic',
-            // 'can' => 'Teknisi-only',
+            'can' => 'NOC-only',
         ],
 
        

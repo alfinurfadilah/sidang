@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\RouterosAPI;
 use App\Models\Report;
+use App\Models\Site;
+
 
 class HomeController extends Controller
 {
@@ -32,6 +34,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+          // Menghitung total data calon pelanggan
+          $totalSite = Site::count();
+         
+
         $ip = session()->get('ip');
         $user = session()->get('user');
         $pass = session()->get('pass');
@@ -66,7 +72,7 @@ class HomeController extends Controller
             'model' => $routerboard[0]['model'],
             'identity' => $identity[0]['name'],
         ];
-        return view('home', $data);
+        return view('home', $data, compact('totalSite'));
 
     }
 

@@ -98,9 +98,9 @@
             <!-- small box -->
             <div class="small-box bg-danger">
                 <div class="inner">
-                    <h3>65</h3>
+                    <h3>{{$totalSite}}</h3>
 
-                    <p>Unique Visitors</p>
+                    <p>Total Site</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-pie-graph"></i>
@@ -119,7 +119,7 @@
 
 <section class="content">
     <div class="container-fluid">
-        <div class="row">
+        <div class="row justify-content-center"> <!-- Menengahkan baris -->
             <div class="col-md-3 col-sm-6 col-12">
                 <div class="info-box">
                     <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
@@ -158,23 +158,13 @@
                 <!-- /.info-box -->
             </div>
             <!-- /.col -->
-            <div class="col-md-3 col-sm-6 col-12">
-                <div class="info-box">
-                    <span class="info-box-icon bg-danger"><i class="far fa-star"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Likes</span>
-                        <span class="info-box-number">93,139</span>
-                    </div>
-                    <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-            </div>
-            <!-- /.col -->
+           
         </div>
         <!-- /.row -->
     </div>
     <!-- /.container-fluid -->
 </section>
+
 
 <!-- BAR CHART -->
 <div class="row">

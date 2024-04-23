@@ -115,12 +115,13 @@ class DatacalonpelangganController extends Controller
         // Ambil data paket dari formulir
     $selected_namapaket = $request->input('selected_namapaket');
     // Simpan data ke dalam basis data
-    $paket = Paket::find($id);
-    $paket->Nama_Paket = $selected_namapaket;
-    $paket->save();
+    // $paket = Paket::find($id);
+    // $paket->Nama_Paket = $selected_namapaket;
+    // $paket->save();
     
         $datacalonpelanggan = Datacalonpelanggan::find($id);
         $datacapel = Paket::find($request->id_paket);
+
     
         if (!$datacalonpelanggan) {
             return redirect()->route('datacalonpelanggan.index')
@@ -133,6 +134,7 @@ class DatacalonpelangganController extends Controller
         $datacalonpelanggan->Alamat_Pemasangan = $request->Alamat_Pemasangan;
         $datacalonpelanggan->Titik_Kordinat = $request->Titik_Kordinat;
         $datacalonpelanggan->Status = $request->Status;
+        $datacalonpelanggan->id_paket = $request->id_paket;
     
 // Proses foto baru
 if ($request->hasfile('Foto')) {

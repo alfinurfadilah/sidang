@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>OSFinet</title>
+  <title>OSFi.NET</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -46,7 +46,7 @@
       <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="{{asset('template')}}/assets/img/logo.png" alt=""> -->
-        <h1>OSFinet</h1>
+        <h1>OSFi.NET</h1>
         <span>.</span>
       </a>
 
@@ -55,10 +55,10 @@
         <ul>
           <li><a href="#home" class="active">Home</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
+          <li><a href="#services">Divisi</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#team">Team</a></li>
-          <li class="dropdown has-dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down"></i></a>
+          <!-- <li class="dropdown has-dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down"></i></a>
             <ul class="dd-box-shadow">
               <li><a href="#">Dropdown 1</a></li>
               <li class="dropdown has-dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down"></i></a>
@@ -74,7 +74,7 @@
               <li><a href="#">Dropdown 3</a></li>
               <li><a href="#">Dropdown 4</a></li>
             </ul>
-          </li>
+          </li> -->
           <li><a href="#contact">Contact</a></li>
         </ul>
 
@@ -110,42 +110,7 @@
 
     </section><!-- End Hero Section -->
 
-    <!-- Clients Section - Home Page -->
-    <section id="clients" class="clients">
-
-      <div class="container-fluid" data-aos="fade-up">
-
-        <div class="row gy-4">
-
-          <div class="col-xl-2 col-md-3 col-6 client-logo">
-            <img src="{{asset('template')}}/assets/img/clients/client-1.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-
-          <div class="col-xl-2 col-md-3 col-6 client-logo">
-            <img src="{{asset('template')}}/assets/img/clients/client-2.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-
-          <div class="col-xl-2 col-md-3 col-6 client-logo">
-            <img src="{{asset('template')}}/assets/img/clients/client-3.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-
-          <div class="col-xl-2 col-md-3 col-6 client-logo">
-            <img src="{{asset('template')}}/assets/img/clients/client-4.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-
-          <div class="col-xl-2 col-md-3 col-6 client-logo">
-            <img src="{{asset('template')}}/assets/img/clients/client-5.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-
-          <div class="col-xl-2 col-md-3 col-6 client-logo">
-            <img src="{{asset('template')}}/assets/img/clients/client-6.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-
-        </div>
-
-      </div>
-
-    </section><!-- End Clients Section -->
+  
 
     <!-- About Section - Home Page -->
     <section id="about" class="about">
@@ -221,22 +186,22 @@
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="1" class="purecounter"></span>
               <p>Client</p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="2" data-purecounter-duration="1" class="purecounter"></span>
               <p>Site</p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Workers</p>
+              <span data-purecounter-start="0" data-purecounter-end="8" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Teknisi</p>
             </div>
           </div><!-- End Stats Item -->
 
@@ -347,15 +312,15 @@
           </div>
           <div class="col-lg-7 order-1 order-lg-2 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="100">
             <div class="image-stack">
-              <img src="{{asset('template')}}/assets/img/features-light-1.jpg" alt="" class="stack-front">
-              <img src="{{asset('template')}}/assets/img/features-light-2.jpg" alt="" class="stack-back">
+              <img src="{{asset('template')}}/assets/img/fototiang1.jpg" alt="" class="stack-front">
+              <img src="{{asset('template')}}/assets/img/fototiang1.jpg" alt="" class="stack-back">
             </div>
           </div>
         </div><!-- Features Item -->
 
         <div class="row gy-4 align-items-stretch justify-content-between features-item ">
           <div class="col-lg-6 d-flex align-items-center features-img-bg" data-aos="zoom-out">
-            <img src="{{asset('template')}}/assets/img/logo1.png" class="img-fluid" alt="">
+            <img src="{{asset('template')}}/assets/img/rakmount.jpg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-5 d-flex justify-content-center flex-column" data-aos="fade-up">
             <h3>Misi</h3>
@@ -457,31 +422,31 @@
             </div><!-- End Portfolio Item -->
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="{{asset('template')}}/assets/img/masonry-portfolio/masonry-portfolio-7.jpg" class="img-fluid" alt="">
+              <img src="{{asset('template')}}/assets/img/modem.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>App 3</h4>
                 <p>Lorem ipsum, dolor sit</p>
-                <a href="{{asset('template')}}/assets/img/masonry-portfolio/masonry-portfolio-7.jpg" title="App 3" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="{{asset('template')}}/assets/img/modemmm.jpg" title="App 3" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
             </div><!-- End Portfolio Item -->
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="{{asset('template')}}/assets/img/masonry-portfolio/masonry-portfolio-8.jpg" class="img-fluid" alt="">
+              <img src="{{asset('template')}}/assets/img/modemmmm.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Product 3</h4>
                 <p>Lorem ipsum, dolor sit</p>
-                <a href="{{asset('template')}}/assets/img/masonry-portfolio/masonry-portfolio-8.jpg" title="Product 3" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="{{asset('template')}}/assets/img/modemmmm.jpg" title="Product 3" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
             </div><!-- End Portfolio Item -->
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <img src="{{asset('template')}}/assets/img/masonry-portfolio/masonry-portfolio-9.jpg" class="img-fluid" alt="">
+              <img src="{{asset('template')}}/assets/img/pemasangan12.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>Branding 3</h4>
                 <p>Lorem ipsum, dolor sit</p>
-                <a href="{{asset('template')}}/assets/img/masonry-portfolio/masonry-portfolio-9.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="{{asset('template')}}/assets/img/pemasangan12.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
             </div><!-- End Portfolio Item -->
@@ -516,8 +481,9 @@
           <h4><sup>Rp</sup>100.000<span> / bulan</span></h4>
           <ul>
             <li><i class="bi bi-check"></i> <span>Kecepatan: 7 Mbps</span></li>
-            <li><i class="bi bi-check"></i> <span>Termasuk kuota data bulanan</span></li>
-            <li class="na"><i class="bi bi-x"></i> <span>Fitur tambahan tertentu</span></li>
+            <li><i class="bi bi-check"></i> <span>Biaya bulanan flat</span></li>
+            <li><i class="bi bi-check"></i> <span>Kecepatan tinggi dan stabil.</span></li>
+            <li><i class="bi bi-check"></i> <span>Internet Unlimited</span></li>
           </ul>
           <div class="text-center"><a href="#" class="buy-btn">Beli Sekarang</a></div>
         </div>
@@ -531,9 +497,10 @@
           </div>
           <h4><sup>Rp</sup>150.000<span> / bulan</span></h4>
           <ul>
-            <li><i class="bi bi-check"></i> <span>Kecepatan: 15 Mbps</span></li>
-            <li><i class="bi bi-check"></i> <span>Termasuk kuota data bulanan</span></li>
-            <li><i class="bi bi-check"></i> <span>Fitur tambahan tertentu</span></li>
+          <li><i class="bi bi-check"></i> <span>Kecepatan: 15 Mbps</span></li>
+            <li><i class="bi bi-check"></i> <span>Biaya bulanan flat</span></li>
+            <li><i class="bi bi-check"></i> <span>Kecepatan tinggi dan stabil.</span></li>
+            <li><i class="bi bi-check"></i> <span>Internet Unlimited</span></li>
           </ul>
           <div class="text-center"><a href="#" class="buy-btn">Beli Sekarang</a></div>
         </div>
@@ -551,7 +518,7 @@
       <!--  Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Team</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <p>Anggota Team OSFI.NET</p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -571,7 +538,6 @@
             <div class="member-info text-center">
               <h4>Melani Tiara Husnia</h4>
               <span>Admin Reguler</span>
-              <p>Aliquam iure quaerat voluptatem praesentium possimus unde laudantium vel dolorum distinctio dire flow</p>
             </div>
           </div><!-- End Team Member -->
 
@@ -588,7 +554,6 @@
             <div class="member-info text-center">
               <h4>Putri Ratnaningtyas</h4>
               <span>Admin Finance & Marketing</span>
-              <p>Labore ipsam sit consequatur exercitationem rerum laboriosam laudantium aut quod dolores exercitationem ut</p>
             </div>
           </div><!-- End Team Member -->
 
@@ -605,7 +570,6 @@
             <div class="member-info text-center">
               <h4>Alfi Nurfadilah</h4>
               <span>Web Developer</span>
-              <p>Illum minima ea autem doloremque ipsum quidem quas aspernatur modi ut praesentium vel tque sed facilis at qui</p>
             </div>
           </div><!-- End Team Member -->
 
@@ -622,7 +586,6 @@
             <div class="member-info text-center">
               <h4>Siti Shalisya Nurahma</h4>
               <span>Marketing</span>
-              <p>Magni voluptatem accusamus assumenda cum nisi aut qui dolorem voluptate sed et veniam quasi quam consectetur</p>
             </div>
           </div><!-- End Team Member -->
 
@@ -639,7 +602,6 @@
             <div class="member-info text-center">
               <h4>Joevanka Aisyah Devista</h4>
               <span>Marketing</span>
-              <p>Qui consequuntur quos accusamus magnam quo est molestiae eius laboriosam sunt doloribus quia impedit laborum velit</p>
             </div>
           </div><!-- End Team Member -->
 
@@ -656,7 +618,6 @@
             <div class="member-info text-center">
               <h4>Nazwa Aulia Hasyim</h4>
               <span>Web Developer</span>
-              <p>Sint sint eveniet explicabo amet consequatur nesciunt error enim rerum earum et omnis fugit eligendi cupiditate vel</p>
             </div>
           </div><!-- End Team Member -->
 
@@ -673,7 +634,6 @@
             <div class="member-info text-center">
               <h4>Anggi Permana Putra</h4>
               <span>Teknisi & Noc</span>
-              <p>Sint sint eveniet explicabo amet consequatur nesciunt error enim rerum earum et omnis fugit eligendi cupiditate vel</p>
             </div>
           </div><!-- End Team Member -->
 
@@ -690,7 +650,6 @@
             <div class="member-info text-center">
               <h4>Ebenhezer Hiro Dinitro</h4>
               <span>Marketing</span>
-              <p>Sint sint eveniet explicabo amet consequatur nesciunt error enim rerum earum et omnis fugit eligendi cupiditate vel</p>
             </div>
           </div><!-- End Team Member -->
 
@@ -705,9 +664,8 @@
               </div>
             </div>
             <div class="member-info text-center">
-              <h4>Efraim</h4>
+              <h4>Efraim Zefanya Marany</h4>
               <span>Teknisi</span>
-              <p>Sint sint eveniet explicabo amet consequatur nesciunt error enim rerum earum et omnis fugit eligendi cupiditate vel</p>
             </div>
           </div><!-- End Team Member -->
 
@@ -722,15 +680,14 @@
               </div>
             </div>
             <div class="member-info text-center">
-              <h4>Adi</h4>
+              <h4>Adi Tirta Jaya</h4>
               <span>Teknisi</span>
-              <p>Sint sint eveniet explicabo amet consequatur nesciunt error enim rerum earum et omnis fugit eligendi cupiditate vel</p>
             </div>
           </div><!-- End Team Member -->
           
           <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="600">
             <div class="member-img">
-              <img src="{{asset('template')}}/assets/img/team/team-6.jpg" class="img-fluid" alt="">
+              <img src="{{asset('template')}}/assets/img/viko.jpg" class="img-fluid" alt="">
               <div class="social">
                 <a href="#"><i class="bi bi-twitter"></i></a>
                 <a href="#"><i class="bi bi-facebook"></i></a>
@@ -739,15 +696,14 @@
               </div>
             </div>
             <div class="member-info text-center">
-              <h4>Josepha Palas</h4>
-              <span>Operation</span>
-              <p>Sint sint eveniet explicabo amet consequatur nesciunt error enim rerum earum et omnis fugit eligendi cupiditate vel</p>
+              <h4>Viko Jonanda</h4>
+              <span>Teknisi</span>
             </div>
           </div><!-- End Team Member -->
 
           <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="600">
             <div class="member-img">
-              <img src="{{asset('template')}}/assets/img/team/team-6.jpg" class="img-fluid" alt="">
+              <img src="{{asset('template')}}/assets/img/hasbi.png" class="img-fluid" alt="">
               <div class="social">
                 <a href="#"><i class="bi bi-twitter"></i></a>
                 <a href="#"><i class="bi bi-facebook"></i></a>
@@ -756,15 +712,14 @@
               </div>
             </div>
             <div class="member-info text-center">
-              <h4>Josepha Palas</h4>
-              <span>Operation</span>
-              <p>Sint sint eveniet explicabo amet consequatur nesciunt error enim rerum earum et omnis fugit eligendi cupiditate vel</p>
+              <h4>Hasbi Al maliki</h4>
+              <span>Teknisi</span>
             </div>
           </div><!-- End Team Member -->
 
           <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="600">
             <div class="member-img">
-              <img src="{{asset('template')}}/assets/img/team/team-6.jpg" class="img-fluid" alt="">
+              <img src="{{asset('template')}}/assets/img/gentar.jpg" class="img-fluid" alt="">
               <div class="social">
                 <a href="#"><i class="bi bi-twitter"></i></a>
                 <a href="#"><i class="bi bi-facebook"></i></a>
@@ -773,15 +728,14 @@
               </div>
             </div>
             <div class="member-info text-center">
-              <h4>Josepha Palas</h4>
-              <span>Operation</span>
-              <p>Sint sint eveniet explicabo amet consequatur nesciunt error enim rerum earum et omnis fugit eligendi cupiditate vel</p>
+              <h4>Gentar Bumi Garuda Watan</h4>
+              <span>Teknisi & Noc</span>
             </div>
           </div><!-- End Team Member -->
 
           <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="600">
             <div class="member-img">
-              <img src="{{asset('template')}}/assets/img/team/team-6.jpg" class="img-fluid" alt="">
+              <img src="{{asset('template')}}/assets/img/rangmul.png" class="img-fluid" alt="">
               <div class="social">
                 <a href="#"><i class="bi bi-twitter"></i></a>
                 <a href="#"><i class="bi bi-facebook"></i></a>
@@ -790,15 +744,14 @@
               </div>
             </div>
             <div class="member-info text-center">
-              <h4>Josepha Palas</h4>
-              <span>Operation</span>
-              <p>Sint sint eveniet explicabo amet consequatur nesciunt error enim rerum earum et omnis fugit eligendi cupiditate vel</p>
+              <h4>Rangga Mulyana</h4>
+              <span>Teknisi</span>
             </div>
           </div><!-- End Team Member -->
 
           <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="600">
             <div class="member-img">
-              <img src="{{asset('template')}}/assets/img/team/team-6.jpg" class="img-fluid" alt="">
+              <img src="{{asset('template')}}/assets/img/satria.jpg" class="img-fluid" alt="">
               <div class="social">
                 <a href="#"><i class="bi bi-twitter"></i></a>
                 <a href="#"><i class="bi bi-facebook"></i></a>
@@ -807,69 +760,13 @@
               </div>
             </div>
             <div class="member-info text-center">
-              <h4>Josepha Palas</h4>
-              <span>Operation</span>
-              <p>Sint sint eveniet explicabo amet consequatur nesciunt error enim rerum earum et omnis fugit eligendi cupiditate vel</p>
+              <h4>Raden Bagus Satria Depaska L.P</h4>
+              <span>Teknisi</span>
             </div>
           </div><!-- End Team Member -->
-
-          <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="600">
-            <div class="member-img">
-              <img src="{{asset('template')}}/assets/img/team/team-6.jpg" class="img-fluid" alt="">
-              <div class="social">
-                <a href="#"><i class="bi bi-twitter"></i></a>
-                <a href="#"><i class="bi bi-facebook"></i></a>
-                <a href="#"><i class="bi bi-instagram"></i></a>
-                <a href="#"><i class="bi bi-linkedin"></i></a>
-              </div>
-            </div>
-            <div class="member-info text-center">
-              <h4>Josepha Palas</h4>
-              <span>Operation</span>
-              <p>Sint sint eveniet explicabo amet consequatur nesciunt error enim rerum earum et omnis fugit eligendi cupiditate vel</p>
-            </div>
-          </div><!-- End Team Member -->
-
-          <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="600">
-            <div class="member-img">
-              <img src="{{asset('template')}}/assets/img/team/team-6.jpg" class="img-fluid" alt="">
-              <div class="social">
-                <a href="#"><i class="bi bi-twitter"></i></a>
-                <a href="#"><i class="bi bi-facebook"></i></a>
-                <a href="#"><i class="bi bi-instagram"></i></a>
-                <a href="#"><i class="bi bi-linkedin"></i></a>
-              </div>
-            </div>
-            <div class="member-info text-center">
-              <h4>Josepha Palas</h4>
-              <span>Operation</span>
-              <p>Sint sint eveniet explicabo amet consequatur nesciunt error enim rerum earum et omnis fugit eligendi cupiditate vel</p>
-            </div>
-          </div><!-- End Team Member -->
-
         </div>
 
       </div>
-
-    </section><!-- End Team Section -->
-
-    <!-- Call-to-action Section - Home Page -->
-    <section id="call-to-action" class="call-to-action">
-
-      <img src="{{asset('template')}}/assets/img/cta-bg.jpg" alt="">
-
-      <div class="container">
-        <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
-          <div class="col-xl-10">
-            <div class="text-center">
-              <h3>Call To Action</h3>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              <a class="cta-btn" href="#">Call To Action</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </section><!-- End Call-to-action Section -->
 
               </div>
@@ -882,15 +779,14 @@
 
       </div>
 
-    </section><!-- End Testimonials Section -->
 
     <!-- Recent-posts Section - Home Page -->
     <section id="recent-posts" class="recent-posts">
 
       <!--  Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Recent Posts</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <h2>Dokumentasi</h2>
+        <p>Beberapa dokumentasi pada saat pemasangan dilakukan</p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -901,17 +797,17 @@
             <article>
 
               <div class="post-img">
-                <img src="{{asset('template')}}/assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
+                <img src="{{asset('template')}}/assets/img/pemasangan16.jpg" alt="" class="img-fluid">
               </div>
 
               <p class="post-category">Politics</p>
 
               <h2 class="title">
-                <a href="blog-details.html">Dolorum optio tempore voluptas dignissimos</a>
+                <a href="blog-details.html">Dokumentasi saat pemasangan</a>
               </h2>
 
               <div class="d-flex align-items-center">
-                <img src="{{asset('template')}}/assets/img/blog/blog-author.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
+                <img src="{{asset('template')}}/assets/img/pemasangan16.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
                 <div class="post-meta">
                   <p class="post-author">Maria Doe</p>
                   <p class="post-date">
@@ -927,17 +823,17 @@
             <article>
 
               <div class="post-img">
-                <img src="{{asset('template')}}/assets/img/blog/blog-2.jpg" alt="" class="img-fluid">
+                <img src="{{asset('template')}}/assets/img/pemasangan14.jpg" alt="" class="img-fluid">
               </div>
 
               <p class="post-category">Sports</p>
 
               <h2 class="title">
-                <a href="blog-details.html">Nisi magni odit consequatur autem nulla dolorem</a>
+                <a href="blog-details.html">Dokumentasi saat pemasangan</a>
               </h2>
 
               <div class="d-flex align-items-center">
-                <img src="{{asset('template')}}/assets/img/blog/blog-author-2.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
+                <img src="{{asset('template')}}/assets/img/pemasangan14.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
                 <div class="post-meta">
                   <p class="post-author">Allisa Mayer</p>
                   <p class="post-date">
@@ -953,17 +849,17 @@
             <article>
 
               <div class="post-img">
-                <img src="{{asset('template')}}/assets/img/blog/blog-3.jpg" alt="" class="img-fluid">
+                <img src="{{asset('template')}}/assets/img/pemasangan15.jpg" alt="" class="img-fluid">
               </div>
 
               <p class="post-category">Entertainment</p>
 
               <h2 class="title">
-                <a href="blog-details.html">Possimus soluta ut id suscipit ea ut in quo quia et soluta</a>
+                <a href="blog-details.html">Dokumentasi saat pemasangan</a>
               </h2>
 
               <div class="d-flex align-items-center">
-                <img src="{{asset('template')}}/assets/img/blog/blog-author-3.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
+                <img src="{{asset('template')}}/assets/img/pemasangan15.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
                 <div class="post-meta">
                   <p class="post-author">Mark Dower</p>
                   <p class="post-date">
@@ -987,7 +883,7 @@
       <!--  Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Contact</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <p>Berikut kontak layanan kami</p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -1001,8 +897,8 @@
                 <div class="info-item" data-aos="fade" data-aos-delay="200">
                   <i class="bi bi-geo-alt"></i>
                   <h3>Address</h3>
-                  <p>A108 Adam Street</p>
-                  <p>New York, NY 535022</p>
+                  <p>Cilebut</p>
+                  <p>PasiR Jambu</p>
                 </div>
               </div><!-- End Info Item -->
 
@@ -1010,8 +906,8 @@
                 <div class="info-item" data-aos="fade" data-aos-delay="300">
                   <i class="bi bi-telephone"></i>
                   <h3>Call Us</h3>
-                  <p>+1 5589 55488 55</p>
-                  <p>+1 6678 254445 41</p>
+                  <p></p>
+                  <p>+62-856-7849-132</p>
                 </div>
               </div><!-- End Info Item -->
 
@@ -1019,8 +915,7 @@
                 <div class="info-item" data-aos="fade" data-aos-delay="400">
                   <i class="bi bi-envelope"></i>
                   <h3>Email Us</h3>
-                  <p>info@example.com</p>
-                  <p>contact@example.com</p>
+                  <p>osfinet@gmail.com</p>
                 </div>
               </div><!-- End Info Item -->
 
@@ -1029,7 +924,7 @@
                   <i class="bi bi-clock"></i>
                   <h3>Open Hours</h3>
                   <p>Monday - Friday</p>
-                  <p>9:00AM - 05:00PM</p>
+                  <p>8:00AM - 05:00PM</p>
                 </div>
               </div><!-- End Info Item -->
 
@@ -1067,7 +962,7 @@
 
               </div>
             </form>
-          </div><!-- End Contact Form -->
+          </div>
 
         </div>
 
@@ -1077,7 +972,7 @@
 
   </main>
 
-  <!-- ======= Footer ======= -->
+  <!-- ======= Footer =======
   <footer id="footer" class="footer">
 
     <div class="container footer-top">
@@ -1127,7 +1022,7 @@
         </div>
 
       </div>
-    </div>
+    </div> -->
 
     <div class="container copyright text-center mt-4">
       <p>&copy; <span>Copyright</span> <strong class="px-1">Append</strong> <span>All Rights Reserved</span></p>

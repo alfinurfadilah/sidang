@@ -264,6 +264,7 @@
                                             onclick="notificationBeforeDelete(event, this)" class="btn btn-delete  btn-xs">
                                             <i class="fa fa-trash"></i> 
                                         </a>
+                                        
                                     
                                         <button class="btn btn-primary btn-detail btn-xs" data-toggle="modal"
                                             data-target="#lihatDataModal_{{$item->id_pelanggan}}">
@@ -272,12 +273,12 @@
                                     </div>
                                 </td>
                                 <td>
-                                    @if($item->payment_status)
+                                    @if($item->payment_status == "Sudah Dibayar")
                                         <button class="btn btn-success btn-sm btn-payment">Sudah Dibayar</button>
-                                    @else
+                                    @else($item->payment_status == "Belum Dibayar")
                                         <button class="btn btn-danger btn-sm btn-payment">Belum Dibayar</button>
                                     @endif
-                                </td>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -347,8 +348,8 @@
                             <div class="form-group">
                                 <label for="payment_status">Status Pembayaran</label>
                                 <select class="form-control" id="payment_status" name="payment_status">
-                                <option value="Sudah Bayar">Sudah Bayar</option>
-                                <option value="Belum Bayar">Belum Bayar</option>
+                                <option value="Sudah Dibayar">Sudah Dibayar</option>
+                                <option value="Belum Dibayar">Belum Dibayar</option>
                                 </select>
                             </div>
                         </div>
@@ -461,8 +462,8 @@
                         <div class="form-group">
                         <label for="payment_status">Status Pembayaran</label>
                         <select class="form-control" id="payment_status" name="payment_status">
-                            <option value="1" {{ $item->payment_status == 1 ? 'selected' : '' }}>Sudah Dibayar</option>
-                            <option value="0" {{ $item->payment_status == 0 ? 'selected' : '' }}>Belum Dibayar</option>
+                            <option value="Sudah Dibayar" {{ $item->payment_status == 'Sudah Dibayar' ? 'selected' : '' }}>Sudah Dibayar</option>
+                            <option value="Belum Dibayar" {{ $item->payment_status == 'Belum Dibayar' ? 'selected' : '' }}>Belum Dibayar</option>
                         </select>
                     </div>
                     <div class="row">
@@ -556,6 +557,7 @@
 </div>
 <!-- End Modal -->
 
+
 <!-- MODAL DETAIL-->
 @foreach($datapembayaran as $item)
 <div class="modal fade" id="lihatDataModal_{{$item->id_pelanggan}}" tabindex="-1" role="dialog"
@@ -569,23 +571,24 @@
                 </button>
             </div>
             <div class="modal-body">
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <strong>No. {{$item->id_pelanggan}}</strong><br>
-                        <strong>Id Pelanggan:</strong> {{$item->id_pelanggan}}<br>
-                        <strong>Nama:</strong> {{$item->nama}}<br>
-                        <strong>Nama Paket:</strong> {{$item->fpaket->Nama_Paket}}<br>
-                        <strong>Harga Paket:</strong> Rp {{number_format($item->harga_paket, 0, ',', '.')}}<br>
-                        <strong>Bulan/Tahun:</strong> {{$item->bulan}} {{$item->tahun}}<br>
-                        <strong>Status Pembayaran:</strong>
-                        @if($item->payment_status)
-                            <span class="badge badge-success">Sudah Dibayar</span>
-                        @else
-                            <span class="badge badge-danger">Belum Dibayar</span>
-                        @endif
-                    </li>
-                </ul>
-            </div>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <strong>No. {{$item->id_pelanggan}}</strong><br>
+            <strong>Id Pelanggan:</strong> {{$item->id_pelanggan}}<br>
+            <strong>Nama:</strong> {{$item->nama}}<br>
+            <strong>Nama Paket:</strong> {{$item->fpaket->Nama_Paket}}<br>
+            <strong>Harga Paket:</strong> Rp {{number_format($item->harga_paket, 0, ',', '.')}}<br>
+            <strong>Bulan/Tahun:</strong> {{$item->bulan}} {{$item->tahun}}<br>
+            <strong>Status Pembayaran:</strong>
+            @if($item->payment_status == 'Sudah Dibayar')
+                <span class="badge badge-success">Sudah Dibayar</span>
+            @else
+                <span class="badge badge-danger">Belum Dibayar</span>
+            @endif
+        </li>
+    </ul>
+</div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
             </div>
@@ -594,6 +597,7 @@
 </div>
 @endforeach
 <!-- ENDMODAL DETAIL -->
+
 
 
 @stop
@@ -718,6 +722,31 @@
     @csrf
 </form>
 <script>
+
+// Fungsi untuk memperbarui status pembayaran di modal detail
+function updateStatusPembayaranInDetailModal(id_pelanggan, status_pembayaran) {
+    // Cari elemen status pembayaran di dalam modal detail
+    var statusPembayaranElement = $('#lihatDataModal_' + id_pelanggan).find('.modal-body .badge');
+
+    // Ubah warna dan teks badge sesuai dengan status pembayaran baru
+    if (status_pembayaran) {
+        statusPembayaranElement.removeClass('badge-danger').addClass('badge-success').text('Sudah Dibayar');
+    } else {
+        statusPembayaranElement.removeClass('badge-success').addClass('badge-danger').text('Belum Dibayar');
+    }
+}
+
+// Event listener untuk peristiwa pengeditan status pembayaran di modal edit
+$('#modalEdit').on('hidden.bs.modal', function () {
+    // Ambil informasi terbaru tentang status pembayaran dari modal edit
+    var id_pelanggan = $('#id_pelanggan').val();
+    var status_pembayaran = $('#status_pembayaran').val();
+
+    // Perbarui status pembayaran di modal detail
+    updateStatusPembayaranInDetailModal(id_pelanggan, status_pembayaran);
+});
+
+
 $('#example2').DataTable({
     "responsive": true,
 });

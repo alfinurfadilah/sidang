@@ -192,10 +192,10 @@
                                 <div class="form-group">
                                 <label for="site">Site</label>
                                 <div class="input-group">
-                                    <input type="hidden" name="id_site" id="id_site" value="{{ $item->fsite->site->id ?? old('id_site') }}">
-                                    <input type="text" class="form-control @error('site') is-invalid @enderror" placeholder="Site" id="site" name="site"
+                                    <input type="hidden" name="id_site" id="id_site-{{$item->id}}" value="{{ $item->fsite->site->id ?? old('id_site') }}">
+                                    <input type="text" class="form-control @error('site') is-invalid @enderror" placeholder="Site" id="site-{{$item->id}}" name="site"
                                         value="{{ $item->fsite->site->site ?? old('site') }}" aria-label="Site" aria-describedby="cari" readonly>
-                                    <button class="btn btn-warning" type="button" data-bs-toggle="modal" id="cari" data-bs-target="#staticBackdrop">
+                                    <button class="btn btn-warning" type="button" data-bs-toggle="modal" data-id="{{$item->id}}" id="cari" data-bs-target="#staticBackdrop">
                                         Cari Data Site
                                     </button>
                                 </div>
@@ -224,8 +224,8 @@
                                 <div class="form-group">
                                     <label for="nama_teknisi">Nama Teknisi</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control @error('teknisi') is-invalid @enderror" placeholder="Masukan Teknisi" id="nama_teknisi" name="nama_teknisi" value="{{ $item->teknisis->implode('nama_teknisi', ', ') }}" aria-label="teknisi" aria-describedby="cari">
-                                        <input type="hidden" name="id_teknisi" id="id_teknisi" value="{{ $item->teknisis->pluck('id')->implode(',') }}">
+                                        <input type="text" class="form-control @error('teknisi') is-invalid @enderror" placeholder="Masukan Teknisi" id="nama_teknisi-{{$item->id}}" name="nama_teknisi" value="{{ $item->teknisis->implode('nama_teknisi', ', ') }}" aria-label="teknisi" aria-describedby="cari">
+                                        <input type="hidden" name="id_teknisi" id="id_teknisi-{{$item->id}}" value="{{ $item->teknisis->pluck('id')->implode(',') }}">
                                         <button class="btn btn-warning" type="button" data-bs-toggle="modal" id="cari" data-bs-target="#staticBackdrop1">
                                             Cari Data Teknisi
                                         </button>
@@ -429,158 +429,109 @@
 @stop
 @push('js')
 <style>
-       .btn-save {
-    background-color: #CD5C5C;
-    /* Warna latar belakang tombol (merah) */
-    color: #fff;
-    /* Warna teks tombol (putih) */
-    border: none;
-    /* Tidak ada border */
-    padding: 10px 20px;
-    /* Padding tombol */
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-right: 10px;
-    /* Jarak kanan dari tombol "Batal" */
-    transition-duration: 0.4s;
-    cursor: pointer;
-    border-radius: 20px; /* Atur nilai border-radius sesuai dengan keinginan Anda */
-
-    /* Border radius untuk sudut tombol */
-}
-
-/* Hover Effect untuk Tombol "Simpan" */
-.btn-save:hover {
-    background-color: #8b0000;
-    /* Warna latar belakang tombol saat dihover (merah lebih gelap) */
-    color: dark;
-    /* Warna teks tombol saat dihover (putih) */
-    transform: scale(1.05);
-}
-
-/* Gaya untuk Tombol "Batal" */
-.btn-cancel {
-    background-color: #6495ED;
-    /* Warna latar belakang tombol (biru) */
-    color: #fff;
-    /* Warna teks tombol (putih) */
-    border: none;
-    /* Tidak ada border */
-    padding: 10px 20px;
-    /* Padding tombol */
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    border-radius: 20px; /* Atur nilai border-radius sesuai dengan keinginan Anda */
-    /* Border radius untuk sudut tombol */
-}
-
-/* Hover Effect untuk Tombol "Batal" */
-.btn-cancel:hover {
-    background-color: #191970;
-    /* Warna latar belakang tombol saat dihover (biru lebih gelap) */
-    color: white;
-    /* Warna teks tombol saat dihover (putih) */
-    transform: scale(1.05);
-}
-    </style>
-<script>
-   
-    var slider = document.getElementById("status_pemasangan");
-    var output = document.getElementById("status_pemasangan_value");
-    output.innerHTML = slider.value;
-
-    slider.oninput = function() {
-        output.innerHTML = this.value;
+    .btn-save {
+        background-color: #CD5C5C;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-right: 10px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        border-radius: 20px;
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-        var progressLabels = document.querySelectorAll('.progress-label');
-        
-        progressLabels.forEach(function(label) {
-            var progress = parseInt(label.innerText);
-            if (progress < 50) {
-                label.classList.add('red-label');
-            } else {
-                label.classList.add('green-label');
-            }
+    .btn-save:hover {
+        background-color: #8b0000;
+        color: dark;
+        transform: scale(1.05);
+    }
+
+    .btn-cancel {
+        background-color: #6495ED;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        border-radius: 20px;
+    }
+
+    .btn-cancel:hover {
+        background-color: #191970;
+        color: white;
+        transform: scale(1.05);
+    }
+</style>
+<script>
+    $(document).ready(function() {
+        $('#example2, #example1, #example').DataTable({
+            "responsive": true,
         });
     });
 
-    $(document).ready(function() {
-        $('#example2').DataTable({
-            "responsive": true,
-        });
-    });
-    $(document).ready(function() {
-        $('#example1').DataTable({
-            "responsive": true,
-        });
-    });
-    $(document).ready(function() {
-        $('#example').DataTable({
-            "responsive": true,
-        });
-    });
-
-    $(document).ready(function() {
     $('#pilih-teknisi').click(function() {
         var selectedTeknisi = [];
+        var elements = document.querySelectorAll('[id*="edit-form-"]');
+        var idData;
+
+        elements.forEach(function(element) {
+            var getIdElement = element.id.split('-')[2];
+            if (window.getComputedStyle(element).display !== 'none') {
+                idData = getIdElement;
+            }
+        });
+
         $('.pilih-teknisi:checked').each(function() {
             var id = $(this).data('id');
             var nama = $(this).data('nama');
             selectedTeknisi.push({ id: id, nama: nama });
         });
 
-        // Menyiapkan teks yang akan ditampilkan di field nama teknisi
         var namaTeknisi = selectedTeknisi.map(function(teknisi) {
             return teknisi.nama;
         }).join(', ');
 
-        // Mengisi field nama teknisi pada form edit dengan nama teknisi yang dipilih
-        $('#nama_teknisi').val(namaTeknisi);
+        $('#nama_teknisi-' + idData).val(namaTeknisi);
 
-        // Mengisi field id teknisi pada form edit dengan id teknisi yang dipilih
         var idTeknisi = selectedTeknisi.map(function(teknisi) {
             return teknisi.id;
         }).join(',');
-        $('#id_teknisi').val(idTeknisi);
+        $('#id_teknisi-' + idData).val(idTeknisi);
 
-        // Menutup modal setelah data dipilih
         $('#staticBackdrop1').modal('hide');
     });
-});
 
+    function pilihSite(id, asite) {
+        var elements = document.querySelectorAll('[id*="edit-form-"]');
+        
+        elements.forEach(function(element) {
+            var getIdElement = element.id.split('-')[2];
+            if (window.getComputedStyle(element).display !== 'none') {
+                document.getElementById('id_site-' + getIdElement).value = id;
+                document.getElementById('site-' + getIdElement).value = asite;
+            } 
+        });
+    };
 
-    
+    function showEditForm(id) {
+        $('#edit-forms').children().hide();
+        $('#edit-form-' + id).show();
+    };
+
     function notificationBeforeDelete(event, el) {
         event.preventDefault();
         if (confirm('Apakah anda yakin akan menghapus data ? ')) {
             $("#delete-form").attr('action', $(el).attr('href'));
             $("#delete-form").submit();
         }
-    };
-
-    function pilihSite(id, asite) {
-        document.getElementById('id_site').value = id;
-        document.getElementById('site').value = asite;
-    };
-
-    // function pilihTeknisi(id, ateknisi) {
-    //     document.getElementById('id_teknisi').value = id;
-    //     document.getElementById('nama_teknisi').value = ateknisi;
-    // };
-
-    function showEditForm(id) {
-        // Menyembunyikan semua form edit
-        $('#edit-forms').children().hide();
-        // Menampilkan form edit yang sesuai dengan id yang diberikan
-        $('#edit-form-' + id).show();
     };
 </script>
 @endpush

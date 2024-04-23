@@ -103,9 +103,9 @@ class DatapembayaranController extends Controller
              // Ambil data paket dari formulir
     $selected_namapaket = $request->input('selected_namapaket');
     // Simpan data ke dalam basis data
-    $paket = Paket::find($id);
-    $paket->nama_paket = $selected_namapaket;
-    $paket->save();
+    // $paket = Paket::find($id);
+    // $paket->nama_paket = $selected_namapaket;
+    // $paket->save();
     
             $datapembayaran = Datapembayaran::find($id);
             $datapembayaran->id_pelanggan = $request->id_pelanggan;
@@ -114,6 +114,7 @@ class DatapembayaranController extends Controller
             $datapembayaran->payment_status = $request->payment_status;
             $datapembayaran->bulan = $request->bulan;
             $datapembayaran->tahun = $request->tahun;
+            $datapembayaran->id_paket = $request->id_paket;
             $datapembayaran->save();
             return redirect()->route('datapembayaran.index')
             ->with('success_message', 'Berhasil Mengubah data Pembayaran');

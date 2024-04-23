@@ -37,22 +37,6 @@
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
 </head>
 <style>
-
-  /* Warna ungu muda untuk baris ganjil */
-.table-striped tbody tr:nth-of-type(odd) {
-    background-color: #e9d8fd;
-}
-
-/* Warna putih untuk baris genap */
-.table-striped tbody tr:nth-of-type(even) {
-    background-color: #ffffff;
-}
-
-/* Warna ungu muda yang lebih gelap saat hover */
-.table-hover tbody tr:hover {
-    background-color: #d6b8f9;
-}
-
   .center-heading {
         text-align: center;
     }
@@ -85,6 +69,15 @@
     background-color: #ffe57e; /* Merah */
     color: black; /* Warna teks putih */
 }
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #e9d8fd; /* Warna ungu muda */
+}
+
+.table-hover tbody tr:hover {
+    background-color: #d6b8f9; /* Warna ungu muda yang lebih gelap saat hover */
+}
+
 </style>
 
 <body>
@@ -108,18 +101,39 @@
     </div>
     <!-- /.content-header -->
 
+    
+
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
+
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>
+                  {{$totalTeknisi}}
+                </h3>
+
+                <p>Jumlah Teknisi</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>{{$totalDatacapel}}</h3>
+                <h3>{{$totalJadwalSurvey}}</h3>
 
-                <p>Total Calon Pelanggan</p>
+                <p>Total Jadwal Survey</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -132,9 +146,9 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>{{$totaldatapembayaran}}</h3>
+                <h3>{{$totalJadwalPemasangan}}</h3>
 
-                <p>Total Pelanggan Bayar</p>
+                <p>Total Jadwal Pemasangan</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -142,22 +156,7 @@
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>Rp {{number_format($totalPemasukan, 0, ',', '.')}}</h3>
-
-                <p>Total Pemasukan</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
+          
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-danger">
@@ -177,57 +176,6 @@
         <!-- /.row -->
 
         <div class="row">
-        <!-- /.col -->
-        <div class="col-md-12">
-            <div class="card bg-warning">
-              <div class="card-header">
-                <h3 class="card-title">Data Pelanggan Belum Bayar Bulan ini</h3>
-
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                </div>
-                <!-- /.card-tools -->
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="display table table-striped table-hover" id="example"  >
-                    <thead class="center-heading">
-                      <tr>
-                              <th>No.</th>
-                              <th>Id Pelanggan</th>
-                              <th>Nama </th>
-                              <th>Harga Paket</th>
-                              <th>Status Pembayaran</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                          @foreach($datapembayaranBelumDibayar as $key => $item)
-                              <tr class="center-heading">
-                                  <td>{{$key+1}}</td>
-                                  <td>{{$item->id_pelanggan}}</td>
-                                  <td>{{$item->nama}}</td>
-                                  <td>Rp {{number_format($item->harga_paket, 0, ',', '.')}}</td>
-                                  <td>
-                                    @if($item->payment_status == 'Sudah Dibayar')
-                                    <button class="btn btn-success btn-sm btn-payment">{{$item->payment_status}}</button>
-                                    @elseif($item->payment_status == 'Belum Dibayar')
-                                    <button class="btn btn-danger btn-sm btn-payment">{{$item->payment_status}}</button>
-                                    @endif
-                                  </td>
-                              </tr>
-                          @endforeach
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
           <div class="col-md-6">
             <div class="card card-info">
               <div class="card-header">
@@ -242,37 +190,31 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <div class="table-responsive">
+              <div class="table-responsive">
                   <table class="display table table-striped table-hover" id="example1">
                     <thead class="center-heading">
-                      <tr>
+                        <tr class="">
                             <th>No.</th>
                             <th>Nama</th>
                             <th>Nomor Handphone</th>
-                            <th>Status</th>
-                      </tr>
+                            <th>Alamat Pemasangan</th>
+                            <th>Tanggal Survey</th>
+                            <th>Waktu</th>
+                        </tr>
                     </thead>
                     <tbody>
-                          @foreach($datasurvey as $key => $item)
-                              <tr class="center-heading">
-                                <td>{{$key+1}}</td>
-                                <td>{{$item->Nama}}</td>
-                                <td>{{$item->Nomor_Handphone}}</td>
-                                <td>
-                                    @if($item->Status == 'coverage')
-                                        <button class="btn btn-survey">{{$item->Status}}</button>
-                                    @elseif($item->Status == 'survey')
-                                        <button class="btn btn-coverage">{{$item->Status}}</button>
-                                    @elseif($item->Status == 'pemasangan')
-                                        <button class="btn btn-pemasangan">{{$item->Status}}</button>
-                                    @elseif($item->Status == 'aktif')
-                                        <button class="btn btn-aktif">{{$item->Status}}</button>
-                                    @endif
-                                  </td>
-                              </tr>
-                          @endforeach
+                    @foreach ($jadwalsurvey as $sk => $item)
+                        <tr>
+                            <td>{{$loop->iteration}}</td>
+                            <td>{{$item->nama}}</td>
+                            <td>{{$item->nomor_handphone}}</td>
+                            <td>{{$item->alamat_pemasangan}}</td>
+                            <td>{{$item->tanggal_survey}}</td>
+                            <td>{{$item->waktu}}</td>
+                        </tr>
+                        @endforeach
                     </tbody>
-                  </table>
+                </table>
                 </div>
               </div>
               <!-- /.card-body -->
@@ -297,33 +239,28 @@
                 <div class="table-responsive">
                   <table class="display table table-striped table-hover" id="example1">
                     <thead class="center-heading">
-                      <tr>
-                            <th>No.</th>
-                            <th>Nama</th>
-                            <th>Nomor Handphone</th>
-                            <th>Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                          @foreach($datapemasangan as $key => $item)
-                              <tr class="center-heading">
-                                <td>{{$key+1}}</td>
-                                <td>{{$item->Nama}}</td>
-                                <td>{{$item->Nomor_Handphone}}</td>
-                                <td>
-                                    @if($item->Status == 'coverage')
-                                        <button class="btn btn-survey">{{$item->Status}}</button>
-                                    @elseif($item->Status == 'survey')
-                                        <button class="btn btn-coverage">{{$item->Status}}</button>
-                                    @elseif($item->Status == 'pemasangan')
-                                        <button class="btn btn-pemasangan">{{$item->Status}}</button>
-                                    @elseif($item->Status == 'aktif')
-                                        <button class="btn btn-aktif">{{$item->Status}}</button>
-                                    @endif
-                                  </td>
-                              </tr>
-                          @endforeach
-                    </tbody>
+                    <tr class="bg-info text-white">
+                                <th>No.</th>
+                                <th>Nama</th>
+                                <th>Nomor Handphone</th>
+                                <th>Nama Paket</th>
+                                <th>Alamat Pemasangan</th>
+                                <th>Tanggal Pemasangan</th>
+                                <th>Waktu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($jadwalpemasangan as $sk => $item)
+                            <tr>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$item->nama}}</td>
+                                <td>{{$item ->nomor_handphone }}</td>
+                                <td>{{$item->nama_paket }}</td>
+                                <td>{{$item->alamat_pemasangan }}</td>
+                                <td>{{$item->tanggal_pemasangan}}</td>
+                                <td>{{$item->waktu}}</td>
+                            @endforeach
+                            </tbody>
                   </table>
                 </div>
               </div>

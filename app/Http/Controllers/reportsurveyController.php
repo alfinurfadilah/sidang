@@ -72,6 +72,7 @@ class ReportsurveyController extends Controller
         'site', 
         'tanggal_survey',
         'waktu',
+        'nama_teknisi',
         'hard_survey',
         'status',
         'id_jadwalsurvey'
@@ -146,6 +147,7 @@ public function update(Request $request, $id)
     $reportsurvey->id_site = $request->id_site;
     $reportsurvey->tanggal_survey = $request->tanggal_survey;
     $reportsurvey->waktu = $request->waktu;
+    
     $reportsurvey->save();
     
 
@@ -163,7 +165,7 @@ public function update(Request $request, $id)
     $reportsurvey = Reportsurvey::find($id);
     $reportsurvey->teknisis()->sync($id_teknisi_array);
     $reportsurvey->hard_survey = $request->hard_survey;
-    $reportsurvey->status = $request->status;
+    $reportsurvey->status = $request->status; 
     $reportsurvey->save();
 
     // Buat instance Jadwalpemasangan
